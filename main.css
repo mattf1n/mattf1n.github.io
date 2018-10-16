@@ -1,0 +1,10 @@
+body {
+  background-color: dimgrey;
+  color: lightgrey;
+}
+
+.content {
+  margin: auto;
+  max-width: 500px;
+  padding: 16px;
+}
