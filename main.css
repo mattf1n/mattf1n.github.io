@@ -4,12 +4,8 @@ body {
 }
 
 #title {
-  height: 90%;
-}
-
-* #title{
-  position: relative;
-  top: 30%;
+  min-height: 90%;
+  padding-top: 10%;
 }
 
 #education {
