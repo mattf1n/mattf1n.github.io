@@ -1,6 +1,19 @@
 body {
-  background-color: dimgrey;
+  background-color: darkslategray;
   color: lightgrey;
+}
+
+#title {
+  height: 90%;
+}
+
+* #title{
+  position: relative;
+  top: 30%;
+}
+
+#education {
+  background-color: darkslateblue;
 }
 
 .content {
