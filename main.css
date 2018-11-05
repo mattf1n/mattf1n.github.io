@@ -4,8 +4,8 @@ body {
 }
 
 #title {
-  min-height: 90%;
-  padding-top: 30%;
+  min-height: 90vh;
+  padding-top: 30vh;
 }
 
 #education {
@@ -14,6 +14,26 @@ body {
 
 .content {
   margin: auto;
-  max-width: 500px;
+  max-width: 532px;
   padding: 16px;
+}
+
+.card {
+  border-radius: 5px;
+  border: solid darkgrey 1px;
+  width: 234px;
+  padding: 16px;
+  padding-top: 8px;
+  margin: 8px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
