@@ -1,15 +1,16 @@
 body {
   background-color: darkslategray;
-  color: lightgrey;
+  color: darkslategray;
 }
 
 #title {
   min-height: 90vh;
   padding-top: 30vh;
+  color: lightgrey;
 }
 
 #education {
-  background-color: darkslateblue;
+  background-color: lightgrey;
 }
 
 .content {
