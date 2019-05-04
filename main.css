@@ -3,19 +3,33 @@ body {
   color: darkslategray;
 }
 
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  height: 120px;
+  display: block;
+  margin: auto;
+}
+
 #title {
   min-height: 90vh;
   padding-top: 30vh;
   color: lightgrey;
 }
 
-#education {
+#body {
   background-color: lightgrey;
+  padding-bottom: 30vh;
 }
 
 .content {
   margin: auto;
-  max-width: 532px;
+  max-width: 600px;
   padding: 16px;
 }
 
@@ -31,10 +45,4 @@ body {
 .flex {
   display: flex;
   flex-wrap: wrap;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
 }
