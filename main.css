@@ -1,8 +1,8 @@
 body {
   background-color: darkslategray;
   color: darkslategray;
+  /* padding-bottom: 30vh; */
 }
-
 
 ul {
   list-style-type: none;
@@ -16,15 +16,30 @@ ul {
   margin: auto;
 }
 
-#title {
-  min-height: 90vh;
-  padding-top: 30vh;
-  color: lightgrey;
+.below {
+  margin-top: 20vh;
+  min-height: 100vh;
+  z-index: 1;
+  background-color: lightgrey;
 }
 
-#body {
-  background-color: lightgrey;
+.below-jumbo {
+  margin-top: 90vh;
   padding-bottom: 30vh;
+}
+
+.title {
+  position: fixed;
+  /* background-color: darkslategray; */
+  color: lightgrey;
+  top: 0;
+  z-index: -1;
+  width: 100vw;
+}
+
+.jumbo {
+  min-height: 90vh;
+  padding-top: 10vh;
 }
 
 .content {
