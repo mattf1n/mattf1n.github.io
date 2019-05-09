@@ -15,48 +15,43 @@ ul {
   margin: auto;
 }
 
+#pic-spacer {
+  height: 120px;
+  display: block;
+  margin: auto;
+}
+
+.nav {
+  min-height: 10vh;
+}
+
 .below {
-  margin-top: 20vh;
+  /* margin-top: 20vh; */
   min-height: 100vh;
   z-index: 1;
   background-color: lightgrey;
 }
 
 .below-jumbo {
-  margin-top: 90vh;
   padding-bottom: 30vh;
 }
 
 .title {
-  position: fixed;
-  /* background-color: darkslategray; */
+  position: sticky;
   color: lightgrey;
-  top: 0;
   z-index: -1;
   width: 100vw;
+  top: 0;
 }
 
 .jumbo {
-  min-height: 90vh;
-  padding-top: 10vh;
+  top: -136px;
+  min-height: 60vh;
+  margin-top: 30vh;
 }
 
 .content {
   margin: auto;
   max-width: 600px;
   padding: 16px;
-}
-
-.card {
-  border-radius: 5px;
-  border: solid darkgrey 1px;
-  width: 234px;
-  padding: 16px;
-  padding-top: 8px;
-  margin: 8px;
-}
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
 }
