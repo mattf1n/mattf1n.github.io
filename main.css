@@ -1,5 +1,5 @@
 body {
-  background-color: darkslategray;
+  background-color: #c1c1c1;
   color: darkslategray;
 }
 
@@ -29,7 +29,7 @@ ul {
   /* margin-top: 20vh; */
   min-height: 100vh;
   z-index: 1;
-  background-color: lightgrey;
+  background-color: #c1c1c1;
 }
 
 .below-jumbo {
@@ -38,16 +38,17 @@ ul {
 
 .title {
   position: sticky;
-  color: lightgrey;
+  color: #c1c1c1;
   z-index: -1;
   width: 100vw;
   top: 0;
 }
 
 .jumbo {
-  top: -136px;
-  min-height: 60vh;
-  margin-top: 30vh;
+  background-color: darkslategray;
+  top: calc(-136px + -30vh);
+  min-height: 90vh;
+  padding-top: 30vh;
 }
 
 .content {
