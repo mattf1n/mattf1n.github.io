@@ -9,6 +9,10 @@ ul {
   padding: 0;
 }
 
+hr {
+  border-color: darkslategray;
+}
+
 #pic {
   height: 120px;
   display: block;
@@ -55,4 +59,9 @@ ul {
   margin: auto;
   max-width: 600px;
   padding: 16px;
+}
+
+.label {
+  background-color: darkslategray;
+  color: #c1c1c1;
 }
