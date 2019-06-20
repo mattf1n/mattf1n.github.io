@@ -45,11 +45,11 @@ hr {
   min-height: 10vh;
 }
 
-.below {
+.front {
   /* margin-top: 20vh; */
   /* min-height: 100vh; */
-  padding-bottom: 150px;
-  z-index: 1;
+  /* padding-bottom: 150px; */
+  /* z-index: 1; */
   background-color: #c1c1c1;
 }
 
