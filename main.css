@@ -66,3 +66,7 @@ hr {
   background-color: darkslategray;
   color: #c1c1c1;
 }
+
+.link-list {
+  word-spacing: 10px;
+}
