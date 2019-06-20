@@ -25,6 +25,22 @@ hr {
   margin: auto;
 }
 
+#down-button {
+  position: relative;
+  top: -30px;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  background-color: #c1c1c1;
+  border-radius: 30px;
+  box-shadow: 0px -10px 15px #294444;
+  text-align: center;
+}
+
+.centered {
+  top: 40%;
+}
+
 .nav {
   min-height: 10vh;
 }
@@ -51,8 +67,8 @@ hr {
 
 .jumbo {
   background-color: darkslategray;
-  top: calc(-136px + -30vh);
-  min-height: 90vh;
+  top: calc(-136px - 30vh);
+  min-height: calc(100vh - 35px);
   padding-top: 30vh;
 }
 
