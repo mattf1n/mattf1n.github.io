@@ -31,13 +31,13 @@ hr {
 
 .below {
   /* margin-top: 20vh; */
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  padding-bottom: 150px;
   z-index: 1;
   background-color: #c1c1c1;
 }
 
 .below-jumbo {
-  padding-bottom: 30vh;
   box-shadow: 0px -10px 15px #294444;
 }
 
