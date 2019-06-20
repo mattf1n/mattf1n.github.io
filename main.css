@@ -70,7 +70,7 @@ hr {
   top: calc(-136px - 30vh);
   min-height: calc(100vh - 35px);
   padding-top: 30vh;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .content {
