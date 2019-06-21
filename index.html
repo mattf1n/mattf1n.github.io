@@ -11,9 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="title jumbo">
+    <div class="title jumbo asyncImage" data-src="img/jumbo.jpg">
       <div class="content">
-        <img id="pic" src="pic.png" />
+        <img class="asyncImage" id="pic" data-src="img/pic.png" />
         <h1 class="display-6">
           Hello! I'm
           an undergrad at Harvard University
@@ -79,5 +79,24 @@
         <small>This page was made from scratch by Matt Fin.</small>
       </div>
     </div>
+    <script>
+      (() => {
+        'use strict';
+        // Page is loaded
+        const objects = document.getElementsByClassName('asyncImage');
+        Array.from(objects).map((item) => {
+          // Start loading image
+          const img = new Image();
+          img.src = item.dataset.src;
+          // Once image is loaded replace the src of the HTML element
+          img.onload = () => {
+            item.classList.remove('asyncImage');
+            return item.nodeName === 'IMG' ?
+              item.src = item.dataset.src :
+              item.style.backgroundImage = `url(${item.dataset.src})`;
+          };
+        });
+      })();
+    </script>
   </body>
 </html>

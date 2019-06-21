@@ -46,10 +46,6 @@ hr {
 }
 
 .front {
-  /* margin-top: 20vh; */
-  /* min-height: 100vh; */
-  /* padding-bottom: 150px; */
-  /* z-index: 1; */
   background-color: #c1c1c1;
 }
 
@@ -67,6 +63,8 @@ hr {
 
 .jumbo {
   background-color: darkslategray;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.3);
+  background-size: cover;
   top: calc(-136px - 30vh);
   min-height: calc(100vh - 35px);
   padding-top: 30vh;
