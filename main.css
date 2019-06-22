@@ -1,5 +1,5 @@
 body {
-  background-color: #c1c1c1;
+  background-color: #cccccc;
   color: darkslategray;
 }
 
@@ -31,7 +31,7 @@ hr {
   margin: auto;
   width: 60px;
   height: 60px;
-  background-color: #c1c1c1;
+  background-color: #cccccc;
   border-radius: 30px;
   box-shadow: 0px -10px 15px #294444;
   text-align: center;
@@ -46,7 +46,7 @@ hr {
 }
 
 .front {
-  background-color: #c1c1c1;
+  background-color: #cccccc;
 }
 
 .below-jumbo {
@@ -55,7 +55,7 @@ hr {
 
 .title {
   position: sticky;
-  color: #c1c1c1;
+  color: #cccccc;
   z-index: -1;
   width: 100vw;
   top: 0;
@@ -77,9 +77,9 @@ hr {
   padding: 16px;
 }
 
-.label {
+.badge {
   background-color: darkslategray;
-  color: #c1c1c1;
+  color: #cccccc;
 }
 
 .link-list {
