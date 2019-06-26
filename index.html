@@ -3,6 +3,7 @@
   <head>
     <title>Matt Fin</title>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -11,18 +12,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="title jumbo asyncImage" data-src="img/jumbo.jpg">
+    <div class="asyncImage" id="background" data-src="img/jumbo.jpg"></div>
+    <div class="title jumbo">
       <div class="content">
-        <img class="asyncImage" id="pic" data-src="img/pic.png" />
-        <h1>
+        <img class="asyncImage w3-animate-opacity" id="pic" data-src="img/pic.png" />
+        <h1 class="w3-animate-opacity" id="second">
           &#x1F44B; Hello! I'm
           an undergrad at Harvard University
             studying applied mathematics in linguistics and computer science.
         </h1>
-        <p>My name is Matthew Finlayson.</p>
+        <p class="w3-animate-opacity" id="third">My name is Matthew Finlayson.</p>
       </div>
     </div>
-    <div id="below" class="front below-jumbo">
+    <div id="fourth" class="front below-jumbo">
       <a href="#below">
         <div id="down-button">
           <span class="centered glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
