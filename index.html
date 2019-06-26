@@ -12,14 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="asyncImage" id="background" data-src="img/jumbo.jpg"></div>
+    <div id="background"></div>
     <div class="title jumbo">
       <div class="content">
-        <img class="asyncImage w3-animate-opacity" id="pic" data-src="img/pic.png" />
+        <img class="w3-animate-opacity" id="pic" src="img/pic.png" alt="Matt Fin"/>
         <h1 class="w3-animate-opacity" id="second">
-          &#x1F44B; Hello! I'm
-          an undergrad at Harvard University
-            studying applied mathematics in linguistics and computer science.
+          &#x1F44B; Hello! I'm an undergrad at Harvard University
+          studying applied mathematics in linguistics and computer science.
         </h1>
         <p class="w3-animate-opacity" id="third">My name is Matthew Finlayson.</p>
       </div>
@@ -88,24 +87,5 @@
         <small>This page was made from scratch by Matt Fin. &#x1F31D; </small>
       </div>
     </div>
-    <script>
-      (() => {
-        'use strict';
-        // Page is loaded
-        const objects = document.getElementsByClassName('asyncImage');
-        Array.from(objects).map((item) => {
-          // Start loading image
-          const img = new Image();
-          img.src = item.dataset.src;
-          // Once image is loaded replace the src of the HTML element
-          img.onload = () => {
-            item.classList.remove('asyncImage');
-            return item.nodeName === 'IMG' ?
-              item.src = item.dataset.src :
-              item.style.backgroundImage = `url(${item.dataset.src})`;
-          };
-        });
-      })();
-    </script>
   </body>
 </html>

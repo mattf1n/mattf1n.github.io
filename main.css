@@ -51,6 +51,8 @@ hr {
 }
 
 #background {
+  background-image: url("img/jumbo.jpg");
+  background-color: darkslategray;
   position: fixed;
   min-height: 100vh;
   min-width: 100vw;
