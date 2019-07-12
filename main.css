@@ -67,6 +67,10 @@ hr {
   animation-fill-mode: forwards;
 }
 
+.w3-animate-bottom {
+  animation-fill-mode: forwards;
+}
+
 .centered {
   top: 35%;
 }
