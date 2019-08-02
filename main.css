@@ -36,6 +36,13 @@ hr {
   margin: auto;
 }
 
+#fin {
+  padding-top: 10px;
+  height: 50px;
+  transform: translateY(-3px);
+  margin: auto;
+}
+
 #pic-spacer {
   height: 120px;
   display: block;
