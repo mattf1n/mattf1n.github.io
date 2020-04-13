@@ -20,4 +20,12 @@ pre {
     background-color: #222;
     color: whitesmoke;
   }
+
+  small {
+    color: #777
+  }
+
+  hr {
+    border: 1px solid #444
+  }
 }
