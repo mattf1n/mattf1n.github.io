@@ -5,12 +5,14 @@ body {
 
 code {
   background: #444;
-  color: whitesmoke
+  color: whitesmoke;
+  border-radius: 3px
 }
 
 pre {
   background: #444;
-  color: whitesmoke
+  color: whitesmoke;
+  border-radius: 3px;
 }
 
 @media (prefers-color-scheme: dark) {
