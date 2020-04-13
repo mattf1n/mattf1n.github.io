@@ -26,7 +26,7 @@
 <h2 id="a-little-experiment">A little experiment</h2>
 <p>Does <span class="math inline">\(\LaTeX\)</span> work in the browser? <span class="math display">\[
 \sum_{i\in[m]} \ell(h, (\mathbf{x}_i, y_i))
-\]</span></p>
+\]</span> Looks like it does with a little tweaking to the <code>pandoc</code> (namely changing <code>gfm</code> to <code>markdown+tex_dollar_signs --mathjax</code> and adding <a href="https://www.mathjax.org/#gettingstarted">these scripts</a> to the header.)</p>
 <h2 id="creating-this-website">Creating this website</h2>
 <p>In creating this website I tried to set things up such that it would be quick to edit and extend while being made 99% from scratch. I ended up using <a href="https://github.com/mblode/marx">Marx</a> to bootstrap the css, and a modified method from <a href="https://medium.com/craftycode/how-to-create-a-simple-web-page-using-markdown-95e462e43e01">this blog</a> using <a href="https://pandoc.org/">Pandoc</a> and a makefile to streamline the process.</p>
 <p>The idea is that to edit the site simply open the associated markdown file, make the edits, save, and run <code>$ make</code> to push the changes to the Github where my site is hosted. Check out <a href="https://github.com/mattf1n/mattf1n.github.io">the repository</a> for all the files. In particular, take a look at <code>makefile</code> which looks like</p>
