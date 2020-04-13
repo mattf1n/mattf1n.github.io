@@ -6,6 +6,8 @@ $$
 $$
 Looks like it does with a little tweaking to the `pandoc` (namely changing `gfm` to `markdown+tex_dollar_signs --mathjax` and adding [these scripts](https://www.mathjax.org/#gettingstarted) to the header.)
 
+---
+
 ## Creating this website
 
 In creating this website I tried to set things up such that it would be quick to edit and extend while being made 99% from scratch. I ended up using [Marx](https://github.com/mblode/marx) to bootstrap the css, and a modified method from [this blog](https://medium.com/craftycode/how-to-create-a-simple-web-page-using-markdown-95e462e43e01) using [Pandoc](https://pandoc.org/) and a makefile to streamline the process. 
