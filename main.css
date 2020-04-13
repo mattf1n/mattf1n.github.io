@@ -2,9 +2,20 @@ body {
   background-color: whitesmoke;
   color: #444;
 }
+
+code {
+  background: #444;
+  color: whitesmoke
+}
+
+pre {
+  background: #444;
+  color: whitesmoke
+}
+
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #444;
+    background-color: #222;
     color: whitesmoke;
   }
 }
