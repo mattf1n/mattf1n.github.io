@@ -10,7 +10,7 @@ Does $\LaTeX$ work in the browser?
 $$
 \sum_{i\in[m]} \ell(h, (\mathbf{x}_i, y_i))
 $$
-Looks like it does with a little tweaking to the `pandoc` (namely changing `gfm` to `markdown+tex_dollar_signs --mathjax` and adding [these scripts](https://www.mathjax.org/#gettingstarted) to the header.)
+Looks like it does with a little tweaking to the `makefile` (namely changing `gfm` to `markdown+tex_dollar_signs --mathjax` and adding [these scripts](https://www.mathjax.org/#gettingstarted) to the header.)
 
 ---
 
