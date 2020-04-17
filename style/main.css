@@ -2,24 +2,25 @@ body {
   font-family: var(--serif);
   background-color: var(--bg1);
   color: var(--fg1);
-  max-width: 720px;
+  max-width: 550px;
 	margin: 2em auto;
   padding: 0 1em;
   text-align: justify;
 	-moz-hyphens: auto;
 	-webkit-hyphens: auto;
 	hyphens: auto;
+  line-height: 1.35em;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
+  /*font-family: var(--caps);*/
 }
 
 dl dt {
-    font-weight: bold;
+  font-weight: bold;
 }
 dl dd {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 em {
     font-style: italic;
@@ -73,11 +74,12 @@ hr {
 }
 
 a {
-  color: #007bff;
+  color: var(--fg1);
+  /*color: #007bff;*/
   font-variant: small-caps;
   text-decoration: none;
   background-color: transparent; }
   a:hover, a:focus {
     color: #0062cc;
-    text-decoration: underline; }
+  }
 
