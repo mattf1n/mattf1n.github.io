@@ -1,0 +1,24 @@
+:root{
+  --serif: 'Latin Modern Roman';
+  --mono: 'Latin Modern Mono';
+  --bg1-l: whitesmoke;
+  --fg1-l: #444;
+  --fg2-l: #666;
+  --bg2-l: #d5d5d5;
+  --bg1-d: #222;
+  --bg2-d: #444;
+  --fg1-d: whitesmoke;
+  --fg2-d: #b5b5b5;
+  --bg1: var(--bg1-l);
+  --bg2: var(--bg2-l);
+  --fg1: var(--fg1-l);
+  --fg2: var(--fg2-l);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root{
+    --bg1: var(--bg1-d);
+    --fg1: var(--fg1-d);
+    --bg2: var(--bg2-d);
+    --fg2: var(--fg2-d);
+}
