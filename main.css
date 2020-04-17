@@ -6,7 +6,8 @@ body {
 code {
   background: #444;
   color: whitesmoke;
-  border-radius: 3px
+  border-radius: 3px;
+  padding: 0 3px;
 }
 
 pre {
@@ -26,7 +27,7 @@ nav ul {
 
 nav li {
   display: inline-block;
-  padding:0 1%;
+  padding: 0 1%;
 }
 
 @media (prefers-color-scheme: dark) {
