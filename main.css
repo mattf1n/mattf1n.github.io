@@ -1,6 +1,13 @@
 body {
+  font-family: charter, constantia, "lucida bright", lucidabright,
+    "lucida serif", lucida, "dejavu serif", "bitstream vera serif",
+    "liberation serif", georgia, serif;
   background-color: whitesmoke;
   color: #444;
+}
+
+blockquote {
+  font-family: inherit;
 }
 
 code {
