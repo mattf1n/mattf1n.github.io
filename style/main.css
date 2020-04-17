@@ -33,6 +33,7 @@ pre, kbd, code {
 
 pre {
   padding: 6px;
+  overflow:scroll
 }
 
 pre code {
