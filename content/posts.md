@@ -1,6 +1,12 @@
+## Notice anything new?
+
+I overhauled the look of this site by ditching [Marx](https://github.com/mblode/marx) and making my own custom CSS file. :nail_care: I wanted an academic look for the site so I found [Latin Modern](https://github.com/slashfoo/lmweb) for web (LM is the $\LaTeX$ default font.) Also, inspired by [Butterick's Practical Typography](https://practicaltypography.com/) which is an amazing online book, I decided to go with more subtle links. They are now all [small caps](). The downside of this is that links do not pop out so much. Upside is that the focus is now more on the text!
+
+---
+
 ## [iloveyoumatthew.com](https://Iloveyoumatthew.com)
 
-My [girlfriend](https://caitlyndang.com) made me this love-letter website for Valentines day. I love it! :heart: (I hope I'm not embarrassing myself too much here.)
+My [girlfriend](https://caitlyndang.com) made me this love-letter website for :heart: day. I love it! (I hope I'm not embarrassing myself too much here.)
 
 ---
 
