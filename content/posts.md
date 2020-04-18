@@ -2,6 +2,8 @@
 
 I overhauled the look of this site by ditching [Marx](https://github.com/mblode/marx) and making my own custom CSS file. :nail_care: I wanted an academic look for the site so I found [Latin Modern](https://github.com/slashfoo/lmweb) for web (LM is the $\LaTeX$ default font.) Also, inspired by [Butterick's Practical Typography](https://practicaltypography.com/) which is an amazing online book, I decided to go with more subtle links. They are now all [small caps](). The downside of this is that links do not pop out so much. Upside is that the focus is now more on the text!
 
+Oh, and I added a [favicon](https://favicon.io/).
+
 ---
 
 ## [iloveyoumatthew.com](https://Iloveyoumatthew.com)
