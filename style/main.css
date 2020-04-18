@@ -79,7 +79,7 @@ hr {
 }
 
 a {
-  color: var(--fg1);
+  color: inherit;
   /*color: #007bff;*/
   font-variant: small-caps;
   text-decoration: none;
