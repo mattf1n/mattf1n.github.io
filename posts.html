@@ -24,16 +24,16 @@
 </head>
 
 <body>
-  <main>
-    <nav>
-<h1 id="matthew-finlayson">Matthew Finlayson</h1>
-<ul>
-<li><a href="index.html">home</a></li>
-<li><a href="posts.html">posts</a></li>
-<li><a href="https://github.com/mattf1n">github</a></li>
-<li><a href="matthewfinlayson.pdf">resume</a></li>
-<li><a href="mailto:matthewbfinlayson@gmail.com">email</a></li>
-</ul>
+<main>
+<nav>
+  <h1 id="matthew-finlayson">Matthew Finlayson</h1>
+  <ul>
+    <li><a href="index.html"><small>Home</small></a></li>
+    <li><a href="posts.html"><small>Posts</small></a></li>
+    <li><a href="https://github.com/mattf1n"><small>Github</small></a></li>
+    <li><a href="matthewfinlayson.pdf"><small>Resume</a></small></li>
+    <li><a href="mailto:matthewbfinlayson@gmail.com"><small>Email</small></a></li>
+  </ul>
 </nav>
 <hr>
 <h2 id="notice-anything-new">Notice anything new?</h2>
@@ -49,7 +49,7 @@
 \]</span> Looks like it does with a little tweaking to the <code>makefile</code> (namely changing <code>gfm</code> to <code>markdown+tex_dollar_signs --mathjax</code> and adding <a href="https://www.mathjax.org/#gettingstarted">these scripts</a> to the header.)</p>
 <hr />
 <h2 id="creating-this-website">Creating this website</h2>
-<p>In creating this website I tried to set things up such that it would be quick to edit and extend while being made 99% from scratch. I ended up using <a href="https://github.com/mblode/marx">Marx</a> to bootstrap the css, and a modified method from <a href="https://medium.com/craftycode/how-to-create-a-simple-web-page-using-markdown-95e462e43e01">this blog</a> using <a href="https://pandoc.org/">Pandoc</a> and a makefile to streamline the process.</p>
+<p>In creating this website I tried to set things up such that it would be quick to edit and extend while being made 99% from scratch. I ended up using <a href="https://github.com/mblode/marx">Marx</a> to bootstrap the CSS, and a modified method from <a href="https://medium.com/craftycode/how-to-create-a-simple-web-page-using-markdown-95e462e43e01">this blog</a> using <a href="https://pandoc.org/">Pandoc</a> and a makefile to streamline the process.</p>
 <p>The idea is that to edit the site simply open the associated markdown file, make the edits, save, and run <code>$ make</code> to push the changes to the Github where my site is hosted. Check out <a href="https://github.com/mattf1n/mattf1n.github.io">the repository</a> for all the files. In particular, take a look at <code>makefile</code> which looks like</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb1-1"><a href="#cb1-1"></a><span class="dv">make:</span><span class="dt"> </span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>    pandoc -f markdown+emoji -t html -o index-content.html <span class="ch">\</span></span>

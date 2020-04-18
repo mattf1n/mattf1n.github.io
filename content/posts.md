@@ -24,7 +24,7 @@ Looks like it does with a little tweaking to the `makefile` (namely changing `gf
 
 ## Creating this website
 
-In creating this website I tried to set things up such that it would be quick to edit and extend while being made 99% from scratch. I ended up using [Marx](https://github.com/mblode/marx) to bootstrap the css, and a modified method from [this blog](https://medium.com/craftycode/how-to-create-a-simple-web-page-using-markdown-95e462e43e01) using [Pandoc](https://pandoc.org/) and a makefile to streamline the process. 
+In creating this website I tried to set things up such that it would be quick to edit and extend while being made 99% from scratch. I ended up using [Marx](https://github.com/mblode/marx) to bootstrap the CSS, and a modified method from [this blog](https://medium.com/craftycode/how-to-create-a-simple-web-page-using-markdown-95e462e43e01) using [Pandoc](https://pandoc.org/) and a makefile to streamline the process. 
 
 The idea is that to edit the site simply open the associated markdown file, make the edits, save, and run `$ make` to push the changes to the Github where my site is hosted. Check out [the repository](https://github.com/mattf1n/mattf1n.github.io) for all the files. In particular, take a look at `makefile` which looks like 
 

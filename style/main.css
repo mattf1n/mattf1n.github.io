@@ -10,15 +10,20 @@ body {
 	-webkit-hyphens: auto;
 	hyphens: auto;
   line-height: 1.35em;
+  font-size: 1.1em;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" on;
 }
 
 h1, h2, h3, h4, h5, h6 {
   /*font-family: var(--caps);*/
+  /*font-size: 1.5em;*/
 }
 
 h1 {
   font-weight: normal;
   font-size: 2em;
+  line-height: 1em;
 }
 
 dl dt {
@@ -72,6 +77,7 @@ nav ul {
 nav li {
   display: inline-block;
   padding: 0 1%;
+  /*text-transform: uppercase;*/
 }
 
 hr {
@@ -81,7 +87,8 @@ hr {
 a {
   color: inherit;
   /*color: #007bff;*/
-  font-variant: small-caps;
+  font-family: var(--caps);
+  letter-spacing: 0.05em;
   text-decoration: none;
   background-color: transparent; }
   a:hover, a:focus {
