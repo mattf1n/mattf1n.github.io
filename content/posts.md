@@ -1,22 +1,44 @@
-## The TNT game :space_invader:
+## The TNT game 
 
-There has been an idea rolling around in my brain for the past few days. Inspired by [the NAND game](http://nandgame.com/), my course Math 101: Sets, Groups, and Topology from Fall 2019 taught by [Sebastien Vasey](http://people.math.harvard.edu/~sebv/index.html) (thank you to my sister Annabelle for suggesting and taking it with me,) and the book [Gödel, Escher, Bach](https://en.wikipedia.org/wiki/Gödel,_Escher,_Bach) by Douglas Hofstadter which I am currently reading, I have been imagining a 'game' where the user begins with a small set of axioms and rules from  which they build theorems of increasing complexity. It could be modeled closely after the [TNT system](https://en.wikipedia.org/wiki/Typographical_Number_Theory) proposed by Hofstadter with controls along the lines of those in NAND, and a series of goals first to establish basic properties of addition, multiplication, and so on, eventually proving profound mathematical concepts like Fermat's last theorem (about which I recently read a [book by Simon Singh](https://www.goodreads.com/book/show/38412.Fermat_s_Enigma), given to me as a Christmas present.) 
+While taking a class on theoretical computer science last semester someone
+showed me [the NAND game](http://nandgame.com/). The idea of the game is to
+start from a [NAND gate](https://en.wikipedia.org/wiki/NAND_gate) and build a
+series of [boolean circuits](https://en.wikipedia.org/wiki/Boolean_circuit) of
+increasing complexity until you build a computer in a surprisingly few number
+of rounds. While reading the book *[Gödel, Escher,
+Bach](https://en.wikipedia.org/wiki/Gödel,_Escher,_Bach)* by Douglas Hofstadter,
+I began imagining a similar 'game' where the user begins with a small set of
+axioms and rules from  which they build theorems of increasing complexity. The
+axioms and rules could come from Hofstadter's [TNT
+system](https://en.wikipedia.org/wiki/Typographical_Number_Theory).  The game
+would begin by establishing basic properties of addition, multiplication, and
+so on, eventually proving profound mathematical concepts like Fermat's last
+theorem (about which I would recommend reading [this book by Simon
+Singh](https://www.goodreads.com/book/show/38412.Fermat_s_Enigma).) 
 
-I'm not sure exactly how something like [Gödel's incompleteness theorems](https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems) could be incorporated into the game. It's something I will have to keep thinking about.
+I'm not sure exactly how something like [Gödel's incompleteness theorems](https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems) could be incorporated into the game. It's something I will have to keep thinking about. :space_invader:
 
 ---
 
 ## Notice anything new?
 
-I overhauled the look of this site by ditching [Marx](https://github.com/mblode/marx) and making my own custom CSS file. :nail_care: I wanted an academic look for the site so I found [Latin Modern](https://github.com/slashfoo/lmweb) for web (LM is the $\LaTeX$ default font.) Also, inspired by [Butterick's Practical Typography](https://practicaltypography.com/) which is an amazing online book, I decided to go with more subtle links. They are now all [small caps](). The downside of this is that links do not pop out so much. Upside is that the focus is now more on the text!
+I overhauled the look of this site by ditching
+[Marx](https://github.com/mblode/marx) and making my own custom CSS file. I
+wanted an academic look for the site so I found [Latin
+Modern](https://github.com/slashfoo/lmweb) for web (LM is the $\LaTeX$ default
+font.) Also, inspired by [Butterick's Practical
+Typography](https://practicaltypography.com/) which is an amazing online book,
+I decided to go with more subtle links. They are now all [small caps](). The
+downside of this is that links do not pop out so much. Upside is that the focus
+is now more on the text!
 
-Oh, and I added a [favicon](https://favicon.io/).
+Oh, and I added a [favicon](https://favicon.io/). :nail_care:
 
 ---
 
 ## [iloveyoumatthew.com](https://Iloveyoumatthew.com)
 
-My [girlfriend](https://caitlyndang.com) made me this love-letter website for :heart: day. I love it! (I hope I'm not embarrassing myself too much here.)
+My [girlfriend](https://caitlyndang.com) made me this love-letter website for Valentines day. I love it! (I hope I'm not embarrassing myself too much here.) :heart: 
 
 ---
 
@@ -26,7 +48,7 @@ Does $\LaTeX$ work in the browser?
 $$
 \sum_{i\in[m]} \ell(h, (\mathbf{x}_i, y_i))
 $$
-Looks like it does with a little tweaking to the `makefile` (namely changing `gfm` to `markdown+tex_dollar_signs --mathjax` and adding [these scripts](https://www.mathjax.org/#gettingstarted) to the header.)
+Looks like it does with a little tweaking to the `makefile` (namely changing `gfm` to `markdown+tex_dollar_signs --mathjax` and adding [these scripts](https://www.mathjax.org/#gettingstarted) to the header.) :book:
 
 ---
 
@@ -54,4 +76,4 @@ push:
 	git push
 ```
 
-To break this down, there is a `header.html`,  `sep.html`, and `footer.html` that make up the HTML skeleton of the site. For each page, (`index` and `posts`) the content of the `nav.md` and `PAGE.md` files are converted using `pandoc` to HTML and inserted into the  skeleton using `cat`. Lastly, everything is pushed to Github. This last step I think is a little shady because the file pushes itself to Github. 
+To break this down, there is a `header.html`,  `sep.html`, and `footer.html` that make up the HTML skeleton of the site. For each page, (`index` and `posts`) the content of the `nav.md` and `PAGE.md` files are converted using `pandoc` to HTML and inserted into the  skeleton using `cat`. Lastly, everything is pushed to Github. This last step I think is a little shady because the file pushes itself to Github. :desktop_computer:
