@@ -1,3 +1,9 @@
+## Course notes from CS183
+
+[These](files/lecture.pdf) are my notes from the course CS183: Foundations of Machine Learning. They are imperfect and incomplete. If you would like to make edits [email me](mailto:matthewbfinlayson@gmail.com) and I can send you the source code. :notebook:
+
+---
+
 ## The TNT game 
 
 While taking a class on theoretical computer science last semester someone

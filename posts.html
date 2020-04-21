@@ -30,12 +30,13 @@
   <ul>
     <li><a href="index.html"><small>Home</small></a></li>
     <li><a href="posts.html"><small>Posts</small></a></li>
-    <li><a href="https://github.com/mattf1n"><small>Github</small></a></li>
-    <li><a href="matthewfinlayson.pdf"><small>Resume</a></small></li>
-    <li><a href="mailto:matthewbfinlayson@gmail.com"><small>Email</small></a></li>
+    <li><a href="files/matthewfinlayson.pdf"><small>Resume</a></small></li>
   </ul>
 </nav>
 <hr>
+<h2 id="course-notes-from-cs183">Course notes from CS183</h2>
+<p><a href="files/lecture.pdf">These</a> are my notes from the course CS183: Foundations of Machine Learning. They are imperfect and incomplete. If you would like to make edits <a href="mailto:matthewbfinlayson@gmail.com">email me</a> and I can send you the source code. <span class="emoji" data-emoji="notebook">📓</span></p>
+<hr />
 <h2 id="the-tnt-game">The TNT game</h2>
 <p>While taking a class on theoretical computer science last semester someone showed me <a href="http://nandgame.com/">the NAND game</a>. The idea of the game is to start from a <a href="https://en.wikipedia.org/wiki/NAND_gate">NAND gate</a> and build a series of <a href="https://en.wikipedia.org/wiki/Boolean_circuit">boolean circuits</a> of increasing complexity until you build a computer in a surprisingly few number of rounds. While reading the book <em><a href="https://en.wikipedia.org/wiki/Gödel,_Escher,_Bach">Gödel, Escher, Bach</a></em> by Douglas Hofstadter, I began imagining a similar ‘game’ where the user begins with a small set of axioms and rules from which they build theorems of increasing complexity. The axioms and rules could come from Hofstadter’s <a href="https://en.wikipedia.org/wiki/Typographical_Number_Theory">TNT system</a>. The game would begin by establishing basic properties of addition, multiplication, and so on, eventually proving profound mathematical concepts like Fermat’s last theorem (about which I would recommend reading <a href="https://www.goodreads.com/book/show/38412.Fermat_s_Enigma">this book by Simon Singh</a>.)</p>
 <p>I’m not sure exactly how something like <a href="https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems">Gödel’s incompleteness theorems</a> could be incorporated into the game. It’s something I will have to keep thinking about. <span class="emoji" data-emoji="space_invader">👾</span></p>
@@ -71,9 +72,13 @@
 <span id="cb1-14"><a href="#cb1-14"></a>    git commit -am <span class="st">&quot;update&quot;</span></span>
 <span id="cb1-15"><a href="#cb1-15"></a>    git push</span></code></pre></div>
 <p>To break this down, there is a <code>header.html</code>, <code>sep.html</code>, and <code>footer.html</code> that make up the HTML skeleton of the site. For each page, (<code>index</code> and <code>posts</code>) the content of the <code>nav.md</code> and <code>PAGE.md</code> files are converted using <code>pandoc</code> to HTML and inserted into the skeleton using <code>cat</code>. Lastly, everything is pushed to Github. This last step I think is a little shady because the file pushes itself to Github. <span class="emoji" data-emoji="desktop_computer">🖥️</span></p>
-<hr>
-<footer><small> This website was made from scratch by Matt Fin. Drop me an email at <a
-                                                              href='mailto:matthewbfinlayson@gmail.com'>matthewfinlayson@gmail.com<a>.
-  </small></footer>
+<hr> 
+<footer>
+<small> 
+
+<a href='mailto:matthewbfinlayson@gmail.com'>matthewfinlayson@gmail.com<a> 
+| <a href='https://github.com/mattf1n'>Github</a>
+
+</small></footer>
 
 </main></body></html>
