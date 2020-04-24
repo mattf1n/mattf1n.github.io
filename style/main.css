@@ -85,13 +85,13 @@ hr {
 }
 
 a {
-  color: inherit;
-  /*color: #007bff;*/
+  /*color: inherit;*/
+  color: var(--link-color);
   font-family: var(--caps);
   letter-spacing: 0.05em;
   text-decoration: none;
   background-color: transparent; }
   a:hover, a:focus {
-    color: #0062cc;
+    font-weight: bold;
   }
 
