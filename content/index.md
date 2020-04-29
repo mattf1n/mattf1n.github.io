@@ -1,7 +1,6 @@
 Welcome to my website! :wave:
 
 I am a Junior at **Harvard University** studying **Computer Science and Linguistics**
-and an incoming software engineering intern at **Microsoft**. I am currently a **teaching fellow** for the course CS51: Abstraction and Design in Computation and am helping to develop a new course CS187: Computational Linguistics for the coming fall.
+and an incoming software engineering intern at **Microsoft** working on **natural language experiences** in Office. I am currently a **teaching fellow** for the course CS51: Abstraction and Design in Computation and am helping to develop a new course CS187: Computational Linguistics for the coming fall.
 
 My interests include mathematics, linguistics, machine learning, and music.
-
