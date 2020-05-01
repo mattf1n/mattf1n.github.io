@@ -25,8 +25,8 @@ body {
   background-color: var(--bg1);
   color: var(--fg1);
   max-width: 600px;
-	margin: 5em auto;
-  padding: 0 2em;
+	margin: 4em auto;
+  padding: 0 1.5em;
   text-align: justify;
 	-moz-hyphens: auto;
 	-webkit-hyphens: auto;
@@ -35,14 +35,14 @@ body {
   font-size: 1.1em;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" on;
-}
+} 
 
 h1, h2, h3, h4, h5, h6 {
-  /*font-family: var(--caps);*/
-  /*font-size: 1.5em;*/
+  text-align: left;
 }
 
-h1 {
+nav h1 {
+  text-align: inherit;
   font-weight: normal;
   font-size: 2em;
   line-height: 1em;
