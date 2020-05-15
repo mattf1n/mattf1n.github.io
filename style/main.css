@@ -84,7 +84,7 @@ sub, sup {
 small {
 }
 
-nav, footer {
+nav, footer, figcaption {
   text-align: center;
 }
 
@@ -115,7 +115,16 @@ a {
   background-color: transparent; }
   a:hover, a:focus {
     font-weight: bold;
-  }
+}
+
+img {
+  max-width: 100%;
+}
+
+figcaption {
+  font-style: italic;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root{

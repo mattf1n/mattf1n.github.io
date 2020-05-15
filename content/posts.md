@@ -1,3 +1,11 @@
+## Camping in Cottonwood Wash
+
+*2020.5.14*. This last weekend, [Caitlyn](http://caitlyndang.com) and I backpacked up Cottonwood Wash in Utah's San Rafael Swell. There was not a soul to be seen and it was a truly beautiful canyon all to ourselves. We even spotted some petroglyphs. It reminded me that there are so many places in the world that you can't find on Google. We were told about this canyon by my uncle and found our way there using two outdated maps and some help from the locals. :mountain:
+
+![1983 USGS map of Mexican Mountain](img/UT_Mexican Mountain_250561_1983_24000.jpg)
+
+---
+
 ## Course notes from CS183
 
 *2020.4.20*. [These are my notes](files/lecture.pdf) from the course CS183: Foundations of
@@ -52,13 +60,21 @@ Oh, and I added a [favicon](https://favicon.io/). :nail_care:
 
 ---
 
-## A little experiment
+## Little experiments
 
 *2020.4.15*. Does $\LaTeX$ work in the browser? 
 $$
 \sum_{i\in[m]} \ell(h, (\mathbf{x}_i, y_i))
 $$
-Looks like it does with a little tweaking to the `makefile` (namely changing `gfm` to `markdown+tex_dollar_signs --mathjax` and adding [these scripts](https://www.mathjax.org/#gettingstarted) to the header.) :book: 
+Looks like it does with a little tweaking to the `makefile` (namely changing `gfm` to `markdown+tex_dollar_signs --mathjax` and adding [these scripts](https://www.mathjax.org/#gettingstarted) to the header.) 
+
+Now what about TikZ?
+$$
+\begin{tikzpicture}
+	\draw (0,0) circle (1in);
+\end{tikzpicture}
+$$
+I'll take that as a no, though it looks possible through [TikZJax](http://tikzjax.com). :book: 
 
 ---
 
