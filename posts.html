@@ -12,13 +12,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
   <link rel="manifest" href="favicon/site.webmanifest">
 
+  <!--Fonts-->
   <link rel="stylesheet" href="style/latinmodern-roman-caps.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="style/latinmodern-mono.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="style/latinmodern-roman.css" type="text/css" charset="utf-8" />
 
+  <!--CSS-->
   <link rel="stylesheet" href="style/main.css">
   
+  <!--TeX-->
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+  <script src="http://tikzjax.com/v1/tikzjax.js"></script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141240768-1"></script>
   <script>
@@ -28,6 +35,7 @@
 
     gtag('config', 'UA-141240768-1');
   </script>
+
 </head>
 
 <body>
@@ -63,14 +71,18 @@
 <p><em>2020.4.16</em>. My <a href="https://caitlyndang.com">girlfriend</a> made me this love-letter website for Valentines day. I love it! (I hope I’m not embarrassing myself too much here.) <span class="emoji" data-emoji="heart">❤️</span></p>
 <hr />
 <h2 id="little-experiments">Little experiments</h2>
-<p><em>2020.4.15</em>. Does <span class="math inline">\(\LaTeX\)</span> work in the browser? <span class="math display">\[
+<p><em>2020.4.15</em>. Does <span class="math inline">\(\LaTeX\)</span> work in the browser?</p>
+<p><span class="math display">\[
 \sum_{i\in[m]} \ell(h, (\mathbf{x}_i, y_i))
-\]</span> Looks like it does with a little tweaking to the <code>makefile</code> (namely changing <code>gfm</code> to <code>markdown+tex_dollar_signs --mathjax</code> and adding <a href="https://www.mathjax.org/#gettingstarted">these scripts</a> to the header.)</p>
-<p>Now what about TikZ? <span class="math display">\[
+\]</span></p>
+<p>Looks like it does with a little tweaking to the <code>makefile</code> (namely changing <code>gfm</code> to <code>markdown+tex_dollar_signs --mathjax</code> and adding <a href="https://www.mathjax.org/#gettingstarted">these scripts</a> to the header.)</p>
+<p>Now what about TikZ?</p>
+<script type="text/tikz">
 \begin{tikzpicture}
     \draw (0,0) circle (1in);
 \end{tikzpicture}
-\]</span> I’ll take that as a no, though it looks possible through <a href="http://tikzjax.com">TikZJax</a>. <span class="emoji" data-emoji="book">📖</span></p>
+</script>
+<p>I’ll take that as a no, though it looks possible through <a href="http://tikzjax.com">TikZJax</a>. <span class="emoji" data-emoji="book">📖</span></p>
 <hr />
 <h2 id="creating-this-website">Creating this website</h2>
 <p><em>2020.4.13</em>. In creating this website I tried to set things up such that it would be quick to edit and extend while being made 99% from scratch. I ended up using <a href="https://github.com/mblode/marx">Marx</a> to bootstrap the CSS, and a modified method from <a href="https://medium.com/craftycode/how-to-create-a-simple-web-page-using-markdown-95e462e43e01">this blog</a> using <a href="https://pandoc.org/">Pandoc</a> and a makefile to streamline the process.</p>
