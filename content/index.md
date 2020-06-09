@@ -7,7 +7,4 @@ Microsoft Office. I am a **teaching fellow** for the course CS51:
 Abstraction and Design in Computation and am helping to develop a new course
 CS187: Computational Linguistics for the coming fall.
 
-My interests include mathematics, linguistics, machine learning, and music. I
-recently found a book on the intersection of these: *Gödel, Escher, Bach: An
-Eternal Golden Braid* by Douglas Hofstadter.
-
+My interests include mathematics, linguistics, machine learning, and music.
