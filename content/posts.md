@@ -1,7 +1,7 @@
 
-## VimMarp
+## VimMarp.vim
 
-*2020.6.17* I created a plugin for my current favorite text editor [Vim](https://vim.org) to allow me to write presentations in markdown and render them as I go using the [Marp CLI](https://marp.app). This was my first time writing a Vim plugin and my first time using Vim script. Check out the [repository](https://github.com/mattf1n/VimMarp) on GitHub! :keyboard:
+*2020.6.17* I created a plugin for my current favorite text editor [Vim](https://www.vim.org) to allow me to write presentations in markdown and render them as I go using the [Marp CLI](https://marp.app). This was my first time writing a Vim plugin and my first time using Vim script. Check out the [VimMarp repository](https://github.com/mattf1n/VimMarp) on my GitHub! :keyboard:
 
 ## Camping in Cottonwood Wash
 
