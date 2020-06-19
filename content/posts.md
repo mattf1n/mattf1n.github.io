@@ -9,6 +9,8 @@ guide](https://learnvimscriptthehardway.stevelosh.com) was very helpful. Check
 out the [VimMarp repository](https://github.com/mattf1n/VimMarp) on my GitHub!
 :keyboard:
 
+---
+
 ## Camping in Cottonwood Wash
 
 *2020.5.14*. This last weekend, [Caitlyn](http://caitlyndang.com) and I
