@@ -1,4 +1,17 @@
 
+## `pip install vest`
+
+*2020.7.1*. I really like [Wealthfront](https://wealthfront.com), so I decided
+to create my own robo-advisor which I call
+[Vest](https://pypi.org/project/vest/). Vest features a command line interface
+built with [Click](https://click.palletsprojects.com/en/7.x/) and connects with
+[Robinhood](https://robinhood.com) via an unofficial Python API [Robin
+$tocks](https://robin-stocks.readthedocs.io/en/latest/index.html). Feel free to
+take a look at Vest on my [GitHub](https://github.com/mattf1n/vest)!
+:chart_with_upwards_trend:
+
+---
+
 ## VimMarp.vim
 
 *2020.6.17*. I created a plugin for my current favorite text editor
