@@ -1,10 +1,8 @@
-Welcome to my website!
+**Harvard '21** undergraduate studying Computer Science and Linguistics.
 
-I am a Junior at **Harvard University** studying **Computer Science and
-Linguistics** and an incoming software engineering intern in the **Microsoft
-Office Language Intelligence** group working on natural language experiences in
-Microsoft Office. I am a **teaching fellow** for the course CS51:
-Abstraction and Design in Computation and am helping to develop a new course
-CS187: Computational Linguistics for the coming fall.
+Current **Teaching Fellow at Harvard** for CS187: Computational Linguistics.
 
-My interests include mathematics, linguistics, machine learning, and music.
+Current **Natural Language Processing Researcher** under [Stuart Shieber](http://www.eecs.harvard.edu/shieber/) and [Yonatan Belinkov](http://www.cs.technion.ac.il/~belinkov/).
+
+Former software engineering **Intern at Microsoft** Natural Language Experiences
+

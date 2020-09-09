@@ -29,8 +29,7 @@ out the [VimMarp repository](https://github.com/mattf1n/VimMarp) on my GitHub!
 *2020.5.14*. This last weekend, [Caitlyn](http://caitlyndang.com) and I
 backpacked up Cottonwood Wash in Utah's San Rafael Swell. There was not a soul
 to be seen and it was a truly beautiful canyon all to ourselves. We even
-spotted some petroglyphs. It reminded me that there are so many places in the
-world that you can't find on Google. We were told about this canyon by my uncle
+spotted some petroglyphs. We were told about this canyon by my uncle
 and found our way there using two outdated maps and some help from the locals.
 :mountain:
 

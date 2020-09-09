@@ -24,7 +24,7 @@ body {
   font-family: var(--serif);
   background-color: var(--bg1);
   color: var(--fg1);
-  max-width: 600px;
+  max-width: 650px;
 	margin: 4em auto;
   padding: 0 1.5em;
   text-align: justify;
