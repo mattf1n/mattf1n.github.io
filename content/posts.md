@@ -1,4 +1,13 @@
 
+## Washington State
+
+*2021.1.20.* I learned some Blender and used some open source elevation data to make a nice looking relief map of Washington State. Check out how I made it [here](https://github.com/mattf1n/Relief-Map).
+:round_pushpin:
+
+![Rendered relief map of WA](img/wa.png)
+
+---
+
 ## `pip install vest`
 
 *2020.7.1*. I really like [Wealthfront](https://wealthfront.com), so I decided
