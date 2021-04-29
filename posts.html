@@ -7,6 +7,7 @@
   <meta name="description" content="Matthew Finlayson's personal website.">
   
   <title>Matt Fin</title>
+
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -115,6 +116,7 @@
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    git commit -am <span class="st">&quot;update&quot;</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    git push</span></code></pre></div>
 <p>To break this down, there is a <code>header.html</code>, <code>sep.html</code>, and <code>footer.html</code> that make up the HTML skeleton of the site. For each page, (<code>index</code> and <code>posts</code>) the content of the <code>nav.md</code> and <code>PAGE.md</code> files are converted using <code>pandoc</code> to HTML and inserted into the skeleton using <code>cat</code>. Lastly, everything is pushed to GitHub. This last step I think is a little shady because the file pushes itself to GitHub. <span class="emoji" data-emoji="desktop_computer">🖥️</span></p>
+
 <hr> 
 <footer>
 <small> 
