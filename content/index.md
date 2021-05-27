@@ -1,8 +1,7 @@
 
 # About me
 
-I am an incoming Predoctoral Young Investigator at [The Allen Institute for Artificial Intelligence (AI2)](allenai.org) and a member of the
-Harvard Class of 2021. I research computational linguistics.
+I am an incoming Predoctoral Young Investigator at [The Allen Institute for Artificial Intelligence (AI2)](allenai.org). I graduated from Harvard in May, 2021. I research computational linguistics.
 
 ---
 
