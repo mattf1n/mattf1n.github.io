@@ -88,6 +88,7 @@ sub, sup {
 }
 
 small {
+  line-height: 0em;
 }
 
 nav, footer, figcaption {
