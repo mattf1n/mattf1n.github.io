@@ -40,16 +40,16 @@ summary, cite, time, nav li, td li, ol ul, ol > li:before {
   font-size: 0.7rem;
 }
 
-header, nav, footer, figure {
-  text-align: center;
-}
+/* header, nav, footer, figure { */
+/*   text-align: center; */
+/* } */
 
 nav {
   margin-top: 1rem;
 }
 
 header img {
-  border-radius: 50%;
+  border-radius: 10%;
   width: 75pt;
 }
 
@@ -213,7 +213,7 @@ li p {
 details p {
   margin-top: 0.5rem;
   padding: 0.5rem;
-  background-color: #f2f2f2;
+  background-color: var(--bg2); 
   border-radius: 0.25rem;
 }
 
@@ -240,8 +240,8 @@ td li, ol ul li, nav li {
   white-space: nowrap;
 }
 
-nav li {
-  padding: 0.5em;
+nav li + li{
+  padding-left: 1em;
 }
 
 hr {
