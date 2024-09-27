@@ -5,7 +5,7 @@
   --fg2-l: #666;
   --link-color-l: #0062cc; 
   --bg1-d: #000;
-  --bg2-d: #333;
+  --bg2-d: #222;
   --fg1-d: #bbb;
   --fg2-d: #b5b5b5;
   --link-color-d: #528dcc;
@@ -213,8 +213,8 @@ li p {
 details p {
   margin-top: 0.5rem;
   padding: 0.5rem;
-  background-color: var(--bg2); 
   border-radius: 0.25rem;
+  border: 1pt solid;
 }
 
 pre {
