@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Matthew Finlayson" />
+  <title>COLM posters I thought were interesting enough to take a picture of.</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style/main.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">COLM posters I thought were interesting enough to take
+a picture of.</h1>
+<p class="subtitle">There were definitely more that I didn’t see.</p>
+<p class="author"><a href="index.html">Matthew Finlayson</a></p>
+</header>
+<hr />
+<figure>
+<img src="img/COLM2024IMG_4828.HEIC.jpg" alt="Model Autophagy" />
+<figcaption aria-hidden="true">Model Autophagy</figcaption>
+</figure>
+<p>I’ve been looking for papers that engage with the whether model
+collapse is a problem for LLMs. This paper looks like it does.</p>
+<figure>
+<img src="img/COLM2024IMG_4829.HEIC.jpg" alt="CA-LoRA" />
+<figcaption aria-hidden="true">CA-LoRA</figcaption>
+</figure>
+<p>I hadn’t thought about PEFT for compressed models before so this idea
+caught my attention and I talked to these authors a bit. My
+understanding is that LoRA trained with a full model doesn’t work so
+well when the the model gets compressed. So they train another LoRA with
+a non-linearity to correct the degradation. Their explanation is that
+the correct update for a compressed model is no longer expressible in
+low-rank. I’m not convinced that this is the best way, it seems
+fundamentally inelegant to just add on more parameters, and it seems
+like there should be an equivalent PEFT method that adds no
+parameters.</p>
+<figure>
+<img src="img/COLM2024IMG_4830.HEIC.jpg" alt="Counting Transformers" />
+<figcaption aria-hidden="true">Counting Transformers</figcaption>
+</figure>
+<p>Cool paper from FLaNN people at COLM. I would be interested in seeing
+how well this would work if it were compiled to a transformer. Are there
+any C-RASP to transformer compilers?</p>
+<figure>
+<img src="img/COLM2024IMG_4831.HEIC.jpg" alt="LLMs plan ahead?" />
+<figcaption aria-hidden="true">LLMs plan ahead?</figcaption>
+</figure>
+<p>I’ve always wondered about this. I’m glad someone studied it!
+Interesting distinction between “pre-caching” and “breakcrumbs”.
+Breadcrumbs never seemed plausible to me.</p>
+<figure>
+<img src="img/COLM2024IMG_4833.HEIC.jpg"
+alt="Unforgettable Generalization" />
+<figcaption aria-hidden="true">Unforgettable Generalization</figcaption>
+</figure>
+<p>I talked to the authors about the mechanism for this phenomenon and
+it fits with an intuition I have about overparameterization in LLMs,
+that mechanisms/pathways within the model persist even after they are no
+longer used because the extra computation is “free”.</p>
+<figure>
+<img src="img/COLM2024IMG_4834.HEIC.jpg" alt="Stream of Search" />
+<figcaption aria-hidden="true">Stream of Search</figcaption>
+</figure>
+<p>Relates to our current work on masking gradients from tokens we don’t
+want to learn to generate but are important for context. Relates because
+they don’t mask gradients from these tokens BUT they told me some
+followup work tried it (maybe unpublished) and it didn’t make a
+difference. Bodes poorly for us perhaps?</p>
+<figure>
+<img src="img/COLM2024IMG_4845.HEIC.jpg"
+alt="Dependencies in speculative decoding" />
+<figcaption aria-hidden="true">Dependencies in speculative
+decoding</figcaption>
+</figure>
+<p>This just seems like an RNN. Do we already use RNNs for speculative
+decoding models?</p>
+<figure>
+<img src="img/COLM2024IMG_4846.HEIC.jpg" alt="Linearizing LLMs" />
+<figcaption aria-hidden="true">Linearizing LLMs</figcaption>
+</figure>
+<p>Another pretrained transformer to pretrained RNN recipe. Very
+relevant to our current project (except we want to initialize with a
+better softmax approximation).</p>
+<figure>
+<img src="img/COLM2024IMG_4854.HEIC.jpg"
+alt="Interp tool generalization" />
+<figcaption aria-hidden="true">Interp tool generalization</figcaption>
+</figure>
+<p>I like these papers. Cool to see another one.</p>
+<figure>
+<img src="img/COLM2024IMG_4855.HEIC.jpg"
+alt="Early wight averaging for high LR" />
+<figcaption aria-hidden="true">Early wight averaging for high
+LR</figcaption>
+</figure>
+<p>Seems like a very general deep learning finding. I haven’t worked on
+problems in this area before, but I am interested in model merging for a
+potential future project, which seems to be a critical component
+here.</p>
+<figure>
+<img src="img/COLM2024IMG_4856.HEIC.jpg" alt="Infinigram" />
+<figcaption aria-hidden="true">Infinigram</figcaption>
+</figure>
+<p>I just want an explanation of the datastructure used here.</p>
+<figure>
+<img src="img/COLM2024IMG_4857.HEIC.jpg"
+alt="Contexts are not arrays" />
+<figcaption aria-hidden="true">Contexts are not arrays</figcaption>
+</figure>
+<p>I want to give this one a closer read, but it seems like an
+interesting approach that could inform future improvements to
+long-context LLMs.</p>
+</body>
+</html>

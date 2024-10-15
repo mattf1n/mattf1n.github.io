@@ -1,4 +1,4 @@
-all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html
+all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html seq_level_temp.html colm2024.html
 
 gallery.html: content/gallery.md
 	pandoc -f markdown+implicit_figures --mathjax --standalone $< > $@
@@ -22,4 +22,10 @@ interest-demo.html: content/interest-demo.md style/main.css
 	pandoc --mathjax --standalone $< > $@ --css style/main.css
 
 apologies.html: content/apologies.md style/main.css
+	pandoc --mathjax --standalone $< > $@ --css style/main.css
+
+seq_level_temp.html: content/seq_level_temp.md
+	pandoc --mathjax --standalone $< > $@ --css style/main.css
+
+colm2024.html: content/colm2024.md
 	pandoc --mathjax --standalone $< > $@ --css style/main.css
