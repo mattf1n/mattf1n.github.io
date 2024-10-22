@@ -23,7 +23,7 @@
         <li><a href='https://twitter.com/mattf1n'>Twitter</a></li>
         <li><a href='https://bsky.app/profile/mattf1n.bsky.social'>Bluesky</a></li>
         <li><a href="https://scholar.google.com/citations?user=37YtY2EAAAAJ&hl=en&oi=ao">Google Scholar</a></li>
-        <li><a href="https://www.semanticscholar.org/author/Matthew-Finlayson/1580418311">Semantic&nbsp;Scholar</a></li>
+        <!-- <li><a href="https://www.semanticscholar.org/author/Matthew-Finlayson/1580418311">Semantic&nbsp;Scholar</a></li> -->
         <li><a href='https://github.com/mattf1n'>GitHub</a></li>
       </ul>
     </nav>
@@ -45,33 +45,31 @@
       <section>    
         <h2 id=News>News</h2>
         <table>
-          <!-- <tr> -->
-          <!--   <td><time>Jun&nbsp;2024</time></td> -->
-          <!--   <td>Joined Meta GenAI as a summer research intern.</td> -->
-          <!-- </tr> -->
+          <tr>
+            <td><time>Sep&nbsp;2024</time></td>
+            <td>Tutorial on decoding methods accepted to NeurIPS.</td>
+          </tr>
           <tr>
             <td><time>Jul&nbsp;2024</time></td>
-            <td>Paper accepted to COLM</td>
+            <td>Paper accepted to COLM.</td>
           </tr>
           <tr>
             <td><time>Jun&nbsp;2024</time></td>
             <td>
-	      Interning at Meta GenAI
+	      Interning at Meta GenAI.
             </td>
           </tr><tr>
             <td><time>Apr&nbsp;2024</time></td>
             <td>
-              Gave talks at Meta FAIR and USC ISI on stealing ChatGPT's hidden size.
+              Spoke at FAIR and USC ISI on stealing ChatGPT's hidden size.
               <ul>
-                <li><a href="files/lll.pdf">Slides</a></li>
-                <li><a href="https://www.youtube.com/watch?v=3U9nA-l2YAs">Video</a></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td><time>Jan&nbsp;2024</time></td>
             <td>
-              Gave a <a href="files/ccc.pdf">talk</a> at CMU LTI on decoding and the softmax bottleneck.
+              <a href="files/ccc.pdf">Spoke</a> at CMU LTI on decoding and the softmax bottleneck.
             </td>
           </tr>
           <tr>
@@ -92,7 +90,7 @@
           </tr>
           <tr>
             <td><time>Feb&nbsp;2023</time></td>
-            <td>Gave a <a href="files/math.pdf">talk</a> at IST/Unbabel on math reasoning evaluation.</td>
+            <td><a href="files/math.pdf">Spoke</a> at IST/Unbabel on math reasoning evaluation.</td>
           </tr>
           <tr>
             <td><time>Jan&nbsp;2023</time></td><td><q>Decomposed Prompting</q> accepted to ICLR.</td>
@@ -100,9 +98,9 @@
           <tr>
             <td><time>Nov&nbsp;2022</time></td>
             <td>
-              Gave a <a href=files/instructions.pdf>talk</a> 
+              <a href=files/instructions.pdf>Spoke</a> 
               at <a href=https://flann.super.site>FLaNN</a> 
-              on using formal languages to studying instruction learning.
+              on formal languages and instruction learning.
             </td>
           </tr>
           <tr>
@@ -142,7 +140,7 @@
 	      Sean Welleck, Amanda Bertsch, Matthew Finlayson, Hailey Schoelkopf, Alex Xie, Graham Neubig, Ilia Kulikov, and Zaid Harchaoui
               </p>
               <ul>
-              <cite>ArXiv <time>2024</time></cite> 
+              <cite>NeurIPS <time>2024</time> (Tutorial) </cite> 
                 <li>
                   <a href="https://arxiv.org/abs/2406.16838">Paper</a>
                 </li>
@@ -164,6 +162,8 @@
                 <li>
                   <a href="https://arxiv.org/abs/2403.09539">Paper</a>
                 </li>
+                <li><a href="files/lll.pdf">Slides</a></li>
+                <li><a href="https://www.youtube.com/watch?v=3U9nA-l2YAs">Video</a></li>
               </ul>
               <details>
                 <summary>Abstract</summary>
@@ -197,6 +197,7 @@ for greater transparency and accountability.</p>
               <ul>
               <cite>ICLR</cite> <time>2024</time>
                 <li><a href="http://arxiv.org/abs/2310.01693">Paper</a></li>
+                <li><a href="files/ccc.pdf">Slides</a></li>
                 <li><a href="https://github.com/mattf1n/basis-aware-threshold">Code</a></li>
               </ul>
 <details>
@@ -318,6 +319,7 @@ tasks.</p>
                 <li>
                   <a href="https://arxiv.org/abs/2210.17517">Paper</a> 
                 </li>
+                <li> <a href="files/math.pdf">Slides</a> </li>
                 <li>
                   <a href="https://github.com/allenai/Lila">Data</a>
                 </li>
@@ -333,21 +335,21 @@ tasks.</p>
 <p>Mathematical reasoning skills are essential for general-purpose
 intelligentsystems to perform tasks from grocery shopping to climate
 modeling.Towards evaluating and improving AI systems in this domain, we
-proposeLILA, a unified mathematical reasoning benchmark consisting of 23
+propose LILA, a unified mathematical reasoning benchmark consisting of 23
 diversetasks along four dimensions:(i) mathematical abilities e.g.,
 arithmetic, calculus (ii) language format e.g., question-answering,
 fill-in-the-blanks (iii) language diversity e.g., no language, simple
 language (iv) external knowledge e.g., commonsense, physics. We
 construct our benchmark by extending 20 datasets benchmark by collecting
-task instructions and solutions in the form of Python programs,thereby
+task instructions and solutions in the form of Python programs, thereby
 obtaining explainable solutions in addition to the correct answer.We
 additionally introduce two evaluation datasets to measure
 out-of-distribution performance and robustness to language
-perturbation.Finally, we introduce BHASKARA,a general-purpose
+perturbation.Finally, we introduce BHASKARA, a general-purpose
 mathematical reasoning model trained on LILA. Importantly, we find that
 multi-tasking leads to significant improvements (average relative
-improvement of 21.83% F1 score vs. single-task models),while the best
-performing model only obtains 60.40%,indicating the room for improvement
+improvement of 21.83% F1 score vs. single-task models), while the best
+performing model only obtains 60.40%, indicating the room for improvement
 in general mathematical reasoning and understanding.</p>
               </details>
             </li>
@@ -364,6 +366,8 @@ in general mathematical reasoning and understanding.</p>
                 <li>
                   <a href="https://arxiv.org/abs/2204.09148">Paper</a> 
                 </li>
+                <li><a href=files/instructions.pdf>Slides</a></li>
+                <li><a href=https://youtu.be/MhlzxbfIys4>Video</a></li>
                 <li>
                   <a href="https://github.com/allenai/RegSet">Code</a>
                 </li>
