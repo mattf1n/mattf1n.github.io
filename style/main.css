@@ -40,16 +40,16 @@ summary, cite, time, nav li, td li, ol ul, ol > li:before {
   font-size: 0.7rem;
 }
 
-/* header, nav, footer, figure { */
-/*   text-align: center; */
-/* } */
+header, nav, footer, figure {
+  text-align: center;
+}
 
 nav {
   margin-top: 1rem;
 }
 
 header img {
-  border-radius: 10%;
+  border-radius: 50%;
   width: 75pt;
 }
 
@@ -126,7 +126,7 @@ section {
 }
 
 h2 {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   /* font-weight: bold; */
   font-size: 1.1rem;
   text-transform: uppercase;
