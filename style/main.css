@@ -208,7 +208,7 @@ td p, li p {
 }
 
 li p {
-  hyphens: none;
+  /* hyphens: none; */
 }
 
 details p {
