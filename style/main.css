@@ -72,7 +72,9 @@ aside {
 
 td {
   vertical-align: top;
-  padding: 0.5em 1em;
+  /* padding: 0.5em 1em; */
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 section ol > li {
