@@ -21,7 +21,7 @@ body {
   counter-reset: bib;
   background-color: var(--bg1); 
   color: var(--fg1);
-  padding: 1rem;
+  padding-top: 1rem;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" on;
   hyphens: auto;
@@ -32,6 +32,9 @@ body {
   max-width: var(--textwidth);
 	margin: auto;
 } 
+
+main {
+}
 
 summary, cite, time, nav li, td li, ol ul, ol > li:before {
   font-family: sans-serif;
@@ -264,7 +267,6 @@ footer img {
   width: 100px;
   image-rendering: pixelated;
 }
-
 
 figcaption {
   font-style: italic;
