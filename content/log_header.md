@@ -1,5 +1,5 @@
 ---
-title: Log
+title: Web Log
 author: '[Matthew Finlayson](index.html)'
 ---
 

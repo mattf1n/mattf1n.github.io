@@ -5,7 +5,7 @@ done
 
 {
   cat content/log_header.md 
-  for file in content/log/*
+  for file in $(ls -r content/log/*.md)
   do
     echo
     echo "## $(basename ${file%.md})" # Markdown header with the filename

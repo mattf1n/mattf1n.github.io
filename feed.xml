@@ -2,7 +2,12 @@
 <rss version="2.0">
 
 <channel>
-  <title>Matt Fin's Log</title>
+  <title>Matt Fin's Web Log</title>
+  <link>https://mattf1n.github.io</link>
+  <item>
+    <title>Links #2</title>
+    <link>https://mattf1n.github.io/log/2024-12-17.html</link>
+  </item>
   <link>https://mattf1n.github.io</link>
   <item>
     <title>The "Right Way" to Ensemble Language Models</title>
