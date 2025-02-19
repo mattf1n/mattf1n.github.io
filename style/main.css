@@ -1,3 +1,10 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Baskervville:ital@0;1&display=swap'); */
+
+
+
 :root{
   --bg1-l: #FFF;
   --bg2-l: #e5e5e5;
@@ -31,16 +38,19 @@ body {
   /* font-family: sans-serif; */
   max-width: var(--textwidth);
 	margin: auto;
+  /* font-family: "Baskervville"; */
 } 
 
 main {
 }
 
-summary, cite, time, nav li, td li, ol ul, ol > li:before {
+/* summary, cite, time, nav li, td li, ol ul, ol > li:before { */
+summary, cite, time, nav li, td li, ol ul {
+  /* font-family: "Baskervville Sans SC"; */
   font-family: sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 0.7rem;
+  font-size: 8pt;
 }
 
 header, nav, footer, figure {
@@ -95,7 +105,7 @@ cite {
 
 ol > li:before {
   counter-increment: bib;
-  content: "[" counter(bib) "] ";
+  content: counter(bib);
   position: absolute;
   left: -2rem;
 }
@@ -133,18 +143,22 @@ section {
 h2 {
   /* font-family: sans-serif; */
   /* font-weight: bold; */
-  font-size: 1.1rem;
+  /* font-size: 1.1rem; */
+  /* font-size: 0.8rem; */
+  font-size: 10pt;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  /* margin-top: 5em; */
-  /* margin-bottom: 2em; */
+  /* font-family: "Baskervville SC"; */
+  /* font-variant-caps: small-caps; */
+  letter-spacing: 0.1rem;
+  margin-top: 3em;
+  margin-bottom: 2em;
   /* border-bottom: 1pt solid black; */
 }
 
 ol li h3, ul li h3 {
   font-weight: normal;
-  font-size: 1.1rem;
+  font-size: 12pt;
+  font-style: italic;
   /* margin-top: 0.25em; */
   /* margin: 0.25em 0; */
   /* margin-bottom: 0.5em; */ 
@@ -218,9 +232,11 @@ li p {
 
 details p {
   margin-top: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1pt solid;
+  /* padding: 0.5rem; */
+  /* border-radius: 0.25rem; */
+  /* border: 1pt solid; */
+  text-align: justify;
+  font-size: 11pt;
 }
 
 pre {
