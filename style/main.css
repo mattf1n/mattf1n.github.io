@@ -7,11 +7,13 @@
 
 :root{
   --bg1-l: #FFF;
+  --bg1-l: FloralWhite;
   --bg2-l: #e5e5e5;
   --fg1-l: #444;
   --fg2-l: #666;
   --link-color-l: #0062cc; 
   --bg1-d: #000;
+  --bg1-d: #002b36;
   --bg2-d: #222;
   --fg1-d: #bbb;
   --fg2-d: #b5b5b5;
@@ -28,7 +30,7 @@ body {
   counter-reset: bib;
   background-color: var(--bg1); 
   color: var(--fg1);
-  padding-top: 1rem;
+  padding: 1rem;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" on;
   hyphens: auto;
@@ -38,7 +40,7 @@ body {
   /* font-family: sans-serif; */
   max-width: var(--textwidth);
 	margin: auto;
-  /* font-family: "Baskervville"; */
+  font-family: "Baskervville";
 } 
 
 main {
@@ -90,29 +92,37 @@ td {
   padding-right: 1em;
 }
 
-section ol > li {
-  list-style: none;
-  position: relative;
+ol, ul {
+  padding-left: 25px;
+  /* position: relative; */
   /* margin-bottom: 3em; */
   /* line-height: 1.35; */
-  margin-bottom: 3rem;
   /* border-bottom: 1pt solid; */
+}
+
+ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+ol li {
+  margin-bottom: 3em;
 }
 
 cite {
   font-style: normal;
 }
 
-ol > li:before {
-  counter-increment: bib;
-  content: counter(bib);
-  position: absolute;
-  left: -2rem;
-}
+/* ol > li:before { */
+/*   counter-increment: bib; */
+/*   content: counter(bib); */
+/*   position: absolute; */
+/*   left: -2rem; */
+/* } */
 
 td:first-child {
   padding-left: 0;
-  border-right: 1pt solid;
+  /* border-right: 1pt solid; */
   text-align: right;
 }
 
@@ -122,7 +132,7 @@ td:last-child {
 
 main table {
   /* border-spacing: 0; */
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   max-width: none;
   /* border-left: 1pt solid; */
 }
@@ -145,7 +155,7 @@ h2 {
   /* font-weight: bold; */
   /* font-size: 1.1rem; */
   /* font-size: 0.8rem; */
-  font-size: 10pt;
+  font-size: 11pt;
   text-transform: uppercase;
   /* font-family: "Baskervville SC"; */
   /* font-variant-caps: small-caps; */
@@ -155,13 +165,13 @@ h2 {
   /* border-bottom: 1pt solid black; */
 }
 
-ol li h3, ul li h3 {
+li h3 {
   font-weight: normal;
   font-size: 12pt;
   font-style: italic;
   /* margin-top: 0.25em; */
   /* margin: 0.25em 0; */
-  /* margin-bottom: 0.5em; */ 
+  margin-bottom: 0.5em; 
   hyphens: none;
 }
 
@@ -170,7 +180,9 @@ ol li a {
 }
 
 td ul, ol ul {
-  float: right;
+  /* float: right; */
+  margin-top: 1em;
+  padding-left: 0;
 }
 
 td ul {
@@ -179,7 +191,8 @@ td ul {
 }
 
 ol li p { 
-  margin-bottom: 0.5rem; 
+  /* margin-bottom: 0.5rem; */ 
+  hyphens: none;
 } 
 
 a h3 {
@@ -289,11 +302,11 @@ figcaption {
 }
 
 
-@media (prefers-color-scheme: dark) {
-  :root{
-    --bg1: var(--bg1-d);
-    --fg1: var(--fg1-d);
-    --bg2: var(--bg2-d);
-    --fg2: var(--fg2-d);
-    --link-color: var(--link-color-d);
-}
+/* @media (prefers-color-scheme: dark) { */
+/*   :root{ */
+/*     --bg1: var(--bg1-d); */
+/*     --fg1: var(--fg1-d); */
+/*     --bg2: var(--bg2-d); */
+/*     --fg2: var(--fg2-d); */
+/*     --link-color: var(--link-color-d); */
+/* } */
