@@ -250,6 +250,7 @@ details p {
   /* border: 1pt solid; */
   text-align: justify;
   font-size: 11pt;
+  hyphens: auto;
 }
 
 pre {
