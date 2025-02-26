@@ -8,9 +8,6 @@
   <title>Visualizations</title>
   <style>
     html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
@@ -29,10 +26,16 @@
     @media (max-width: 600px) {
       body {
         font-size: 0.9em;
-        padding: 1em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
       }
     }
     @media print {
+      html {
+        background-color: white;
+      }
       body {
         background-color: transparent;
         color: black;
@@ -56,6 +59,10 @@
       color: #1a1a1a;
     }
     img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
       max-width: 100%;
     }
     h1, h2, h3, h4, h5, h6 {
@@ -82,9 +89,10 @@
       color: #606060;
     }
     code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
+      hyphens: manual;
     }
     pre {
       margin: 1em 0;
@@ -135,15 +143,31 @@
     #TOC li {
       list-style: none;
     }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
     #TOC a:not(:hover) {
       text-decoration: none;
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -182,7 +206,7 @@
     code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
     code span.at { color: #7d9029; } /* Attribute */
     code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
+    code span.bu { color: #008000; } /* BuiltIn */
     code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #4070a0; } /* Char */
     code span.cn { color: #880000; } /* Constant */
@@ -195,7 +219,7 @@
     code span.ex { } /* Extension */
     code span.fl { color: #40a070; } /* Float */
     code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
     code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
     code span.kw { color: #007020; font-weight: bold; } /* Keyword */
     code span.op { color: #666666; } /* Operator */
@@ -208,44 +232,70 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
 <h1 class="title">Visualizations</h1>
 <p class="author"><a href="index.html">Matthew Finlayson</a></p>
 </header>
-<p>These are some visualizations I have made over the years, both for academia and for fun!</p>
+<p>These are some visualizations I have made over the years, both for
+academia and for fun!</p>
 <figure>
-<img src="img/wa.png" alt="Relief map of Washington State (Blender) [Code]" /><figcaption aria-hidden="true">Relief map of Washington State (Blender) <a href="https://github.com/mattf1n/Relief-Map">[Code]</a></figcaption>
+<img src="img/wa.png"
+alt="Relief map of Washington State (Blender) [Code]" />
+<figcaption aria-hidden="true">Relief map of Washington State (Blender)
+<a href="https://github.com/mattf1n/Relief-Map">[Code]</a></figcaption>
 </figure>
 <figure>
-<img src="tikz/img/model.png" alt="Language model (TikZ) [Code]" /><figcaption aria-hidden="true">Language model (Ti<em>k</em>Z) <a href="tikz/fig/model.tex">[Code]</a></figcaption>
+<img src="tikz/img/model.png" alt="Language model (TikZ) [Code]" />
+<figcaption aria-hidden="true">Language model (Ti<em>k</em>Z) <a
+href="tikz/fig/model.tex">[Code]</a></figcaption>
 </figure>
 <figure>
-<img src="tikz/img/simplex.png" alt="The 3-Simplex (TikZ) [Code]" /><figcaption aria-hidden="true">The 3-Simplex (Ti<em>k</em>Z) <a href="tikz/fig/simplex.tex">[Code]</a></figcaption>
+<img src="tikz/img/simplex.png" alt="The 3-Simplex (TikZ) [Code]" />
+<figcaption aria-hidden="true">The 3-Simplex (Ti<em>k</em>Z) <a
+href="tikz/fig/simplex.tex">[Code]</a></figcaption>
 </figure>
 <figure>
-<img src="files/simplex.gif" alt="Transformations in the 4-Simplex (MatPlotLib) [Code]" /><figcaption aria-hidden="true">Transformations in the 4-Simplex (MatPlotLib) <a href="https://gist.github.com/mattf1n/514eaeb27cbce1ed038bc83e00c81f07">[Code]</a></figcaption>
+<img src="files/simplex.gif"
+alt="Transformations in the 4-Simplex (MatPlotLib) [Code]" />
+<figcaption aria-hidden="true">Transformations in the 4-Simplex
+(MatPlotLib) <a
+href="https://gist.github.com/mattf1n/514eaeb27cbce1ed038bc83e00c81f07">[Code]</a></figcaption>
 </figure>
 <figure>
-<img src="tikz/img/toy.png" alt="The softmax bottleneck (TikZ) [Code]" /><figcaption aria-hidden="true">The softmax bottleneck (Ti<em>k</em>Z) <a href="tikz/fig/toy.tex">[Code]</a></figcaption>
+<img src="tikz/img/toy.png"
+alt="The softmax bottleneck (TikZ) [Code]" />
+<figcaption aria-hidden="true">The softmax bottleneck (Ti<em>k</em>Z) <a
+href="tikz/fig/toy.tex">[Code]</a></figcaption>
 </figure>
 <figure>
-<img src="tikz/img/constraints.png" alt="Basis-aware threshold sampling (TikZ) [Code]" /><figcaption aria-hidden="true"><a href="https://arxiv.org/abs/2310.01693">Basis-aware threshold sampling</a> (Ti<em>k</em>Z) <a href="tikz/fig/constraints.tex">[Code]</a></figcaption>
+<img src="tikz/img/constraints.png"
+alt="Basis-aware threshold sampling (TikZ) [Code]" />
+<figcaption aria-hidden="true"><a
+href="https://arxiv.org/abs/2310.01693">Basis-aware threshold
+sampling</a> (Ti<em>k</em>Z) <a
+href="tikz/fig/constraints.tex">[Code]</a></figcaption>
 </figure>
 <figure>
-<img src="tikz/img/maxminprob.png" alt="Threshold sampling (TikZ) [Code]" /><figcaption aria-hidden="true">Threshold sampling (Ti<em>k</em>Z) <a href="tikz/fig/maxminprob.tex">[Code]</a></figcaption>
+<img src="tikz/img/maxminprob.png"
+alt="Threshold sampling (TikZ) [Code]" />
+<figcaption aria-hidden="true">Threshold sampling (Ti<em>k</em>Z) <a
+href="tikz/fig/maxminprob.tex">[Code]</a></figcaption>
 </figure>
 <figure>
-<img src="tikz/img/taylor.png" alt="Truncation strategies (TikZ) [Code]" /><figcaption aria-hidden="true">Truncation strategies (Ti<em>k</em>Z) <a href="tikz/fig/taylor.tex">[Code]</a></figcaption>
+<img src="tikz/img/taylor.png"
+alt="Truncation strategies (TikZ) [Code]" />
+<figcaption aria-hidden="true">Truncation strategies (Ti<em>k</em>Z) <a
+href="tikz/fig/taylor.tex">[Code]</a></figcaption>
 </figure>
 <figure>
-<img src="img/bg.png" alt="Noisy off-white background (ImageMagick)" /><figcaption aria-hidden="true">Noisy off-white background (ImageMagick)</figcaption>
+<img src="img/bg.png" alt="Noisy off-white background (ImageMagick)" />
+<figcaption aria-hidden="true">Noisy off-white background
+(ImageMagick)</figcaption>
 </figure>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">convert</span> <span class="at">-size</span> 3456x2234 xc:WhiteSmoke +noise gaussian <span class="at">-blur</span> 0x0.5 <span class="at">-colorspace</span> gray img/bg.png</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">convert</span> <span class="at">-size</span> 3456x2234 xc:WhiteSmoke +noise gaussian <span class="at">-blur</span> 0x0.5 <span class="at">-colorspace</span> gray img/bg.png</span></code></pre></div>
 <figure>
 <img src="img/fin.png" style="width:200px; image-rendering:pixelated"/>
 <figcaption>
@@ -253,7 +303,11 @@ Fin the shark (GIMP)
 </figcaption>
 </figure>
 <figure>
-<img src="img/fulldisk.png" alt="Live photo of earth from space (Python) [Code]" /><figcaption aria-hidden="true">Live photo of earth from space (Python) <a href="https://gist.github.com/mattf1n/19e61c0b5c713e302c41cfe7a7008ff4">[Code]</a></figcaption>
+<img src="img/fulldisk.png"
+alt="Live photo of earth from space (Python) [Code]" />
+<figcaption aria-hidden="true">Live photo of earth from space (Python)
+<a
+href="https://gist.github.com/mattf1n/19e61c0b5c713e302c41cfe7a7008ff4">[Code]</a></figcaption>
 </figure>
 </body>
 </html>

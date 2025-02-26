@@ -190,7 +190,7 @@ td ul {
   padding-left: 0;
 }
 
-ol li p { 
+ol li > p { 
   /* margin-bottom: 0.5rem; */ 
   hyphens: none;
 } 
@@ -243,15 +243,6 @@ li p {
   /* hyphens: none; */
 }
 
-details p {
-  margin-top: 0.5rem;
-  /* padding: 0.5rem; */
-  /* border-radius: 0.25rem; */
-  /* border: 1pt solid; */
-  text-align: justify;
-  font-size: 11pt;
-}
-
 pre {
   padding: 1em 1em;
 }
@@ -274,6 +265,17 @@ td li, ol ul li, nav li {
   line-height: 2em;
   white-space: nowrap;
 }
+
+details p {
+  margin-top: 0.5rem;
+  /* padding: 0.5rem; */
+  /* border-radius: 0.25rem; */
+  /* border: 1pt solid; */
+  text-align: justify;
+  font-size: 11pt;
+  hyphens: auto;
+}
+
 
 nav li + li{
   padding-left: 1em;

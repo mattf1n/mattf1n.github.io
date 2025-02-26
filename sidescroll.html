@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>sidescroll</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style/volume.css" />
+</head>
+<body>
+<h1 id="a-side-scrolling-website.">A side-scrolling website.</h1>
+<p>Here, I am developing a side-scrolling webpage, documenting my
+choices and struggles as I go.</p>
+<h2 id="a-bit-of-history">A bit of history</h2>
+<p>Before the invention of the codex, we had scrolls. A scroll is a
+long, continuous page, unlike a book which has many pages. Typographers
+developed certain customs and traditions were to deal with the
+challenges presented by the medium. In particular, two main types of
+scrolls exist: the <em>volumen</em> and <em>rotulus</em>. The
+<em>volumen</em>, like this website, consisted of a series of text
+blocks, kind of like pages. The <em>rotulus</em>, like most modern
+webistes, consists of a continuous stream of text, and is not divided
+into page-like sections. When websites came along, suddenly we had a
+long, continuous medium again. So why did we decide to solve the layout
+problem with a <em>rotulus</em> design? Perhaps, like <em>rotuli</em>,
+websites tend to be short in length. In that case, long-form articles
+online might consider the <em>volumen</em> design.</p>
+<h2 id="implementation">Implementation</h2>
+<p>I start by putting everything in columns like so using the
+<em>columns</em> property. I would like all text to be aligned between
+columns. For this reason, I set the font size to always be 12 pt, line
+height to be fixed at 1.2, and top and bottom margins to be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.2</mn><mo>×</mo><mn>12</mn><mo>=</mo><mn>14.4</mn></mrow><annotation encoding="application/x-tex">1.2\times12=14.4</annotation></semantics></math>.
+Bold fonts mess with page color, so I opt for all-caps and italics for
+h1 and h2, add slight letter spacing (5%) to the caps.</p>
+<p>As the content of the page surpasses the window size, horizontal
+scrolling begins. I notice that the far left page has no padding, so I
+add some to each paragraph. The column gap needed some extra room
+anyways. This still does not solve the problem completely, since the
+body does not stretch to fit the content, meaning only the left margin
+seems to have any effect. I’m not yet sure how to make it do that.</p>
+<p>To let the content breathe, I set a <em>max-height</em> for the body
+and divide the remaining space between the top and bottom margins,
+giving twice as much space to the bottom.</p>
+<h2 id="some-things-i-would-like-to-have">Some things I would like to
+have</h2>
+<p>This is a list of things I would like.</p>
+<ul>
+<li>Small caps</li>
+<li>Text figures</li>
+<li>A satisfying float design that works with columns.</li>
+</ul>
+<p>I want to prevent the browser from synthesizing bad versions of font
+faces like weight, italics, and small caps so I turn off
+<em>font-synthesis</em>.</p>
+<h2 id="filler-text">Filler text</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+pulvinar vel risus vel congue. In sagittis dolor vitae mi vehicula
+viverra. Cras facilisis nisl ipsum, in fringilla diam egestas vel.
+Aliquam cursus sed metus eu pharetra. In non ipsum vel eros malesuada
+molestie in non augue. Donec sit amet elementum risus. Fusce ipsum
+turpis, facilisis feugiat metus vitae, porta cursus est. Aliquam eu
+pretium enim.</p>
+<p>Quisque pharetra tristique dolor, nec pharetra magna. Pellentesque ac
+vulputate mauris. Aliquam mattis magna ut nulla tincidunt fringilla.
+Maecenas diam lectus, eleifend eget nibh quis, volutpat auctor orci.
+Cras dapibus dui dolor, eget pellentesque sem congue non. Sed sit amet
+lobortis sem. Phasellus consequat lacus volutpat enim vestibulum, vitae
+volutpat metus aliquam. Maecenas tincidunt arcu neque, non bibendum
+massa interdum sed. Aliquam lobortis lectus aliquam bibendum aliquet.
+Aenean sed felis nisl. In venenatis eros non pellentesque gravida.
+Integer viverra fringilla risus ac pulvinar. Class aptent taciti
+sociosqu ad litora torquent per conubia nostra, per inceptos
+himenaeos.</p>
+<p>Mauris blandit euismod arcu ut fermentum. Etiam tristique nisi in mi
+lacinia consequat. Duis efficitur, nunc tincidunt laoreet maximus, est
+magna tincidunt dui, placerat elementum est nunc sit amet risus.
+Curabitur sit amet lacus scelerisque, faucibus turpis at, pellentesque
+enim. Pellentesque facilisis felis quam, id dapibus sapien lobortis
+eget. Fusce fermentum diam arcu, ut posuere lectus ultricies et. Aenean
+aliquet aliquet odio eget porttitor. Curabitur ante mauris, euismod vel
+justo vel, finibus porttitor neque. Nunc vel ex pellentesque, venenatis
+sem nec, varius purus. Aenean bibendum vitae dolor cursus bibendum.</p>
+<p>Mauris faucibus nisl et metus pellentesque, at posuere lectus semper.
+Morbi consectetur odio vitae turpis vehicula porttitor quis sit amet
+magna. Praesent nulla nunc, efficitur eget auctor at, scelerisque et
+lorem. Morbi ac nibh in libero malesuada laoreet eu et ex. Donec
+faucibus efficitur arcu id aliquet. Quisque mattis sit amet lorem nec
+ultricies. Maecenas auctor viverra urna. Vestibulum ante ipsum primis in
+faucibus orci luctus et ultrices posuere cubilia curae; Sed commodo
+tincidunt viverra. Vestibulum sagittis risus enim, in consectetur quam
+sagittis imperdiet.</p>
+<p>Sed viverra quis orci eu sagittis. Mauris enim metus, pulvinar nec
+felis et, volutpat lobortis diam. Pellentesque aliquet euismod ultrices.
+Vestibulum molestie volutpat neque id pulvinar. Sed ultrices a velit at
+semper. Duis pharetra pretium metus, sit amet vehicula purus finibus
+sed. Nullam at metus in metus vehicula hendrerit sit amet vel tortor.
+Nam odio nisi, auctor nec cursus vitae, ullamcorper sit amet urna.
+Suspendisse potenti. Etiam quis diam mauris. Pellentesque fringilla
+ligula non faucibus dignissim. Nunc eu malesuada ante. Sed diam orci,
+finibus ut rutrum a, dictum in lectus. In leo eros, venenatis eu augue
+non, mollis consectetur massa. Lorem ipsum dolor sit amet, consectetur
+adipiscing elit.</p>
+</body>
+</html>
