@@ -58,13 +58,19 @@ abbr {
 }
 
 /* summary, cite, time, nav li, td li, ol ul, ol > li:before { */
-summary, cite, nav li, td li, ol ul {
+/* summary, cite, nav li, td li, ol ul { */
+cite, nav li, td li, ol ul {
   /* font-family: "Baskervville Sans SC"; */
   /* font-family: sans-serif; */
   /* text-transform: uppercase; */
   font-feature-settings: "smcp", "c2sc";
   letter-spacing: 0.05rem;
   font-size: 11pt;
+}
+
+summary {
+  font-size: 11pt;
+  font-style: italic;
 }
 
 header, nav, footer, figure {
