@@ -201,7 +201,7 @@ ol li a {
 
 td ul, ol ul {
   /* float: right; */
-  margin-top: 1em;
+  margin-top: 0.5em;
   padding-left: 0;
 }
 
