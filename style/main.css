@@ -19,7 +19,7 @@
   --fg1: var(--fg1-l);
   --fg2: var(--fg2-l);
   --link-color: var(--link-color-l);
-  --textwidth: 70ch;
+  --textwidth: 65ch;
 }
 
 body {
@@ -41,6 +41,18 @@ body {
 } 
 
 main {
+}
+
+section:first-of-type p:first-of-type::first-letter {
+  font-size: 48pt;
+  float: left;
+  line-height: 1;
+  margin-right: 0.1em;
+  height: 0.75em;
+}
+
+.smallcaps {
+  font-feature-settings: "smcp";
 }
 
 section > p {
