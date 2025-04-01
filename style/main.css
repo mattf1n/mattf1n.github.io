@@ -53,7 +53,7 @@ summary, cite, time, nav li, td li, ol ul {
   font-size: 8pt;
 }
 
-header, nav, footer, figure {
+nav, footer, figure {
   text-align: center;
 }
 
@@ -62,8 +62,8 @@ nav {
 }
 
 header img {
-  border-radius: 50%;
-  width: 75pt;
+  /* border-radius: 50%; */
+  /* width: 75pt; */
 }
 
 aside {
