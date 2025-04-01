@@ -1,7 +1,10 @@
-all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html seq_level_temp.html colm2024.html
+all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html
 
 gallery.html: content/gallery.md
 	pandoc -f markdown+implicit_figures --mathjax --standalone $< > $@
+
+sidescroll.html: content/sidescroll.md
+	pandoc -f markdown --mathml --standalone $< > $@ --css style/volume.css
 
 smislinear.html: content/smislinear.md
 	pandoc --mathjax --standalone $< > $@

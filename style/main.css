@@ -1,17 +1,15 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Baskervville:ital@0;1&display=swap'); */
 
 
 
 :root{
   --bg1-l: #FFF;
+  --bg1-l: FloralWhite;
   --bg2-l: #e5e5e5;
   --fg1-l: #444;
   --fg2-l: #666;
   --link-color-l: #0062cc; 
   --bg1-d: #000;
+  --bg1-d: #002b36;
   --bg2-d: #222;
   --fg1-d: #bbb;
   --fg2-d: #b5b5b5;
@@ -28,7 +26,7 @@ body {
   counter-reset: bib;
   background-color: var(--bg1); 
   color: var(--fg1);
-  padding-top: 1rem;
+  padding: 1rem;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" on;
   hyphens: auto;
@@ -38,19 +36,53 @@ body {
   /* font-family: sans-serif; */
   max-width: var(--textwidth);
 	margin: auto;
-  /* font-family: "Baskervville"; */
+  font-family: "Stix Two";
+  font-feature-settings: "onum", "pnum";
 } 
 
 main {
 }
 
+section:first-of-type p:first-of-type::first-letter {
+  font-size: 36pt;
+  float: left;
+  line-height: 1;
+  margin-right: 0.1em;
+  height: 0.75em;
+}
+
+.smallcaps {
+  font-feature-settings: "smcp";
+}
+
+section > p {
+  /* text-align: justify; */
+}
+
+.sc {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.05rem;
+}
+
+abbr {
+  font-feature-settings: "c2sc";
+  letter-spacing: 0.01rem;
+}
+
 /* summary, cite, time, nav li, td li, ol ul, ol > li:before { */
-summary, cite, time, nav li, td li, ol ul {
+/* summary, cite, nav li, td li, ol ul { */
+cite, nav li, td li, ol ul {
   /* font-family: "Baskervville Sans SC"; */
-  font-family: sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 8pt;
+  /* font-family: sans-serif; */
+  /* text-transform: uppercase; */
+  font-feature-settings: "smcp", "c2sc";
+  letter-spacing: 0.05rem;
+  font-size: 11pt;
+}
+
+summary {
+  font-size: 11pt;
+  font-style: italic;
 }
 
 nav, footer, figure {
@@ -90,30 +122,39 @@ td {
   padding-right: 1em;
 }
 
-section ol > li {
-  list-style: none;
-  position: relative;
+ol, ul {
+  padding-left: 25px;
+  /* position: relative; */
   /* margin-bottom: 3em; */
   /* line-height: 1.35; */
-  margin-bottom: 3rem;
   /* border-bottom: 1pt solid; */
+}
+
+ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+ol li {
+  margin-bottom: 3em;
 }
 
 cite {
   font-style: normal;
 }
 
-ol > li:before {
-  counter-increment: bib;
-  content: counter(bib);
-  position: absolute;
-  left: -2rem;
-}
+/* ol > li:before { */
+/*   counter-increment: bib; */
+/*   content: counter(bib); */
+/*   position: absolute; */
+/*   left: -2rem; */
+/* } */
 
 td:first-child {
   padding-left: 0;
-  border-right: 1pt solid;
+  /* border-right: 1pt solid; */
   text-align: right;
+  font-feature-settings: "onum";
 }
 
 td:last-child {
@@ -122,7 +163,7 @@ td:last-child {
 
 main table {
   /* border-spacing: 0; */
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   max-width: none;
   /* border-left: 1pt solid; */
 }
@@ -145,23 +186,24 @@ h2 {
   /* font-weight: bold; */
   /* font-size: 1.1rem; */
   /* font-size: 0.8rem; */
-  font-size: 10pt;
-  text-transform: uppercase;
+  font-size: 12pt;
+  /* text-transform: uppercase; */
   /* font-family: "Baskervville SC"; */
   /* font-variant-caps: small-caps; */
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
+  font-feature-settings: "c2sc", "smcp";
   margin-top: 3em;
   margin-bottom: 2em;
   /* border-bottom: 1pt solid black; */
 }
 
-ol li h3, ul li h3 {
+li h3 {
   font-weight: normal;
   font-size: 12pt;
   font-style: italic;
   /* margin-top: 0.25em; */
   /* margin: 0.25em 0; */
-  /* margin-bottom: 0.5em; */ 
+  margin-bottom: 0.5em; 
   hyphens: none;
 }
 
@@ -170,16 +212,19 @@ ol li a {
 }
 
 td ul, ol ul {
-  float: right;
+  /* float: right; */
+  margin-top: 0.5em;
+  padding-left: 0;
 }
 
 td ul {
   display: inline;
-  padding-left: 0;
+  /* padding-left: 0; */
 }
 
-ol li p { 
-  margin-bottom: 0.5rem; 
+ol li > p { 
+  /* margin-bottom: 0.5rem; */ 
+  hyphens: none;
 } 
 
 a h3 {
@@ -220,7 +265,7 @@ td ul {
 td li a:hover, ol ul li a:hover {
   background-color: var(--fg1);
   color: var(--bg1);
-}
+} 
 
 td p, li p {
   margin: 0;
@@ -228,15 +273,6 @@ td p, li p {
 
 li p {
   /* hyphens: none; */
-}
-
-details p {
-  margin-top: 0.5rem;
-  /* padding: 0.5rem; */
-  /* border-radius: 0.25rem; */
-  /* border: 1pt solid; */
-  text-align: justify;
-  font-size: 11pt;
 }
 
 pre {
@@ -261,6 +297,17 @@ td li, ol ul li, nav li {
   line-height: 2em;
   white-space: nowrap;
 }
+
+details p {
+  margin-top: 0.5rem;
+  /* padding: 0.5rem; */
+  /* border-radius: 0.25rem; */
+  /* border: 1pt solid; */
+  text-align: justify;
+  font-size: 11pt;
+  hyphens: auto;
+}
+
 
 nav li + li{
   padding-left: 1em;
@@ -289,11 +336,66 @@ figcaption {
 }
 
 
-@media (prefers-color-scheme: dark) {
-  :root{
-    --bg1: var(--bg1-d);
-    --fg1: var(--fg1-d);
-    --bg2: var(--bg2-d);
-    --fg2: var(--fg2-d);
-    --link-color: var(--link-color-d);
+/* @media (prefers-color-scheme: dark) { */
+/*   :root{ */
+/*     --bg1: var(--bg1-d); */
+/*     --fg1: var(--fg1-d); */
+/*     --bg2: var(--bg2-d); */
+/*     --fg2: var(--fg2-d); */
+/*     --link-color: var(--link-color-d); */
+/* } */
+
+@font-face{
+  font-family: 'Stix Two';
+  src: url('stixtwo/STIXTwoText-Regular.woff2') format('woff2');
+  font-weight: normal;
+}
+
+@font-face{
+  font-family: 'Stix Two';
+  src: url('stixtwo/STIXTwoText-Bold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+
+@font-face{
+  font-family: 'Stix Two';
+  src: url('stixtwo/STIXTwoText-BoldItalic.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+@font-face{
+  font-family: 'Stix Two';
+  src: url('stixtwo/STIXTwoText-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+
+@font-face{
+  font-family: 'Stix Two';
+  src: url('stixtwo/STIXTwoText-Medium.woff2') format('woff2');
+  font-weight: 500;
+}
+
+@font-face{
+  font-family: 'Stix Two';
+  src: url('stixtwo/STIXTwoText-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face{
+  font-family: 'Stix Two';
+  src: url('stixtwo/STIXTwoText-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+}
+
+@font-face{
+  font-family: 'Stix Two';
+  src: url('stixtwo/STIXTwoText-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
 }
