@@ -105,8 +105,12 @@ aside {
   margin-top: 1rem;
 }
 
+figure svg {
+  width: 100%;
+}
+
 @media (min-width: 155ch) {
-  aside {
+  figure, aside {
     float: right;
     margin-right: -45ch;
     margin-top: 0;

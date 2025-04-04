@@ -7,151 +7,6 @@
   <meta name="author" content="Matthew Finlayson" />
   <title>Web Log</title>
   <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -167,6 +22,7 @@
       vertical-align: middle;
     }
   </style>
+  <link rel="stylesheet" href="style/main.css" />
 </head>
 <body>
 <header id="title-block-header">
@@ -174,7 +30,100 @@
 <p class="author"><a href="index.html">Matthew Finlayson</a></p>
 </header>
 <p>Short logs. No organization.</p>
-<h2 id="section">2024-12-17</h2>
+<h2 id="section">2025-04-04</h2>
+<h1 id="recurrent-transformers-for-reasoning">Recurrent transformers for
+reasoning</h1>
+<figure>
+<img src="files/recurrent-reasoning.svg"
+alt="My proposed latent reasoning architecture" />
+<figcaption aria-hidden="true">My proposed latent reasoning
+architecture</figcaption>
+</figure>
+<p>I have a hunch that “reasoning” LLMs don’t actually need natural
+language intermediate reasoning steps. I’m imagining a recurrent latent
+reasoning chain where the output at each step is the input to the next.
+This would not be efficient for parallel training, but my understanding
+is that these models are trained via RL anyways, which, as I understand
+it, must be autoregressive.</p>
+<p>I’ve heard of techniques that allow LMs to use a “think” token or a
+“backspace” token. I’m also aware of a paper that used “…” instead of
+chain of thought. Here is a (lightly) annotated list of related
+papers.</p>
+<h2 id="looped-transformers">Looped Transformers</h2>
+<p><a href="https://openreview.net/forum?id=2edigk8yoU">Looped
+Transformers for Length Generalization</a> is a theoretical paper that
+constructs length generalizing transformers using the “looped
+transformer” architecture. <a
+href="https://openreview.net/forum?id=fiHVIUkulb">Looped
+Transformers</a> proposed the original architecture. This is a
+theoretical paper that compares looped architecture aspects of Turing
+machines.</p>
+<h2 id="universal-transformers">Universal transformers</h2>
+<p>The “original” recurrent transformer paper. Repeated application of
+the same transformer block until “stopping condition” is met.</p>
+<h2 id="deep-equilibrium-models"><a
+href="https://arxiv.org/abs/1909.01377">Deep equilibrium models</a></h2>
+<p>I really like this model idea. This is something I have thought about
+in the past: repeated applying a transformation until it reaches a
+stable state as a stopping condition. The implicit differentiation is a
+cool trick that makes this possible. I wonder how this could work in a
+transformer architecture where the hidden state output from the previous
+step is used as the input to the next.</p>
+<h1 id="converting-a-trained-transformer-to-an-rnn">Converting a trained
+transformer to an RNN</h1>
+<p>I did a class project on this, using polynomial fitting to try to get
+a better initializaton for a linear RNN to replace the softmax attention
+layer in a pretrained transformer. It didn’t work well, but I have some
+ideas for what might work next.</p>
+<ul>
+<li>Replace the softmax layer with multiple, stacked linear RNN
+layers.</li>
+<li>Train an RNN to mimic the IO behavior of the KV cache.</li>
+</ul>
+<h2 id="section-1">2025-04-03</h2>
+<h3 id="setting-up-pico.sh">Setting up pico.sh</h3>
+<p><a href="pico.sh">pico.sh</a> seems like a cool, minimal effort tool
+for blogging, but it doesn’t support math, so I’m going to roll my
+own.</p>
+<h3 id="next-research-project">Next research project</h3>
+<p>After wrapping up my COLM submission, I want to get back into a
+project that I left off on a couple months ago.</p>
+<p>The idea is that token rankings act as a <a
+href="https://en.wikipedia.org/wiki/Message_authentication_code">message
+authentication code (MAC)</a> for LLM outputs in APIs. If you know the
+model params, it is easy to produce and verify
+top-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+ranking that could have come from a model. If you don’t have the model
+params, I conjecture that it is NP-hard to do these things. Thus, the
+params function as the secret key, and the
+top-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+outputs function as the authentication code (known as the “tag”).</p>
+<p>The NP hardness result is based on the fact that oriented matroid
+(OM) realizability is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∃</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\exists\mathbb{R}</annotation></semantics></math>-complete,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝖭</mi><mi>𝖯</mi></mrow><mo>≤</mo><mo>∃</mo><mi>ℝ</mi><mo>≤</mo><mrow><mi>𝖯</mi><mi>𝖲</mi><mi>𝖯</mi><mi>𝖠</mi><mi>𝖢</mi><mi>𝖤</mi></mrow></mrow><annotation encoding="application/x-tex">\mathsf{NP}\leq\exists\mathbb{R}\leq\mathsf{PSPACE}</annotation></semantics></math>
+is a complexity class. My work so far has shown that if you can learn an
+unembedding matrix that realizes the set of
+top-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+a model outputs, then you can solve OM realizability, and vice versa,
+meaning that stealing the unembedding matrix is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∃</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\exists\mathbb{R}</annotation></semantics></math>
+complete. This is a nice assurance for API designers, since they know
+that adversaries will not steal model parameters.</p>
+<p>Having established that you cannot learn the embedding matrix from
+the API, a follow-up question is whether you can learn an approximately
+correct OM that matches sets of
+top-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+tokens. To prove the negative, I want to show that you would need to see
+an exponential number of rankings to eliminate alternative OM
+candidates, and that the alternative OM candidates are problematic,
+i.e., misclassify unseen rankings at a high rate. This is hard, since
+each ranking can probably eliminate an exponential number of candidates
+at each step. The other approach is to say that the OM representation
+would need to be exponentially large to be learnable, which would cause
+issues for the learner.</p>
+<h2 id="section-2">2024-12-17</h2>
 <p>Torch code bug that took me an hour to fix: I wrapped a function in
 <code>@torch.inference_mode</code> which called another function which
 called another function that was trying to call
@@ -190,7 +139,7 @@ will have time to.</p>
 href="https://openreview.net/forum?id=eRkNNQRppH">incomplete paper</a>
 about training dynamics that they submitted to ICLR. I mean to give it a
 skim sometime.</p>
-<h2 id="section-1">2024-12-05</h2>
+<h2 id="section-3">2024-12-05</h2>
 <p>I created an RSS feed for my website. I did it by hand, <a
 href="https://www.w3schools.com/xml/xml_rss.asp">this template</a>. I
 don’t use any frameworks for maintaining my website, I just write
