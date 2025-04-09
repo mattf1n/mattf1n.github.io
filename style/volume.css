@@ -6,6 +6,15 @@ html {
   font-synthesis: none
 }
 
+figure {
+  float: left;
+  width: 100%;
+}
+
+figure img, figure svg {
+  width: 100%;
+}
+
 body {
   columns: 15em auto;
   column-fill: auto;
