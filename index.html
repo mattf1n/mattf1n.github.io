@@ -67,7 +67,7 @@
           <tr>
             <td><time>Jun.&nbsp;2024</time></td>
             <td>
-	      Interned at Meta <abbr>GenAI</abbr>.
+              Interned at Meta <abbr>GenAI</abbr>.
             </td>
           </tr><tr>
             <td><time>Apr.&nbsp;2024</time></td>
@@ -120,20 +120,20 @@
           <tr>
             <td><time>Aug.&nbsp;2021</time></td><td>Joined <abbr>AI2</abbr> as a pre-doctoral researcher.</td>
           </tr>
-          </table>
+        </table>
       </section>
       <section>
-          <h2 id=posts>Posts</h2>
-          <ul>
-            <!-- <li><a href="apologies.html">Don't apologize.</a></li> -->
-            <li><a href="ensemble.html">The <q>right way</q> to ensemble language models.</a></li>
-            <li><a href="differentiable-binary-to-onehot.html">A differentiable function from binary to one-hot representations.</a></li>
-            <li><a href="deep-ba-sampling.html">Deep <abbr>BA</abbr> sampling (extending <abbr>BAT</abbr>).</a></li>
-            <li><a href="interest-demo.html">Research interest demos for working with me.</a></li>
-            <li><a href="openlogprobs.html">Obtaining logprobs from an <abbr>LLM</abbr> <abbr>API</abbr>.</a></li>
-            <li><a href="smislinear.html">The softmax function is linear.</a></li>
-            <li><a href="gallery.html">Visualizations</a></li>
-          </ul>
+        <h2 id=posts>Posts</h2>
+        <ul>
+          <!-- <li><a href="apologies.html">Don't apologize.</a></li> -->
+          <li><a href="ensemble.html">The <q>right way</q> to ensemble language models.</a></li>
+          <li><a href="differentiable-binary-to-onehot.html">A differentiable function from binary to one-hot representations.</a></li>
+          <li><a href="deep-ba-sampling.html">Deep <abbr>BA</abbr> sampling (extending <abbr>BAT</abbr>).</a></li>
+          <li><a href="interest-demo.html">Research interest demos for working with me.</a></li>
+          <li><a href="openlogprobs.html">Obtaining logprobs from an <abbr>LLM</abbr> <abbr>API</abbr>.</a></li>
+          <li><a href="smislinear.html">The softmax function is linear.</a></li>
+          <li><a href="gallery.html">Visualizations</a></li>
+        </ul>
       </section>
       <section>
         <h2 id=Software>Software</h2>
@@ -142,325 +142,345 @@
         <p><a href="https://github.com/mattf1n/ss"><code>SS.py</code></a> is my personal command line tool for searching and citing academic papers via Semantic Scholar.</p>
       </section>
       <section>
-          <h2 id=Publications>Preprints & publications</h2>
-          <ol>
-            <li>
-              <a href="https://arxiv.org/abs/2502.10596">
-                <h3>
-                  Post-training an LLM for RAG? Train on Self-Generated Demonstrations
-                </h3>
-              </a>
-              <p>
-              Matthew Finlayson, Ilia Kulikov, Daniel&nbsp;M. Bikel, Barlas Oguz, Xilun Chen, and Aasish Pappu
-              </p>
-              <ul>
+        <h2 id=Publications>Preprints & publications</h2>
+        <ol>
+          <li>
+            <a href="https://arxiv.org/abs/2505.03052">
+              <h3>Teaching Models to Understand (but not Generate) High-risk Data
+              </h3>
+            </a>
+            <p>
+            Ryan Wang, Matthew Finlayson, Luca Soldaini, Swabha Swayamdipta, Robin Jia
+            </p>
+            <ul>
               <cite>ArXiv <time>2025</time></cite> 
-                <li>
-                  <a href="https://arxiv.org/abs/2502.10596">Paper</a>
-                </li>
-              </ul>
-              <details>
-                <summary>Abstract</summary>
-<p>Large language models (LLMs) often struggle with knowledge intensive NLP tasks, such as answering “Who won the latest World Cup?” because the knowledge they learn during training may be insufficient or outdated. Conditioning generation on retrieved documents—a technique known as retrieval augmented generation (RAG)—mitigates these shortcomings by allowing the model to leverage in-context information. Practitioners can improve LLM RAG performance by fine-tuning on retrieval-augmented instructions, but must beware that this can cause undesirable model behaviors like hallucinations. We attribute this degradation to the fact that the training data is likely to be out-of-distribution for the model and may suffer from quality issues, such as misalignment between retrievals and target responses (since retrievals are frequently added post-hoc). We propose a recipe for training RAG-enabled LLMs using self-generated demonstrations, thereby avoiding training on out-of-distribution text and integrating retrievals into the LLM responses. We evaluate our method on knowledge intensive question answering (QA) tasks and show that our method teaches LLMs to properly handle in-context retrievals and abstain from questions it will likely get wrong. Compared to conventional RA-IT methods, our method prevents model degradation in non-RAG settings while exhibiting superior QA performance.</p>
-              </details>
-            </li>
-            <li>
-              <a href="https://arxiv.org/abs/2406.16838"><h3>From Decoding to Meta-Generation: Inference-time Algorithms for Large Language Models</h3></a>
+              <li>
+                <a href="https://arxiv.org/abs/2505.03052">Paper</a>
+              </li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
               <p>
-	      Sean Welleck, Amanda Bertsch, Matthew Finlayson, Hailey Schoelkopf, Alex Xie, Graham Neubig, Ilia Kulikov, and Zaid Harchaoui
+              Language model developers typically filter out high-risk content&mdash;such as toxic or copyrighted text&mdash;from their pre-training data to prevent models from generating similar outputs. However, removing such data altogether limits models' ability to recognize and appropriately respond to harmful or sensitive content. In this paper, we introduce Selective Loss to Understand but Not Generate (SLUNG), a pre-training paradigm through which models learn to understand high-risk data without learning to generate it. Instead of uniformly applying the next-token prediction loss, SLUNG selectively avoids incentivizing the generation of high-risk tokens while ensuring they remain within the model's context window. As the model learns to predict low-risk tokens that follow high-risk ones, it is forced to understand the high-risk content. Through our experiments, we show that SLUNG consistently improves models' understanding of high-risk data (e.g., ability to recognize toxic content) without increasing its generation (e.g., toxicity of model responses). Overall, our SLUNG paradigm enables models to benefit from high-risk text that would otherwise be filtered out.
               </p>
-              <ul>
-                <cite>TMLR <time>2024</time> </cite> 
-                <li>
-                  <a href="https://arxiv.org/abs/2406.16838">Paper</a>
-                </li>
-              </ul>
-              <details>
-                <summary>Abstract</summary>
-                <p>
-  One of the most striking findings in modern research on large language models (LLMs) is that scaling up compute during training leads to better results. However, less attention has been given to the benefits of scaling compute during inference. This survey focuses on these inference-time approaches. We explore three areas under a unified mathematical formalism: token-level generation algorithms, meta-generation algorithms, and efficient generation. Token-level generation algorithms, often called decoding algorithms, operate by sampling a single token at a time or constructing a token-level search space and then selecting an output. These methods typically assume access to a language model's logits, next-token distributions, or probability scores. Meta-generation algorithms work on partial or full sequences, incorporating domain knowledge, enabling backtracking, and integrating external information. Efficient generation methods aim to reduce token costs and improve the speed of generation. Our survey unifies perspectives from three research communities: traditional natural language processing, modern LLMs, and machine learning systems.
-                </p>
-              </details>
-            </li>
-            <li>
-              <h3><a href="https://arxiv.org/abs/2403.09539">Logits of API-Protected LLMs Leak Proprietary Information</a></h3>
-              <p>
-              Matthew Finlayson, Xiang Ren, and Swabha Swa&shy;yam&shy;dip&shy;ta
-              </p>
-              <ul>
-              <cite>COLM</cite> <time>2024</time>
-                <li>
-                  <a href="https://arxiv.org/abs/2403.09539">Paper</a>
-                </li>
-                <li><a href="files/lll.pdf">Slides</a></li>
-                <li><a href="https://www.youtube.com/watch?v=3U9nA-l2YAs">Video</a></li>
-              </ul>
-              <details>
-                <summary>Abstract</summary>
-<p>The commercialization of large language models (LLMs) has led to the
-common practice of high-level API-only access to proprietary models. In
-this work, we show that even with a conservative assumption about the
-model architecture, it is possible to learn a surprisingly large amount
-of non-public information about an API-protected LLM from a relatively
-small number of API queries (e.g., costing under $1,000 for OpenAI’s
-gpt-3.5-turbo). Our findings are centered on one key observation: most
-modern LLMs suffer from a softmax bottleneck, which restricts the model
-outputs to a linear subspace of the full output space. We show that this
-lends itself to a model image or a model signature which unlocks several
-capabilities with affordable cost: efficiently discovering the LLM’s
-hidden size, obtaining full-vocabulary outputs, detecting and
-disambiguating different model updates, identifying the source LLM given
-a single full LLM output, and even estimating the output layer
-parameters. Our empirical investigations show the effectiveness of our
-methods, which allow us to estimate the embedding size of OpenAI’s
-gpt-3.5-turbo to be about 4,096. Lastly, we discuss ways that LLM
-providers can guard against these attacks, as well as how these
-capabilities can be viewed as a feature (rather than a bug) by allowing
-for greater transparency and accountability.</p>
-              </details>
-            </li>
-            <li>
-              <h3><a href="http://arxiv.org/abs/2310.01693">Closing the Curious Case of Neural Text Degeneration</a></h3>
-              <p>
-              Matthew Finlayson, John Hewitt, Alexander Koller, Swabha Swayamdipta, and Ashish Sabharwal
-              </p>
-              <ul>
-              <cite>ICLR</cite> <time>2024</time>
-                <li><a href="http://arxiv.org/abs/2310.01693">Paper</a></li>
-                <li><a href="files/ccc.pdf">Slides</a></li>
-                <li><a href="https://github.com/mattf1n/basis-aware-threshold">Code</a></li>
-              </ul>
-<details>
-                <summary>Abstract</summary>
-<p>Despite their ubiquity in language generation, it remains unknown why
-truncation sampling heuristics like nucleus sampling are so effective.
-We provide a theoretical explanation for the effectiveness of the
-truncation sampling by proving that truncation methods that discard
-tokens below some probability threshold (the most common type of
-truncation) can guarantee that all sampled tokens have nonzero true
-probability. However, thresholds are a coarse heuristic, and necessarily
-discard some tokens with nonzero true probability as well. In pursuit of
-a more precise sampling strategy, we show that we can leverage a known
-source of model errors, the softmax bottleneck, to prove that certain
-tokens have nonzero true probability, without relying on a threshold.
-Based on our findings, we develop an experimental truncation strategy
-and the present pilot studies demonstrating the promise of this type of
-algorithm. Our evaluations show that our method outperforms its
-threshold-based counterparts under automatic and human evaluation
-metrics for low-entropy (i.e., close to greedy) open-ended text
-generation. Our theoretical findings and pilot experiments provide both
-insight into why truncation sampling works, and make progress toward
-more expressive sampling algorithms that better surface the generative
-capabilities of large language models.</p>
-              </details>
-            </li>
-            <li>
-              <h3>Attentiveness to Answer Choices Doesn't Always Entail High QA Accuracy</h3>
-              <p>
-              Sarah Wiegreffe, Matthew Finlayson, Oyvind Tafjord, 
-              Peter Clark, and Ashish Sabharwal
-              </p>
-              <ul>
-              <cite>EMNLP</cite> <time>2023</time>
-                <li>
-                  <a href="https://arxiv.org/abs/2305.14596">Paper</a>
-                </li>
-                <li>
-                  <a href="https://github.com/allenai/revisiting_surface_form_competition">Code</a>
-                </li>
-              </ul>
-<details>
-                <summary>Abstract</summary>
-<p>When pretrained language models (LMs) are applied to discriminative
-tasks such as multiple-choice questions, they place probability mass on
-vocabulary tokens that aren’t among the given answer choices. Spreading
-probability mass across multiple surface forms with identical meaning
-(such as”bath”and”bathtub”) is thought to cause an underestimation of a
-model’s true performance, referred to as the”surface form
-competition”(SFC) hypothesis. This has motivated the introduction of
-various probability normalization methods. However, many core questions
-remain unanswered. How do we measure SFC? Are there direct ways of
-reducing it, and does doing so improve task performance? We propose a
-mathematical formalism for SFC which allows us to quantify and bound its
-impact for the first time. We identify a simple method for reducing it –
-namely, increasing probability mass on the given answer choices by a)
-including them in the prompt and b) using in-context learning with even
-just one example. We show this method eliminates the impact of SFC in
-the majority of instances. Our experiments on three diverse datasets and
-six LMs reveal several additional surprising findings. For example, both
-normalization and prompting methods for reducing SFC can be ineffective
-or even detrimental to task performance for some LMs. We conclude with
-practical insights for effectively prompting LMs for multiple-choice
-tasks.</p>
-              </details>
-            </li>
-            <li>
-              <h3>Decomposed Prompting: A Modular Approach for Solving Complex Tasks</h3>
-              <p>
-              Tushar Khot, Harsh Trivedi, Matthew Finlayson, Yao Fu,
-              Kyle Richardson, Peter Clark, and Ashish Sabharwal
-              </p>
-              <ul>
-              <cite>ICLR</cite> <time>2023</time>
-                <li>
-                  <a href="https://arxiv.org/abs/2210.02406">Paper</a>
-                </li>
-                <li>
-                  <a href="https://github.com/allenai/DecomP">Code</a>
-                </li>
-              </ul>
-              <details>
-                <summary>Abstract</summary>
-<p>Few-shot prompting is a surprisingly powerful way to use Large
-Language Models (LLMs) to solve various tasks. However, this approach
-struggles as the task complexity increases or when the individual
-reasoning steps of the task themselves are hard to learn, especially
-when embedded in more complex tasks. To address this, we propose
-Decomposed Prompting, a new approach to solve complex tasks by
-decomposing them (via prompting) into simpler sub-tasks that can be
-delegated to a library of prompting-based LLMs dedicated to these
-sub-tasks. This modular structure allows each prompt to be optimized for
-its specific sub-task, further decomposed if necessary, and even easily
-replaced with more effective prompts, trained models, or symbolic
-functions if desired. We show that the flexibility and modularity of
-Decomposed Prompting allows it to outperform prior work on few-shot
-prompting using GPT3. On symbolic reasoning tasks, we can further
-decompose sub-tasks that are hard for LLMs into even simpler solvable
-sub-tasks. When the complexity comes from the input length, we can
-recursively decompose the task into the same task but with smaller
-inputs. We also evaluate our approach on textual multi-step reasoning
-tasks: on long-context multi-hop QA task, we can more effectively teach
-the sub-tasks via our separate sub-tasks prompts; and on open-domain
-multi-hop QA, we can incorporate a symbolic information retrieval within
-our decomposition framework, leading to improved performance on both
-tasks.</p>
-              </details>
-            </li>
-            <li>
-              <h3>L&imacr;la: A Unified Benchmark for Mathematical Reasoning</h3>
-              <p>
-              {Matthew Finlayson, Swaroop Mishra,} 
-              Pan Lu, Leonard Tang, Sean Welleck,
-              Chitta Baral, Tanmay Rajpurohit, Oyvind Tafjord, 
-              Ashish Sabharwal, Peter Clark, and Ashwin Kalyan
-              </p>
-              <ul>
-              <cite>EMNLP</cite> <time>2022</time>
-                <li>
-                  <a href="https://arxiv.org/abs/2210.17517">Paper</a> 
-                </li>
-                <li> <a href="files/math.pdf">Slides</a> </li>
-                <li>
-                  <a href="https://github.com/allenai/Lila">Data</a>
-                </li>
-                <li>
-                  <a href="https://huggingface.co/allenai/bhaskara">Model</a>
-                </li>
-                <li>
-                  <a href="https://lila.apps.allenai.org">Website</a>
-                </li>
-              </ul>
-              <details>
-                <summary>Abstract</summary>
-<p>Mathematical reasoning skills are essential for general-purpose
-intelligentsystems to perform tasks from grocery shopping to climate
-modeling. Towards evaluating and improving AI systems in this domain, we
-propose LILA, a unified mathematical reasoning benchmark consisting of 23
-diversetasks along four dimensions:(i) mathematical abilities e.g.,
-arithmetic, calculus (ii) language format e.g., question-answering,
-fill-in-the-blanks (iii) language diversity e.g., no language, simple
-language (iv) external knowledge e.g., commonsense, physics. We
-construct our benchmark by extending 20 datasets benchmark by collecting
-task instructions and solutions in the form of Python programs, thereby
-obtaining explainable solutions in addition to the correct answer. We
-additionally introduce two evaluation datasets to measure
-out-of-distribution performance and robustness to language
-perturbation. Finally, we introduce BHASKARA, a general-purpose
-mathematical reasoning model trained on LILA. Importantly, we find that
-multi-tasking leads to significant improvements (average relative
-improvement of 21.83% F1 score vs. single-task models), while the best
-performing model only obtains 60.40%, indicating the room for improvement
-in general mathematical reasoning and understanding.</p>
-              </details>
-            </li>
-            <li>
+            </details>
+          </li><li>
+            <a href="https://arxiv.org/abs/2502.10596">
               <h3>
-                What Makes Instruction Learning Hard? 
-                An Investigation and a New Challenge in a Synthetic Environment
-              </h3> 
+                Post-training an LLM for RAG? Train on Self-Generated Demonstrations
+              </h3>
+            </a>
+            <p>
+            Matthew Finlayson, Ilia Kulikov, Daniel&nbsp;M. Bikel, Barlas Oguz, Xilun Chen, and Aasish Pappu
+            </p>
+            <ul>
+              <cite>ArXiv <time>2025</time></cite> 
+              <li>
+                <a href="https://arxiv.org/abs/2502.10596">Paper</a>
+              </li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
+              <p>Large language models (LLMs) often struggle with knowledge intensive NLP tasks, such as answering “Who won the latest World Cup?” because the knowledge they learn during training may be insufficient or outdated. Conditioning generation on retrieved documents—a technique known as retrieval augmented generation (RAG)—mitigates these shortcomings by allowing the model to leverage in-context information. Practitioners can improve LLM RAG performance by fine-tuning on retrieval-augmented instructions, but must beware that this can cause undesirable model behaviors like hallucinations. We attribute this degradation to the fact that the training data is likely to be out-of-distribution for the model and may suffer from quality issues, such as misalignment between retrievals and target responses (since retrievals are frequently added post-hoc). We propose a recipe for training RAG-enabled LLMs using self-generated demonstrations, thereby avoiding training on out-of-distribution text and integrating retrievals into the LLM responses. We evaluate our method on knowledge intensive question answering (QA) tasks and show that our method teaches LLMs to properly handle in-context retrievals and abstain from questions it will likely get wrong. Compared to conventional RA-IT methods, our method prevents model degradation in non-RAG settings while exhibiting superior QA performance.</p>
+            </details>
+          </li>
+          <li>
+            <a href="https://arxiv.org/abs/2406.16838"><h3>From Decoding to Meta-Generation: Inference-time Algorithms for Large Language Models</h3></a>
+            <p>
+            Sean Welleck, Amanda Bertsch, Matthew Finlayson, Hailey Schoelkopf, Alex Xie, Graham Neubig, Ilia Kulikov, and Zaid Harchaoui
+            </p>
+            <ul>
+              <cite>TMLR <time>2024</time> </cite> 
+              <li>
+                <a href="https://arxiv.org/abs/2406.16838">Paper</a>
+              </li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
               <p>
-              Matthew Finlayson, Kyle Richardson, Ashish Sabharwal, and Peter Clark
+              One of the most striking findings in modern research on large language models (LLMs) is that scaling up compute during training leads to better results. However, less attention has been given to the benefits of scaling compute during inference. This survey focuses on these inference-time approaches. We explore three areas under a unified mathematical formalism: token-level generation algorithms, meta-generation algorithms, and efficient generation. Token-level generation algorithms, often called decoding algorithms, operate by sampling a single token at a time or constructing a token-level search space and then selecting an output. These methods typically assume access to a language model's logits, next-token distributions, or probability scores. Meta-generation algorithms work on partial or full sequences, incorporating domain knowledge, enabling backtracking, and integrating external information. Efficient generation methods aim to reduce token costs and improve the speed of generation. Our survey unifies perspectives from three research communities: traditional natural language processing, modern LLMs, and machine learning systems.
               </p>
-              <ul>
+            </details>
+          </li>
+          <li>
+            <h3><a href="https://arxiv.org/abs/2403.09539">Logits of API-Protected LLMs Leak Proprietary Information</a></h3>
+            <p>
+            Matthew Finlayson, Xiang Ren, and Swabha Swa&shy;yam&shy;dip&shy;ta
+            </p>
+            <ul>
+              <cite>COLM</cite> <time>2024</time>
+              <li>
+                <a href="https://arxiv.org/abs/2403.09539">Paper</a>
+              </li>
+              <li><a href="files/lll.pdf">Slides</a></li>
+              <li><a href="https://www.youtube.com/watch?v=3U9nA-l2YAs">Video</a></li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
+              <p>The commercialization of large language models (LLMs) has led to the
+              common practice of high-level API-only access to proprietary models. In
+              this work, we show that even with a conservative assumption about the
+              model architecture, it is possible to learn a surprisingly large amount
+              of non-public information about an API-protected LLM from a relatively
+              small number of API queries (e.g., costing under $1,000 for OpenAI’s
+              gpt-3.5-turbo). Our findings are centered on one key observation: most
+              modern LLMs suffer from a softmax bottleneck, which restricts the model
+              outputs to a linear subspace of the full output space. We show that this
+              lends itself to a model image or a model signature which unlocks several
+              capabilities with affordable cost: efficiently discovering the LLM’s
+              hidden size, obtaining full-vocabulary outputs, detecting and
+              disambiguating different model updates, identifying the source LLM given
+              a single full LLM output, and even estimating the output layer
+              parameters. Our empirical investigations show the effectiveness of our
+              methods, which allow us to estimate the embedding size of OpenAI’s
+              gpt-3.5-turbo to be about 4,096. Lastly, we discuss ways that LLM
+              providers can guard against these attacks, as well as how these
+              capabilities can be viewed as a feature (rather than a bug) by allowing
+              for greater transparency and accountability.</p>
+            </details>
+          </li>
+          <li>
+            <h3><a href="http://arxiv.org/abs/2310.01693">Closing the Curious Case of Neural Text Degeneration</a></h3>
+            <p>
+            Matthew Finlayson, John Hewitt, Alexander Koller, Swabha Swayamdipta, and Ashish Sabharwal
+            </p>
+            <ul>
+              <cite>ICLR</cite> <time>2024</time>
+              <li><a href="http://arxiv.org/abs/2310.01693">Paper</a></li>
+              <li><a href="files/ccc.pdf">Slides</a></li>
+              <li><a href="https://github.com/mattf1n/basis-aware-threshold">Code</a></li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
+              <p>Despite their ubiquity in language generation, it remains unknown why
+              truncation sampling heuristics like nucleus sampling are so effective.
+              We provide a theoretical explanation for the effectiveness of the
+              truncation sampling by proving that truncation methods that discard
+              tokens below some probability threshold (the most common type of
+              truncation) can guarantee that all sampled tokens have nonzero true
+              probability. However, thresholds are a coarse heuristic, and necessarily
+              discard some tokens with nonzero true probability as well. In pursuit of
+              a more precise sampling strategy, we show that we can leverage a known
+              source of model errors, the softmax bottleneck, to prove that certain
+              tokens have nonzero true probability, without relying on a threshold.
+              Based on our findings, we develop an experimental truncation strategy
+              and the present pilot studies demonstrating the promise of this type of
+              algorithm. Our evaluations show that our method outperforms its
+              threshold-based counterparts under automatic and human evaluation
+              metrics for low-entropy (i.e., close to greedy) open-ended text
+              generation. Our theoretical findings and pilot experiments provide both
+              insight into why truncation sampling works, and make progress toward
+              more expressive sampling algorithms that better surface the generative
+              capabilities of large language models.</p>
+            </details>
+          </li>
+          <li>
+            <h3>Attentiveness to Answer Choices Doesn't Always Entail High QA Accuracy</h3>
+            <p>
+            Sarah Wiegreffe, Matthew Finlayson, Oyvind Tafjord, 
+            Peter Clark, and Ashish Sabharwal
+            </p>
+            <ul>
+              <cite>EMNLP</cite> <time>2023</time>
+              <li>
+                <a href="https://arxiv.org/abs/2305.14596">Paper</a>
+              </li>
+              <li>
+                <a href="https://github.com/allenai/revisiting_surface_form_competition">Code</a>
+              </li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
+              <p>When pretrained language models (LMs) are applied to discriminative
+              tasks such as multiple-choice questions, they place probability mass on
+              vocabulary tokens that aren’t among the given answer choices. Spreading
+              probability mass across multiple surface forms with identical meaning
+              (such as”bath”and”bathtub”) is thought to cause an underestimation of a
+              model’s true performance, referred to as the”surface form
+              competition”(SFC) hypothesis. This has motivated the introduction of
+              various probability normalization methods. However, many core questions
+              remain unanswered. How do we measure SFC? Are there direct ways of
+              reducing it, and does doing so improve task performance? We propose a
+              mathematical formalism for SFC which allows us to quantify and bound its
+              impact for the first time. We identify a simple method for reducing it –
+              namely, increasing probability mass on the given answer choices by a)
+              including them in the prompt and b) using in-context learning with even
+              just one example. We show this method eliminates the impact of SFC in
+              the majority of instances. Our experiments on three diverse datasets and
+              six LMs reveal several additional surprising findings. For example, both
+              normalization and prompting methods for reducing SFC can be ineffective
+              or even detrimental to task performance for some LMs. We conclude with
+              practical insights for effectively prompting LMs for multiple-choice
+              tasks.</p>
+            </details>
+          </li>
+          <li>
+            <h3>Decomposed Prompting: A Modular Approach for Solving Complex Tasks</h3>
+            <p>
+            Tushar Khot, Harsh Trivedi, Matthew Finlayson, Yao Fu,
+            Kyle Richardson, Peter Clark, and Ashish Sabharwal
+            </p>
+            <ul>
+              <cite>ICLR</cite> <time>2023</time>
+              <li>
+                <a href="https://arxiv.org/abs/2210.02406">Paper</a>
+              </li>
+              <li>
+                <a href="https://github.com/allenai/DecomP">Code</a>
+              </li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
+              <p>Few-shot prompting is a surprisingly powerful way to use Large
+              Language Models (LLMs) to solve various tasks. However, this approach
+              struggles as the task complexity increases or when the individual
+              reasoning steps of the task themselves are hard to learn, especially
+              when embedded in more complex tasks. To address this, we propose
+              Decomposed Prompting, a new approach to solve complex tasks by
+              decomposing them (via prompting) into simpler sub-tasks that can be
+              delegated to a library of prompting-based LLMs dedicated to these
+              sub-tasks. This modular structure allows each prompt to be optimized for
+              its specific sub-task, further decomposed if necessary, and even easily
+              replaced with more effective prompts, trained models, or symbolic
+              functions if desired. We show that the flexibility and modularity of
+              Decomposed Prompting allows it to outperform prior work on few-shot
+              prompting using GPT3. On symbolic reasoning tasks, we can further
+              decompose sub-tasks that are hard for LLMs into even simpler solvable
+              sub-tasks. When the complexity comes from the input length, we can
+              recursively decompose the task into the same task but with smaller
+              inputs. We also evaluate our approach on textual multi-step reasoning
+              tasks: on long-context multi-hop QA task, we can more effectively teach
+              the sub-tasks via our separate sub-tasks prompts; and on open-domain
+              multi-hop QA, we can incorporate a symbolic information retrieval within
+              our decomposition framework, leading to improved performance on both
+              tasks.</p>
+            </details>
+          </li>
+          <li>
+            <h3>L&imacr;la: A Unified Benchmark for Mathematical Reasoning</h3>
+            <p>
+            {Matthew Finlayson, Swaroop Mishra,} 
+            Pan Lu, Leonard Tang, Sean Welleck,
+            Chitta Baral, Tanmay Rajpurohit, Oyvind Tafjord, 
+            Ashish Sabharwal, Peter Clark, and Ashwin Kalyan
+            </p>
+            <ul>
               <cite>EMNLP</cite> <time>2022</time>
-                <li>
-                  <a href="https://arxiv.org/abs/2204.09148">Paper</a> 
-                </li>
-                <li><a href=files/instructions.pdf>Slides</a></li>
-                <li><a href=https://youtu.be/MhlzxbfIys4>Video</a></li>
-                <li>
-                  <a href="https://github.com/allenai/RegSet">Code</a>
-                </li>
-              </ul><details>
-                <summary>Abstract</summary>
-<p>The instruction learning paradigm—where a model learns to perform new
-tasks from task descriptions alone—has become popular in research on
-general-purpose models. The capabilities of large transformer models as
-instruction learners, however, remain poorly understood. We use a
-controlled synthetic environment to characterize such capabilities.
-Specifically, we use the task of deciding whether a given string matches
-a regular expression (viewed as an instruction) to identify properties
-of tasks, instructions, and instances that make instruction learning
-challenging. For instance, we find that our model, a fine-tuned T5-based
-text2text transformer, struggles with large regular languages,
-suggesting that less precise instructions are challenging for models.
-Instruction executions that require tracking longer contexts of prior
-steps are also difficult. We use our findings to systematically
-construct a challenging instruction learning dataset, which we call Hard
-RegSet. Fine-tuning on Hard RegSet, our large transformer learns to
-correctly interpret (with at least 90% accuracy) only 65.6% of test
-instructions, and 11%-24% of the instructions in out-of-distribution
-generalization settings. We thus propose Hard RegSet as a challenging
-instruction learning dataset, and a controlled environment for studying
-instruction learning.</p>
-              </details>
-            </li>
-            <li>
-              <a href="https://aclanthology.org/2021.acl-long.144/">
-                <h3>Causal Analysis of Syntactic Agreement Mechanisms in Neural Language Models</h3>
-              </a>
-              <p>
-              {Matthew Finlayson, Aaron Mueller,}
-              Sebastian Gehrmann, Stuart Shieber, Tal Linzen, and Yonatan Belinkov
-              </p>
-              <ul>
+              <li>
+                <a href="https://arxiv.org/abs/2210.17517">Paper</a> 
+              </li>
+              <li> <a href="files/math.pdf">Slides</a> </li>
+              <li>
+                <a href="https://github.com/allenai/Lila">Data</a>
+              </li>
+              <li>
+                <a href="https://huggingface.co/allenai/bhaskara">Model</a>
+              </li>
+              <li>
+                <a href="https://lila.apps.allenai.org">Website</a>
+              </li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
+              <p>Mathematical reasoning skills are essential for general-purpose
+              intelligentsystems to perform tasks from grocery shopping to climate
+              modeling. Towards evaluating and improving AI systems in this domain, we
+              propose LILA, a unified mathematical reasoning benchmark consisting of 23
+              diversetasks along four dimensions:(i) mathematical abilities e.g.,
+              arithmetic, calculus (ii) language format e.g., question-answering,
+              fill-in-the-blanks (iii) language diversity e.g., no language, simple
+              language (iv) external knowledge e.g., commonsense, physics. We
+              construct our benchmark by extending 20 datasets benchmark by collecting
+              task instructions and solutions in the form of Python programs, thereby
+              obtaining explainable solutions in addition to the correct answer. We
+              additionally introduce two evaluation datasets to measure
+              out-of-distribution performance and robustness to language
+              perturbation. Finally, we introduce BHASKARA, a general-purpose
+              mathematical reasoning model trained on LILA. Importantly, we find that
+              multi-tasking leads to significant improvements (average relative
+              improvement of 21.83% F1 score vs. single-task models), while the best
+              performing model only obtains 60.40%, indicating the room for improvement
+              in general mathematical reasoning and understanding.</p>
+            </details>
+          </li>
+          <li>
+            <h3>
+              What Makes Instruction Learning Hard? 
+              An Investigation and a New Challenge in a Synthetic Environment
+            </h3> 
+            <p>
+            Matthew Finlayson, Kyle Richardson, Ashish Sabharwal, and Peter Clark
+            </p>
+            <ul>
+              <cite>EMNLP</cite> <time>2022</time>
+              <li>
+                <a href="https://arxiv.org/abs/2204.09148">Paper</a> 
+              </li>
+              <li><a href=files/instructions.pdf>Slides</a></li>
+              <li><a href=https://youtu.be/MhlzxbfIys4>Video</a></li>
+              <li>
+                <a href="https://github.com/allenai/RegSet">Code</a>
+              </li>
+            </ul><details>
+              <summary>Abstract</summary>
+              <p>The instruction learning paradigm—where a model learns to perform new
+              tasks from task descriptions alone—has become popular in research on
+              general-purpose models. The capabilities of large transformer models as
+              instruction learners, however, remain poorly understood. We use a
+              controlled synthetic environment to characterize such capabilities.
+              Specifically, we use the task of deciding whether a given string matches
+              a regular expression (viewed as an instruction) to identify properties
+              of tasks, instructions, and instances that make instruction learning
+              challenging. For instance, we find that our model, a fine-tuned T5-based
+              text2text transformer, struggles with large regular languages,
+              suggesting that less precise instructions are challenging for models.
+              Instruction executions that require tracking longer contexts of prior
+              steps are also difficult. We use our findings to systematically
+              construct a challenging instruction learning dataset, which we call Hard
+              RegSet. Fine-tuning on Hard RegSet, our large transformer learns to
+              correctly interpret (with at least 90% accuracy) only 65.6% of test
+              instructions, and 11%-24% of the instructions in out-of-distribution
+              generalization settings. We thus propose Hard RegSet as a challenging
+              instruction learning dataset, and a controlled environment for studying
+              instruction learning.</p>
+            </details>
+          </li>
+          <li>
+            <a href="https://aclanthology.org/2021.acl-long.144/">
+              <h3>Causal Analysis of Syntactic Agreement Mechanisms in Neural Language Models</h3>
+            </a>
+            <p>
+            {Matthew Finlayson, Aaron Mueller,}
+            Sebastian Gehrmann, Stuart Shieber, Tal Linzen, and Yonatan Belinkov
+            </p>
+            <ul>
               <cite>ACL</cite> <time>2021</time>
-                <li>
-                  <a href="https://aclanthology.org/2021.acl-long.144/">Paper</a> 
-                </li>
-                <li>
-                  <a href="https://github.com/mattf1n/lm-intervention">Code</a>
-                </li>
-              </ul>
-              <details>
-                <summary>Abstract</summary>
-<p>Targeted syntactic evaluations have demonstrated the ability of
-language models to perform subject-verb agreement given difficult
-contexts. To elucidate the mechanisms by which the models accomplish
-this behavior, this study applies causal mediation analysis to
-pre-trained neural language models. We investigate the magnitude of
-models’ preferences for grammatical inflections, as well as whether
-neurons process subject-verb agreement similarly across sentences with
-different syntactic structures. We uncover similarities and differences
-across architectures and model sizes—notably, that larger models do not
-necessarily learn stronger preferences. We also observe two distinct
-mechanisms for producing subject-verb agreement depending on the
-syntactic structure of the input sentence. Finally, we find that
-language models rely on similar sets of neurons when given sentences
-with similar syntactic structure.</p>
-              </details>
-            </li>
-          </ol>
+              <li>
+                <a href="https://aclanthology.org/2021.acl-long.144/">Paper</a> 
+              </li>
+              <li>
+                <a href="https://github.com/mattf1n/lm-intervention">Code</a>
+              </li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
+              <p>Targeted syntactic evaluations have demonstrated the ability of
+              language models to perform subject-verb agreement given difficult
+              contexts. To elucidate the mechanisms by which the models accomplish
+              this behavior, this study applies causal mediation analysis to
+              pre-trained neural language models. We investigate the magnitude of
+              models’ preferences for grammatical inflections, as well as whether
+              neurons process subject-verb agreement similarly across sentences with
+              different syntactic structures. We uncover similarities and differences
+              across architectures and model sizes—notably, that larger models do not
+              necessarily learn stronger preferences. We also observe two distinct
+              mechanisms for producing subject-verb agreement depending on the
+              syntactic structure of the input sentence. Finally, we find that
+              language models rely on similar sets of neurons when given sentences
+              with similar syntactic structure.</p>
+            </details>
+          </li>
+        </ol>
       </section>
     </main>
     <footer><img src="img/fin.png"></footer>
