@@ -142,7 +142,8 @@
         <p><a href="https://github.com/mattf1n/ss"><code>SS.py</code></a> is my personal command line tool for searching and citing academic papers via Semantic Scholar.</p>
       </section>
       <section>
-        <h2 id=Publications>Preprints & publications</h2>
+        <h2 id=Publications>Selected preprints & publications</h2>
+        These are papers that best represent my interests. For a full list, see my <a href="https://scholar.google.com/citations?user=37YtY2EAAAAJ&hl=en&oi=ao">Google Scholar</a>.
         <ol>
           <li>
             <a href="https://arxiv.org/abs/2505.03052">
@@ -164,26 +165,27 @@
               Language model developers typically filter out high-risk content&mdash;such as toxic or copyrighted text&mdash;from their pre-training data to prevent models from generating similar outputs. However, removing such data altogether limits models' ability to recognize and appropriately respond to harmful or sensitive content. In this paper, we introduce Selective Loss to Understand but Not Generate (SLUNG), a pre-training paradigm through which models learn to understand high-risk data without learning to generate it. Instead of uniformly applying the next-token prediction loss, SLUNG selectively avoids incentivizing the generation of high-risk tokens while ensuring they remain within the model's context window. As the model learns to predict low-risk tokens that follow high-risk ones, it is forced to understand the high-risk content. Through our experiments, we show that SLUNG consistently improves models' understanding of high-risk data (e.g., ability to recognize toxic content) without increasing its generation (e.g., toxicity of model responses). Overall, our SLUNG paradigm enables models to benefit from high-risk text that would otherwise be filtered out.
               </p>
             </details>
-          </li><li>
-            <a href="https://arxiv.org/abs/2502.10596">
-              <h3>
-                Post-training an LLM for RAG? Train on Self-Generated Demonstrations
-              </h3>
-            </a>
-            <p>
-            Matthew Finlayson, Ilia Kulikov, Daniel&nbsp;M. Bikel, Barlas Oguz, Xilun Chen, and Aasish Pappu
-            </p>
-            <ul>
-              <cite>ArXiv <time>2025</time></cite> 
-              <li>
-                <a href="https://arxiv.org/abs/2502.10596">Paper</a>
-              </li>
-            </ul>
-            <details>
-              <summary>Abstract</summary>
-              <p>Large language models (LLMs) often struggle with knowledge intensive NLP tasks, such as answering “Who won the latest World Cup?” because the knowledge they learn during training may be insufficient or outdated. Conditioning generation on retrieved documents—a technique known as retrieval augmented generation (RAG)—mitigates these shortcomings by allowing the model to leverage in-context information. Practitioners can improve LLM RAG performance by fine-tuning on retrieval-augmented instructions, but must beware that this can cause undesirable model behaviors like hallucinations. We attribute this degradation to the fact that the training data is likely to be out-of-distribution for the model and may suffer from quality issues, such as misalignment between retrievals and target responses (since retrievals are frequently added post-hoc). We propose a recipe for training RAG-enabled LLMs using self-generated demonstrations, thereby avoiding training on out-of-distribution text and integrating retrievals into the LLM responses. We evaluate our method on knowledge intensive question answering (QA) tasks and show that our method teaches LLMs to properly handle in-context retrievals and abstain from questions it will likely get wrong. Compared to conventional RA-IT methods, our method prevents model degradation in non-RAG settings while exhibiting superior QA performance.</p>
-            </details>
           </li>
+          <!-- <li> -->
+          <!--   <a href="https://arxiv.org/abs/2502.10596"> -->
+          <!--     <h3> -->
+          <!--       Post-training an LLM for RAG? Train on Self-Generated Demonstrations -->
+          <!--     </h3> -->
+          <!--   </a> -->
+          <!--   <p> -->
+          <!--   Matthew Finlayson, Ilia Kulikov, Daniel&nbsp;M. Bikel, Barlas Oguz, Xilun Chen, and Aasish Pappu -->
+          <!--   </p> -->
+          <!--   <ul> -->
+          <!--     <cite>ArXiv <time>2025</time></cite> --> 
+          <!--     <li> -->
+          <!--       <a href="https://arxiv.org/abs/2502.10596">Paper</a> -->
+          <!--     </li> -->
+          <!--   </ul> -->
+          <!--   <details> -->
+          <!--     <summary>Abstract</summary> -->
+          <!--     <p>Large language models (LLMs) often struggle with knowledge intensive NLP tasks, such as answering “Who won the latest World Cup?” because the knowledge they learn during training may be insufficient or outdated. Conditioning generation on retrieved documents—a technique known as retrieval augmented generation (RAG)—mitigates these shortcomings by allowing the model to leverage in-context information. Practitioners can improve LLM RAG performance by fine-tuning on retrieval-augmented instructions, but must beware that this can cause undesirable model behaviors like hallucinations. We attribute this degradation to the fact that the training data is likely to be out-of-distribution for the model and may suffer from quality issues, such as misalignment between retrievals and target responses (since retrievals are frequently added post-hoc). We propose a recipe for training RAG-enabled LLMs using self-generated demonstrations, thereby avoiding training on out-of-distribution text and integrating retrievals into the LLM responses. We evaluate our method on knowledge intensive question answering (QA) tasks and show that our method teaches LLMs to properly handle in-context retrievals and abstain from questions it will likely get wrong. Compared to conventional RA-IT methods, our method prevents model degradation in non-RAG settings while exhibiting superior QA performance.</p> -->
+          <!--   </details> -->
+          <!-- </li> -->
           <li>
             <a href="https://arxiv.org/abs/2406.16838"><h3>From Decoding to Meta-Generation: Inference-time Algorithms for Large Language Models</h3></a>
             <p>
@@ -314,95 +316,95 @@
               tasks.</p>
             </details>
           </li>
-          <li>
-            <h3>Decomposed Prompting: A Modular Approach for Solving Complex Tasks</h3>
-            <p>
-            Tushar Khot, Harsh Trivedi, Matthew Finlayson, Yao Fu,
-            Kyle Richardson, Peter Clark, and Ashish Sabharwal
-            </p>
-            <ul>
-              <cite>ICLR</cite> <time>2023</time>
-              <li>
-                <a href="https://arxiv.org/abs/2210.02406">Paper</a>
-              </li>
-              <li>
-                <a href="https://github.com/allenai/DecomP">Code</a>
-              </li>
-            </ul>
-            <details>
-              <summary>Abstract</summary>
-              <p>Few-shot prompting is a surprisingly powerful way to use Large
-              Language Models (LLMs) to solve various tasks. However, this approach
-              struggles as the task complexity increases or when the individual
-              reasoning steps of the task themselves are hard to learn, especially
-              when embedded in more complex tasks. To address this, we propose
-              Decomposed Prompting, a new approach to solve complex tasks by
-              decomposing them (via prompting) into simpler sub-tasks that can be
-              delegated to a library of prompting-based LLMs dedicated to these
-              sub-tasks. This modular structure allows each prompt to be optimized for
-              its specific sub-task, further decomposed if necessary, and even easily
-              replaced with more effective prompts, trained models, or symbolic
-              functions if desired. We show that the flexibility and modularity of
-              Decomposed Prompting allows it to outperform prior work on few-shot
-              prompting using GPT3. On symbolic reasoning tasks, we can further
-              decompose sub-tasks that are hard for LLMs into even simpler solvable
-              sub-tasks. When the complexity comes from the input length, we can
-              recursively decompose the task into the same task but with smaller
-              inputs. We also evaluate our approach on textual multi-step reasoning
-              tasks: on long-context multi-hop QA task, we can more effectively teach
-              the sub-tasks via our separate sub-tasks prompts; and on open-domain
-              multi-hop QA, we can incorporate a symbolic information retrieval within
-              our decomposition framework, leading to improved performance on both
-              tasks.</p>
-            </details>
-          </li>
-          <li>
-            <h3>L&imacr;la: A Unified Benchmark for Mathematical Reasoning</h3>
-            <p>
-            {Matthew Finlayson, Swaroop Mishra,} 
-            Pan Lu, Leonard Tang, Sean Welleck,
-            Chitta Baral, Tanmay Rajpurohit, Oyvind Tafjord, 
-            Ashish Sabharwal, Peter Clark, and Ashwin Kalyan
-            </p>
-            <ul>
-              <cite>EMNLP</cite> <time>2022</time>
-              <li>
-                <a href="https://arxiv.org/abs/2210.17517">Paper</a> 
-              </li>
-              <li> <a href="files/math.pdf">Slides</a> </li>
-              <li>
-                <a href="https://github.com/allenai/Lila">Data</a>
-              </li>
-              <li>
-                <a href="https://huggingface.co/allenai/bhaskara">Model</a>
-              </li>
-              <li>
-                <a href="https://lila.apps.allenai.org">Website</a>
-              </li>
-            </ul>
-            <details>
-              <summary>Abstract</summary>
-              <p>Mathematical reasoning skills are essential for general-purpose
-              intelligentsystems to perform tasks from grocery shopping to climate
-              modeling. Towards evaluating and improving AI systems in this domain, we
-              propose LILA, a unified mathematical reasoning benchmark consisting of 23
-              diversetasks along four dimensions:(i) mathematical abilities e.g.,
-              arithmetic, calculus (ii) language format e.g., question-answering,
-              fill-in-the-blanks (iii) language diversity e.g., no language, simple
-              language (iv) external knowledge e.g., commonsense, physics. We
-              construct our benchmark by extending 20 datasets benchmark by collecting
-              task instructions and solutions in the form of Python programs, thereby
-              obtaining explainable solutions in addition to the correct answer. We
-              additionally introduce two evaluation datasets to measure
-              out-of-distribution performance and robustness to language
-              perturbation. Finally, we introduce BHASKARA, a general-purpose
-              mathematical reasoning model trained on LILA. Importantly, we find that
-              multi-tasking leads to significant improvements (average relative
-              improvement of 21.83% F1 score vs. single-task models), while the best
-              performing model only obtains 60.40%, indicating the room for improvement
-              in general mathematical reasoning and understanding.</p>
-            </details>
-          </li>
+          <!-- <li> -->
+          <!--   <h3>Decomposed Prompting: A Modular Approach for Solving Complex Tasks</h3> -->
+          <!--   <p> -->
+          <!--   Tushar Khot, Harsh Trivedi, Matthew Finlayson, Yao Fu, -->
+          <!--   Kyle Richardson, Peter Clark, and Ashish Sabharwal -->
+          <!--   </p> -->
+          <!--   <ul> -->
+          <!--     <cite>ICLR</cite> <time>2023</time> -->
+          <!--     <li> -->
+          <!--       <a href="https://arxiv.org/abs/2210.02406">Paper</a> -->
+          <!--     </li> -->
+          <!--     <li> -->
+          <!--       <a href="https://github.com/allenai/DecomP">Code</a> -->
+          <!--     </li> -->
+          <!--   </ul> -->
+          <!--   <details> -->
+          <!--     <summary>Abstract</summary> -->
+          <!--     <p>Few-shot prompting is a surprisingly powerful way to use Large -->
+          <!--     Language Models (LLMs) to solve various tasks. However, this approach -->
+          <!--     struggles as the task complexity increases or when the individual -->
+          <!--     reasoning steps of the task themselves are hard to learn, especially -->
+          <!--     when embedded in more complex tasks. To address this, we propose -->
+          <!--     Decomposed Prompting, a new approach to solve complex tasks by -->
+          <!--     decomposing them (via prompting) into simpler sub-tasks that can be -->
+          <!--     delegated to a library of prompting-based LLMs dedicated to these -->
+          <!--     sub-tasks. This modular structure allows each prompt to be optimized for -->
+          <!--     its specific sub-task, further decomposed if necessary, and even easily -->
+          <!--     replaced with more effective prompts, trained models, or symbolic -->
+          <!--     functions if desired. We show that the flexibility and modularity of -->
+          <!--     Decomposed Prompting allows it to outperform prior work on few-shot -->
+          <!--     prompting using GPT3. On symbolic reasoning tasks, we can further -->
+          <!--     decompose sub-tasks that are hard for LLMs into even simpler solvable -->
+          <!--     sub-tasks. When the complexity comes from the input length, we can -->
+          <!--     recursively decompose the task into the same task but with smaller -->
+          <!--     inputs. We also evaluate our approach on textual multi-step reasoning -->
+          <!--     tasks: on long-context multi-hop QA task, we can more effectively teach -->
+          <!--     the sub-tasks via our separate sub-tasks prompts; and on open-domain -->
+          <!--     multi-hop QA, we can incorporate a symbolic information retrieval within -->
+          <!--     our decomposition framework, leading to improved performance on both -->
+          <!--     tasks.</p> -->
+          <!--   </details> -->
+          <!-- </li> -->
+          <!-- <li> -->
+          <!--   <h3>L&imacr;la: A Unified Benchmark for Mathematical Reasoning</h3> -->
+          <!--   <p> -->
+          <!--   {Matthew Finlayson, Swaroop Mishra,} --> 
+          <!--   Pan Lu, Leonard Tang, Sean Welleck, -->
+          <!--   Chitta Baral, Tanmay Rajpurohit, Oyvind Tafjord, --> 
+          <!--   Ashish Sabharwal, Peter Clark, and Ashwin Kalyan -->
+          <!--   </p> -->
+          <!--   <ul> -->
+          <!--     <cite>EMNLP</cite> <time>2022</time> -->
+          <!--     <li> -->
+          <!--       <a href="https://arxiv.org/abs/2210.17517">Paper</a> --> 
+          <!--     </li> -->
+          <!--     <li> <a href="files/math.pdf">Slides</a> </li> -->
+          <!--     <li> -->
+          <!--       <a href="https://github.com/allenai/Lila">Data</a> -->
+          <!--     </li> -->
+          <!--     <li> -->
+          <!--       <a href="https://huggingface.co/allenai/bhaskara">Model</a> -->
+          <!--     </li> -->
+          <!--     <li> -->
+          <!--       <a href="https://lila.apps.allenai.org">Website</a> -->
+          <!--     </li> -->
+          <!--   </ul> -->
+          <!--   <details> -->
+          <!--     <summary>Abstract</summary> -->
+          <!--     <p>Mathematical reasoning skills are essential for general-purpose -->
+          <!--     intelligentsystems to perform tasks from grocery shopping to climate -->
+          <!--     modeling. Towards evaluating and improving AI systems in this domain, we -->
+          <!--     propose LILA, a unified mathematical reasoning benchmark consisting of 23 -->
+          <!--     diversetasks along four dimensions:(i) mathematical abilities e.g., -->
+          <!--     arithmetic, calculus (ii) language format e.g., question-answering, -->
+          <!--     fill-in-the-blanks (iii) language diversity e.g., no language, simple -->
+          <!--     language (iv) external knowledge e.g., commonsense, physics. We -->
+          <!--     construct our benchmark by extending 20 datasets benchmark by collecting -->
+          <!--     task instructions and solutions in the form of Python programs, thereby -->
+          <!--     obtaining explainable solutions in addition to the correct answer. We -->
+          <!--     additionally introduce two evaluation datasets to measure -->
+          <!--     out-of-distribution performance and robustness to language -->
+          <!--     perturbation. Finally, we introduce BHASKARA, a general-purpose -->
+          <!--     mathematical reasoning model trained on LILA. Importantly, we find that -->
+          <!--     multi-tasking leads to significant improvements (average relative -->
+          <!--     improvement of 21.83% F1 score vs. single-task models), while the best -->
+          <!--     performing model only obtains 60.40%, indicating the room for improvement -->
+          <!--     in general mathematical reasoning and understanding.</p> -->
+          <!--   </details> -->
+          <!-- </li> -->
           <li>
             <h3>
               What Makes Instruction Learning Hard? 

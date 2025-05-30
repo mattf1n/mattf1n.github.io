@@ -134,12 +134,12 @@ ol, ul {
 }
 
 ol {
-  list-style: none;
+  /* list-style: none; */
   padding-left: 0;
 }
 
 ol li {
-  margin-bottom: 3em;
+  margin-top: 2em;
 }
 
 cite {
