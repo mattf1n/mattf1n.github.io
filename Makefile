@@ -1,4 +1,4 @@
-all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html
+all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html pils.html
 
 gallery.html: content/gallery.md
 	pandoc -f markdown+implicit_figures --mathjax --standalone $< > $@
@@ -32,3 +32,6 @@ seq_level_temp.html: content/seq_level_temp.md
 
 colm2024.html: content/colm2024.md
 	pandoc --mathjax --standalone $< > $@ --css style/main.css
+
+pils.html: content/pils.md style/blog.css gradio.html
+	pandoc --mathjax --standalone $< > $@ --css style/blog.css --include-in-header gradio.html

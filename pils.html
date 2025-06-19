@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Better Language Model Inversion</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style/blog.css" />
+  <script
+    type="module"
+    src="https://gradio.s3-us-west-2.amazonaws.com/5.34.2/gradio.js"
+  ></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Better Language Model Inversion</h1>
+</header>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Date</th>
+<th style="text-align: left;">Authors</th>
+<th style="text-align: left;">Affiliations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">June 2025</td>
+<td style="text-align: left;">Murtaza Nazir</td>
+<td style="text-align: left;">Independent researcher</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="mattf1n.github.io">Matthew
+Finlayson</a></td>
+<td style="text-align: left;">DILL &amp; INK Labs, University of
+Southern California</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Jack Morris</td>
+<td style="text-align: left;">Cornell University</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Xiang Ren</td>
+<td style="text-align: left;">INK Lab, University of Southern
+California</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Swabha Swayamdipta</td>
+<td style="text-align: left;">DILL Lab, University of Southern
+California</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="">Paper</a></li>
+<li><a href="https://github.com/themurtazanazir/PILS">Code</a></li>
+<li><a
+href="https://huggingface.co/murtaza/pils-32-llama2-chat-7b">Model</a></li>
+</ul>
+<p><gradio-app src="https://bc6abb698db8ea6f7f.gradio.live"></gradio-app></p>
+<p class="tldr">
+<abbr>TL;DR</abbr>: We trained a <em>language model inverter</em> to
+guess secret hidden prompts from language model outputs, and it
+absolutely crushes the competition. How? By representing language model
+outputs <em>the right way</em>.
+</p>
+<p class="firstpar">
+AI model <abbr>API</abbr>s are opaque when it comes to what
+<em>exact</em> prompt ends up going into the model. They can (and <a
+href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-transformation">do</a>)
+modify the prompts that they receive from their users, and prepend
+secret system messages. This setup is by design—sometimes for security
+reasons, or to <a href="https://promptbase.com/">protect trade
+secrets</a>. A <a
+href="https://github.com/0xeb/TheBigPromptLibrary">whole cottage
+industry</a> has sprung up around reverse engineering “secret” system
+messages from language models.
+</p>
+<p>While early language model “jailbreaking” attacks were prompt-based
+(e.g., asking the model to repeat the hidden prompt), neural methods for
+prompt recovery are now emerging. This approach—known as <em>language
+model inversion</em>—aims to train a new model (known as an
+<em>inverter</em>) to guess hidden prompts by looking at the outputs
+from a target model. Compared to prompting attacks, inversion attacks
+can be harder to detect or defend against since they can work even if
+the model doesn’t repeat the prompt.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Secret prompt</th>
+<th style="text-align: left;">Output (Llama 2 Chat)</th>
+<th style="text-align: left;">Inverter guess</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Tell me about a time you felt afraid</td>
+<td style="text-align: left;">I’m just an AI, I don’t have personal
+experiences or emotions, including fear.</td>
+<td style="text-align: left;">Tell me about a time you felt afraid</td>
+</tr>
+</tbody>
+</table>
+<p>Up to this point, language model inversion has seen only limited
+success; we are talking about exact prompt recovery rates below 25%
+across the board, and often much lower. Looking at the existing methods,
+we made an observation: none of these methods take full advantage of the
+rich information available in the langauge model outputs. In these
+methods, the input to the inverter is either the <em>text</em> output of
+the target model, or the <em>next-token logprobs</em> from a single
+generations step.<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></p>
+<p>We realized that the main bottleneck in previous methods was the
+<em>size</em> of the target model output/inverter input. Next-token
+logprobs contain rich information about the prompt, but are absolutly
+massive: each generation step produces a logprob vector the size of the
+model vocabulary, which can range from 35,000 to over 200,000. On the
+other hand, information about the hidden prompt may surface over the
+course of many generations steps, giving an advantage to text-based
+inverters. Naïvely, trying to combine these approaches by using full
+logprob outputs over multiple generation steps would require an input
+size of <span
+class="math inline">\(|\text{vocab}|\times|\text{sequence}|\)</span>,
+which would be much too large to be practical.</p>
+<p>To overcome this, we take advantage of a mathematical fact about
+modern transformer models: language model outputs are subject to
+low-rank linear constraints. Specifically, for a small value of <span
+class="math inline">\(d\ll|\text{vocab}|\)</span>, there is a set of
+<span class="math inline">\(d\)</span> tokens whose logprobs linearly
+encode all the information about all the other token logprobs. This
+means that we can only collect logprobs for <em>only</em> those tokens,
+throwing away all the others, without losing any information. Doing so
+allows us to train an inverter on inputs of size <span
+class="math inline">\(d\times|\text{sequence}|\)</span>.</p>
+<figure>
+<img src="img/fig1_transparent.png"
+alt="Our inverter architecture takes advantage of the fact that there is a linear map between the logprob outputs of the model and the model’s hidden state" />
+<figcaption aria-hidden="true">Our inverter architecture takes advantage
+of the fact that there is a linear map between the logprob outputs of
+the model and the model’s hidden state</figcaption>
+</figure>
+<p>The result of our efforts? A <em>remarkable</em> improvement over
+previous language model inversion methods. In the table below, we
+highlight one of our favorite results, where we compare our inverter
+(which we call <em>prompt inversion from logprob sequences</em>, or
+PILS) to existing methods on its ability to recover hidden prompts, as
+measured by similarity between the hidden prompt and the recovered
+prompt using <abbr>BLEU</abbr>, exact match, and token <abbr>F1</abbr>.
+The prompts that we recover here come from the <a
+href="https://github.com/sahil280114/codealpaca">Alapaca Code</a>
+dataset, which is held out from our training data.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Inverter</th>
+<th style="text-align: right;">BLEU</th>
+<th style="text-align: right;">Exact match</th>
+<th style="text-align: right;">Token F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a
+href="https://arxiv.org/abs/2307.06865">Prompt</a></td>
+<td style="text-align: right;">14.2</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">36.8</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://arxiv.org/abs/2311.13647">Logit2Text</a></td>
+<td style="text-align: right;">34.6</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">65.2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://arxiv.org/abs/2311.13647">Logit2Text++</a></td>
+<td style="text-align: right;">44.4</td>
+<td style="text-align: right;">8.2</td>
+<td style="text-align: right;">73.9</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://aclanthology.org/2024.emnlp-main.819/">Output2Prompt</a></td>
+<td style="text-align: right;">61.2</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: right;">80.3</td>
+</tr>
+<tr>
+<td style="text-align: left;">PILS (ours)</td>
+<td style="text-align: right;"><strong>85.0</strong></td>
+<td style="text-align: right;"><strong>60.5</strong></td>
+<td style="text-align: right;"><strong>93.1</strong></td>
+</tr>
+</tbody>
+</table>
+<p>We invite you to browse the results from our paper, which show that
+our method yields <em>large</em>, <em>consistent</em>, gains across all
+datasets and metrics.</p>
+<p>Curiously, we find that our model <em>generalizes</em> in an
+unexpected way: when we increase the sequence length of the target model
+outputs at test time, our inverter’s performance continues to improve,
+<em>even after the length surpasses what the inverter saw during
+training</em>.</p>
+<figure>
+<img src="img/fig2_transparent.png"
+alt="As the target model output increases, our inverter’s accuracy improves, even when the length surpasses the sequence lengths seen during training. See the paper for a full explanation." />
+<figcaption aria-hidden="true">As the target model output increases, our
+inverter’s accuracy improves, even when the length surpasses the
+sequence lengths seen during training. See the paper for a full
+explanation.</figcaption>
+</figure>
+<p>We are excited about our findings because we believe that
+“jailbreaking” attacks are <em>good for the community</em>. <a
+href="https://arxiv.org/abs/2307.06865">Prompts should not be considered
+secrets</a>, and forensic tools for inspecting hidden prompts helps keep
+API providers accountable; imagine if an API provider secretly
+instructed their model to introduce subtle bugs or backdoors in users’
+code. This line of work is crucial for promoting good practices in the
+community and making it harder for malicious actors to cause harm.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Language models generate text one token (<span
+class="math inline">\(\approx\)</span>word) at a time. Every model has a
+vocbulary of tokens, and for each step in the generation process, they
+report the (log)probability of each token being the next token in the
+generation.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
