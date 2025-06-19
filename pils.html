@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Better Language Model Inversion</title>
+  <title>Stealing Hidden Prompts With 3\times Accuracy</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,8 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Better Language Model Inversion</h1>
+<h1 class="title">Stealing Hidden Prompts With 3<span
+class="math inline">\(\times\)</span> Accuracy</h1>
 </header>
 <table>
 <thead>
@@ -131,7 +132,7 @@ we made an observation: none of these methods take full advantage of the
 rich information available in the langauge model outputs. In these
 methods, the input to the inverter is either the <em>text</em> output of
 the target model, or the <em>next-token logprobs</em> from a single
-generations step.<a href="#fn1" class="footnote-ref" id="fnref1"
+generation step.<a href="#fn1" class="footnote-ref" id="fnref1"
 role="doc-noteref"><sup>1</sup></a></p>
 <p>We realized that the main bottleneck in previous methods was the
 <em>size</em> of the target model output/inverter input. Next-token
@@ -228,11 +229,11 @@ outputs at test time, our inverter’s performance continues to improve,
 training</em>.</p>
 <figure>
 <img src="img/fig2_transparent.png"
-alt="As the target model output increases, our inverter’s accuracy improves, even when the length surpasses the sequence lengths seen during training. See the paper for a full explanation." />
-<figcaption aria-hidden="true">As the target model output increases, our
-inverter’s accuracy improves, even when the length surpasses the
-sequence lengths seen during training. See the paper for a full
-explanation.</figcaption>
+alt="As the target model output length increases, our inverter’s accuracy improves, even when the length surpasses the sequence lengths seen during training. See the paper for a full explanation." />
+<figcaption aria-hidden="true">As the target model output length
+increases, our inverter’s accuracy improves, even when the length
+surpasses the sequence lengths seen during training. See the paper for a
+full explanation.</figcaption>
 </figure>
 <p>We are excited about our findings because we believe that
 “jailbreaking” attacks are <em>good for the community</em>. <a
