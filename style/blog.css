@@ -51,9 +51,13 @@ ul:first-of-type {
   margin: auto;
 }
 
-p, header, section {
+p, header, section, #refs, h2 {
   margin: auto;
   max-width: var(--textwidth);
+}
+
+#refs, section {
+  font-size: 12pt;
 }
 
 table:first-of-type, ul:first-of-type {

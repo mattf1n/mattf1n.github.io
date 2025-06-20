@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Stealing Hidden Prompts With 3\times Accuracy</title>
+  <title>Stealing Secret Prompts With 3\times Accuracy</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="style/blog.css" />
   <script
     type="module"
@@ -32,7 +52,7 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Stealing Hidden Prompts With 3<span
+<h1 class="title">Stealing Secret Prompts With 3<span
 class="math inline">\(\times\)</span> Accuracy</h1>
 </header>
 <table>
@@ -93,24 +113,25 @@ absolutely crushes the competition. How? By representing language model
 outputs <em>the right way</em>.
 </p>
 <p class="firstpar">
-AI model <abbr>API</abbr>s are opaque when it comes to what
-<em>exact</em> prompt ends up going into the model. They can (and <a
-href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-transformation">do</a>)
-modify the prompts that they receive from their users, and prepend
-secret system messages. This setup is by design—sometimes for security
-reasons, or to <a href="https://promptbase.com/">protect trade
-secrets</a>. A <a
+When interacting with an <abbr>AI</abbr> model via an <abbr>API</abbr>,
+you never know <em>exactly</em> what prompt is being sent to the model.
+Providers routinely modify user prompts—prepending secret system
+messages, or <a
+href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-transformation">making
+other changes</a>—sometimes for security reasons, or to <a
+href="https://promptbase.com/">protect trade secrets</a>. A <a
 href="https://github.com/0xeb/TheBigPromptLibrary">whole cottage
-industry</a> has sprung up around reverse engineering “secret” system
-messages from language models.
+industry</a> has emerged around reverse engineering these “secret”
+system messages from language model outputs.
 </p>
-<p>While early language model “jailbreaking” attacks were prompt-based
+<p>While early methods for stealing prompts were themselves prompt-based
 (e.g., asking the model to repeat the hidden prompt), neural methods for
 prompt recovery are now emerging. This approach—known as <em>language
-model inversion</em>—aims to train a new model (known as an
+model inversion</em> <span class="citation"
+data-cites="morris2024language">[1]</span>—trains a model (known as an
 <em>inverter</em>) to guess hidden prompts by looking at the outputs
 from a target model. Compared to prompting attacks, inversion attacks
-can be harder to detect or defend against since they can work even if
+can be harder to detect and defend against, since they can work even if
 the model doesn’t repeat the prompt.</p>
 <table>
 <thead>
@@ -129,36 +150,36 @@ experiences or emotions, including fear.</td>
 </tr>
 </tbody>
 </table>
-<p>Up to this point, language model inversion has seen only limited
-success; we are talking about exact prompt recovery rates below 25%
-across the board, and often much lower. Looking at the existing methods,
-we made an observation: none of these methods take full advantage of the
-rich information available in the langauge model outputs. In these
-methods, the input to the inverter is either the <em>text</em> output of
-the target model, or the <em>next-token logprobs</em> from a single
-generation step.<a href="#fn1" class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a></p>
-<p>We realized that the main bottleneck in previous methods was the
-<em>size</em> of the target model output/inverter input. Next-token
-logprobs contain rich information about the prompt, but are absolutly
-massive: each generation step produces a logprob vector the size of the
-model vocabulary, which can range from 35,000 to over 200,000. On the
-other hand, information about the hidden prompt may surface over the
-course of many generations steps, giving an advantage to text-based
-inverters. Naïvely, trying to combine these approaches by using full
-logprob outputs over multiple generation steps would require an input
-size of <span
-class="math inline">\(|\text{vocab}|\times|\text{sequence}|\)</span>,
-which would be much too large to be practical.</p>
-<p>To overcome this, we take advantage of a mathematical fact about
-modern transformer models: language model outputs are subject to
-low-rank linear constraints. Specifically, for a small value of <span
-class="math inline">\(d\ll|\text{vocab}|\)</span>, there is a set of
-<span class="math inline">\(d\)</span> tokens whose logprobs linearly
-encode all the information about all the other token logprobs. This
-means that we can only collect logprobs for <em>only</em> those tokens,
-throwing away all the others, without losing any information. Doing so
-allows us to train an inverter on inputs of size <span
+<p>So far, language model inversion’s success has been limited: exact
+prompt recovery rates rarely exceed 25%. Looking at the existing
+methods, we observed that none fully exploit the rich information hidden
+in the model outputs. Prior approaches supply the inverter with either
+the <em>text</em> output <span class="citation"
+data-cites="zhang-etal-2024-extracting">[2]</span> or the <em>next token
+logprobs</em> from just one generation step<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+<span class="citation" data-cites="morris2024language">[1]</span>.</p>
+<p>The chief bottleneck in prior work is the <em>size</em> of the target
+model output/inverter input. Next-token logprobs are information-rich,
+but enormous: each generation step yields a vector as large as the
+entire model vocabulary, which ranges from 35,000 to over 200,000
+tokens. Meanwhile, clues about the hidden prompt may only surface after
+<em>many</em> generation steps, giving an advantage to text-based
+inverters. Naïvely, combining these approaches by using full logprob
+outputs over multiple generation steps would result in an impractically
+large inverter input size of <span
+class="math inline">\(|\text{vocab}|\times|\text{sequence}|.\)</span></p>
+<p>We overcome this by taking advantage of a mathematical property of
+modern transformers: their outputs are subject to low-dimensional linear
+constraints <span class="citation"
+data-cites="finlayson2024logits">[3]</span>. Specifically, for a small
+value of <span class="math inline">\(d\ll|\text{vocab}|\)</span>, there
+is a set of <span class="math inline">\(d\)</span> tokens whose logprobs
+linearly encode all the information about all the other token
+logprobs.<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> Therefore, we only collect logprobs
+for these tokens, discarding the rest without loss of information. Thus
+we bring our inverter input down to a reasonable size of <span
 class="math inline">\(d\times|\text{sequence}|\)</span>.</p>
 <figure>
 <img src="img/fig1_transparent.png"
@@ -167,16 +188,15 @@ alt="Our inverter architecture takes advantage of the fact that there is a linea
 of the fact that there is a linear map between the logprob outputs of
 the model and the model’s hidden state</figcaption>
 </figure>
-<p>The result of our efforts? A <em>remarkable</em> improvement over
-previous language model inversion methods. In the table below, we
-highlight one of our favorite results, where we compare our inverter
-(which we call <em>prompt inversion from logprob sequences</em>, or
-PILS) to existing methods on its ability to recover hidden prompts, as
-measured by similarity between the hidden prompt and the recovered
-prompt using <abbr>BLEU</abbr>, exact match, and token <abbr>F1</abbr>.
-The prompts that we recover here come from the <a
-href="https://github.com/sahil280114/codealpaca">Alapaca Code</a>
-dataset, which is held out from our training data.</p>
+<p>The result is a <em>remarkable</em> improvement over previous
+language model inversion methods. In the table below, we highlight one
+of our favorite results, where we compare our inverter—called <em>prompt
+inversion from logprob sequences</em>, or <abbr>PILS</abbr>—to earlier
+prompt recovery approaches, as measured by <abbr>BLEU</abbr>, exact
+match, and token <abbr>F1</abbr> between the actual and recovered
+prompts. This particular evaluation uses the held-out <a
+href="https://github.com/sahil280114/codealpaca">Alpaca Code</a>
+dataset.</p>
 <table>
 <thead>
 <tr>
@@ -188,29 +208,28 @@ dataset, which is held out from our training data.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a
-href="https://arxiv.org/abs/2307.06865">Prompt</a></td>
+<td style="text-align: left;">Prompt <span class="citation"
+data-cites="zhang2024effective">[4]</span></td>
 <td style="text-align: right;">14.2</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">36.8</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a
-href="https://arxiv.org/abs/2311.13647">Logit2Text</a></td>
+<td style="text-align: left;">Logit2Text <span class="citation"
+data-cites="morris2024language">[1]</span></td>
 <td style="text-align: right;">34.6</td>
 <td style="text-align: right;">2.5</td>
 <td style="text-align: right;">65.2</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a
-href="https://arxiv.org/abs/2311.13647">Logit2Text++</a></td>
+<td style="text-align: left;">Logit2Text++</td>
 <td style="text-align: right;">44.4</td>
 <td style="text-align: right;">8.2</td>
 <td style="text-align: right;">73.9</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a
-href="https://aclanthology.org/2024.emnlp-main.819/">Output2Prompt</a></td>
+<td style="text-align: left;">Output2Prompt <span class="citation"
+data-cites="zhang-etal-2024-extracting">[2]</span></td>
 <td style="text-align: right;">61.2</td>
 <td style="text-align: right;">16.9</td>
 <td style="text-align: right;">80.3</td>
@@ -239,24 +258,62 @@ increases, our inverter’s accuracy improves, even when the length
 surpasses the sequence lengths seen during training. See the paper for a
 full explanation.</figcaption>
 </figure>
-<p>We are excited about our findings because we believe that
-“jailbreaking” attacks are <em>good for the community</em>. <a
-href="https://arxiv.org/abs/2307.06865">Prompts should not be considered
-secrets</a>, and forensic tools for inspecting hidden prompts helps keep
-API providers accountable; imagine if an API provider secretly
-instructed their model to introduce subtle bugs or backdoors in users’
-code. This line of work is crucial for promoting good practices in the
-community and making it harder for malicious actors to cause harm.</p>
+<p>We we believe that research on prompt recover attacks is vital for
+the community. Prompts should not be considered secrets <span
+class="citation" data-cites="zhang2024effective">[4]</span>, and
+forensic tools for inspecting hidden prompts helps keep API providers
+accountable. Imagine if an API provider secretly instructed their model
+to introduce subtle bugs or backdoors in users’ code! This line of work
+is crucial for promoting transparency, safety, and good practices in the
+community.</p>
+<h2 class="unnumbered" id="references">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-morris2024language" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div
+class="csl-right-inline">Morris JX, Zhao W, Chiu JT, et al. (2024) <a
+href="https://openreview.net/forum?id=t9dWHpGkPj">Language model
+inversion</a>, <em>The twelfth international conference on learning
+representations</em>.</div>
+</div>
+<div id="ref-zhang-etal-2024-extracting" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">2. </div><div
+class="csl-right-inline">Zhang C, Morris JX, Shmatikov V (2024) <a
+href="https://doi.org/10.18653/v1/2024.emnlp-main.819">Extracting
+prompts by inverting <span>LLM</span> outputs</a>, In: Al-Onaizan Y,
+Bansal M, Chen Y-N (Eds.), <em>Proceedings of the 2024 conference on
+empirical methods in natural language processing</em>, Miami, Florida,
+USA, Association for Computational Linguistics, 14753–14777.</div>
+</div>
+<div id="ref-finlayson2024logits" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div
+class="csl-right-inline">Finlayson M, Ren X, Swayamdipta S (2024) <a
+href="https://openreview.net/forum?id=oRcYFm8vyB">Logits of
+<span>API</span>-protected <span>LLM</span>s leak proprietary
+information</a>, <em>First conference on language modeling</em>.</div>
+</div>
+<div id="ref-zhang2024effective" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div
+class="csl-right-inline">Zhang Y, Carlini N, Ippolito D (2024) <a
+href="https://openreview.net/forum?id=0o95CVdNuz">Effective prompt
+extraction from language models</a>, <em>First conference on language
+modeling</em>.</div>
+</div>
+</div>
 <section id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn1"><p>Language models generate text one token (<span
 class="math inline">\(\approx\)</span>word) at a time. Every model has a
-vocbulary of tokens, and for each step in the generation process, they
+vocabulary of tokens, and for each step in the generation process, they
 report the (log)probability of each token being the next token in the
 generation.<a href="#fnref1" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>In practical settings, almost any collection of <span
+class="math inline">\(d\)</span> tokens will satisfy this property.<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>

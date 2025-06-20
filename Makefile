@@ -34,4 +34,4 @@ colm2024.html: content/colm2024.md
 	pandoc --mathjax --standalone $< > $@ --css style/main.css
 
 pils.html: content/pils.md style/blog.css gradio.html
-	pandoc --mathjax --standalone $< > $@ --css style/blog.css --include-in-header gradio.html
+	pandoc --mathjax --standalone $< > $@ --css style/blog.css --include-in-header gradio.html --citeproc 
