@@ -131,7 +131,7 @@ table {
   font-size: 12pt;
   margin-top: 18pt;
   margin-bottom: 18pt;
-  max-width: 1000px;
+  max-width: var(--textwidth);
   font-feature-settings: "kern";
 }
 
