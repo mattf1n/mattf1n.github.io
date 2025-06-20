@@ -74,8 +74,10 @@ href="https://themurtazanazir.github.io">Murtaza Nazir</a></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><a
 href="https://mattf1n.github.io">Matthew Finlayson</a></td>
-<td style="text-align: left;">DILL &amp; INK Labs, University of
-Southern California</td>
+<td style="text-align: left;"><a
+href="https://dill-lab.github.io/">DILL</a> &amp; <a
+href="https://inklab.usc.edu/">INK Labs</a>, University of Southern
+California</td>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
@@ -87,15 +89,15 @@ Morris</a></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><a href="https://www.seanre.com/">Xiang
 Ren</a></td>
-<td style="text-align: left;">INK Lab, University of Southern
-California</td>
+<td style="text-align: left;"><a href="https://inklab.usc.edu/">INK
+Lab</a>, University of Southern California</td>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><a href="https://swabhs.com">Swabha
 Swayamdipta</a></td>
-<td style="text-align: left;">DILL Lab, University of Southern
-California</td>
+<td style="text-align: left;"><a href="https://dill-lab.github.io/">DILL
+Lab</a>, University of Southern California</td>
 </tr>
 </tbody>
 </table>
@@ -128,7 +130,8 @@ system messages from language model outputs.
 (e.g., asking the model to repeat the hidden prompt), neural methods for
 prompt recovery are now emerging. This approach—known as <em>language
 model inversion</em> <span class="citation"
-data-cites="morris2024language">[1]</span>—trains a model (known as an
+data-cites="morris2024language">[<a href="#ref-morris2024language"
+role="doc-biblioref">1</a>]</span>—trains a model (known as an
 <em>inverter</em>) to guess hidden prompts by looking at the outputs
 from a target model. Compared to prompting attacks, inversion attacks
 can be harder to detect and defend against, since they can work even if
@@ -155,10 +158,13 @@ prompt recovery rates rarely exceed 25%. Looking at the existing
 methods, we observed that none fully exploit the rich information hidden
 in the model outputs. Prior approaches supply the inverter with either
 the <em>text</em> output <span class="citation"
-data-cites="zhang-etal-2024-extracting">[2]</span> or the <em>next token
-logprobs</em> from just one generation step<a href="#fn1"
-class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
-<span class="citation" data-cites="morris2024language">[1]</span>.</p>
+data-cites="zhang-etal-2024-extracting">[<a
+href="#ref-zhang-etal-2024-extracting"
+role="doc-biblioref">2</a>]</span> or the <em>next token logprobs</em>
+from just one generation step<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="citation"
+data-cites="morris2024language">[<a href="#ref-morris2024language"
+role="doc-biblioref">1</a>]</span>.</p>
 <p>The chief bottleneck in prior work is the <em>size</em> of the target
 model output/inverter input. Next-token logprobs are information-rich,
 but enormous: each generation step yields a vector as large as the
@@ -171,12 +177,13 @@ large inverter input size of <span
 class="math inline">\(|\text{vocab}|\times|\text{sequence}|.\)</span></p>
 <p>We overcome this by taking advantage of a mathematical property of
 modern transformers: their outputs are subject to low-dimensional linear
-constraints <span class="citation"
-data-cites="finlayson2024logits">[3]</span>. Specifically, for a small
-value of <span class="math inline">\(d\ll|\text{vocab}|\)</span>, there
-is a set of <span class="math inline">\(d\)</span> tokens whose logprobs
-linearly encode all the information about all the other token
-logprobs.<a href="#fn2" class="footnote-ref" id="fnref2"
+constraints <span class="citation" data-cites="finlayson2024logits">[<a
+href="#ref-finlayson2024logits" role="doc-biblioref">3</a>]</span>.
+Specifically, for a small value of <span
+class="math inline">\(d\ll|\text{vocab}|\)</span>, there is a set of
+<span class="math inline">\(d\)</span> tokens whose logprobs linearly
+encode all the information about all the other token logprobs.<a
+href="#fn2" class="footnote-ref" id="fnref2"
 role="doc-noteref"><sup>2</sup></a> Therefore, we only collect logprobs
 for these tokens, discarding the rest without loss of information. Thus
 we bring our inverter input down to a reasonable size of <span
@@ -209,14 +216,16 @@ dataset.</p>
 <tbody>
 <tr>
 <td style="text-align: left;">Prompt <span class="citation"
-data-cites="zhang2024effective">[4]</span></td>
+data-cites="zhang2024effective">[<a href="#ref-zhang2024effective"
+role="doc-biblioref">4</a>]</span></td>
 <td style="text-align: right;">14.2</td>
 <td style="text-align: right;">0.0</td>
 <td style="text-align: right;">36.8</td>
 </tr>
 <tr>
 <td style="text-align: left;">Logit2Text <span class="citation"
-data-cites="morris2024language">[1]</span></td>
+data-cites="morris2024language">[<a href="#ref-morris2024language"
+role="doc-biblioref">1</a>]</span></td>
 <td style="text-align: right;">34.6</td>
 <td style="text-align: right;">2.5</td>
 <td style="text-align: right;">65.2</td>
@@ -229,7 +238,9 @@ data-cites="morris2024language">[1]</span></td>
 </tr>
 <tr>
 <td style="text-align: left;">Output2Prompt <span class="citation"
-data-cites="zhang-etal-2024-extracting">[2]</span></td>
+data-cites="zhang-etal-2024-extracting">[<a
+href="#ref-zhang-etal-2024-extracting"
+role="doc-biblioref">2</a>]</span></td>
 <td style="text-align: right;">61.2</td>
 <td style="text-align: right;">16.9</td>
 <td style="text-align: right;">80.3</td>
@@ -260,7 +271,8 @@ full explanation.</figcaption>
 </figure>
 <p>We we believe that research on prompt recover attacks is vital for
 the community. Prompts should not be considered secrets <span
-class="citation" data-cites="zhang2024effective">[4]</span>, and
+class="citation" data-cites="zhang2024effective">[<a
+href="#ref-zhang2024effective" role="doc-biblioref">4</a>]</span>, and
 forensic tools for inspecting hidden prompts helps keep API providers
 accountable. Imagine if an API provider secretly instructed their model
 to introduce subtle bugs or backdoors in users’ code! This line of work
