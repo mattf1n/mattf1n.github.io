@@ -51,9 +51,15 @@ ul:first-of-type {
   margin: auto;
 }
 
-p, header, section, #refs, h2 {
+p, header, section, #refs, h2, pre.sourceCode {
   margin: auto;
   max-width: var(--textwidth);
+}
+
+pre.sourceCode {
+  overflow: scroll;
+  font-size: 10pt;
+  border: 1pt solid var(--fg1);
 }
 
 #refs, section {
@@ -202,7 +208,7 @@ a h3 {
 
 pre, kbd, code {
   font-family: monospace;
-  background-color: var(--bg2);
+  /* background-color: var(--bg2); */
   border-radius: 0.25rem;
   overflow: auto;
   padding: 1pt 2pt;
