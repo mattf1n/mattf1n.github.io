@@ -90,6 +90,10 @@ nav, footer, figure {
 
 nav {
   margin-top: 1rem;
+  /* position: fixed; */
+  /* width: 100vw; */
+  /* background-color: rgba(255, 250, 240, 0.5); */
+  /* backdrop-filter: blur(16px); */
 }
 
 header img {
