@@ -150,14 +150,31 @@
         These are papers that best represent my interests. For a full list, see my <a href="https://scholar.google.com/citations?user=37YtY2EAAAAJ&hl=en&oi=ao">Google Scholar</a>.
         <ol>
           <li>
+            <a href="https://arxiv.org/abs/2510.14086">
+              <h3>Every Language Model Has a Forgery-Resistant Signature</h3>
+            </a>
+            <p>
+Matthew Finlayson, Xiang Ren, and Swabha Swayamdipta
+            </p>
+            <ul>
+              <cite>ArXiv <time>2025</time></cite> 
+              <li>
+                <a href="https://arxiv.org/abs/2510.14086">Paper</a>
+              </li>
+            </ul>
+            <details>
+              <summary>Abstract</summary>
+              <p>The ubiquity of closed-weight language models with public-facing APIs has generated interest in forensic methods, both for extracting hidden model details (e.g., parameters) and for identifying models by their outputs. One successful approach to these goals has been to exploit the geometric constraints imposed by the language model architecture and parameters. In this work, we show that a lesser-known geometric constraint&mdash;namely, that language model outputs lie on the surface of a high-dimensional ellipse&mdash;functions as a signature for the model and can be used to identify the source model of a given output. This ellipse signature has unique properties that distinguish it from existing model-output association methods like language model fingerprints. In particular, the signature is hard to forge: without direct access to model parameters, it is practically infeasible to produce log-probabilities (logprobs) on the ellipse. Secondly, the signature is naturally occurring, since all language models have these elliptical constraints. Thirdly, the signature is self-contained, in that it is detectable without access to the model inputs or the full weights. Finally, the signature is compact and redundant, as it is independently detectable in each logprob output from the model. We evaluate a novel technique for extracting the ellipse from small models and discuss the practical hurdles that make it infeasible for production-scale models. Finally, we use ellipse signatures to propose a protocol for language model output verification, analogous to cryptographic symmetric-key message authentication systems.</p>
+            </details>
+          </li><li>
             <a href="https://arxiv.org/abs/2506.17090">
               <h3>Better Language Model Inversion by Compactly Representing Next-Token Distributions</h3>
             </a>
             <p>
-            Murtaza Nazir, Matthew Finlayson, John X. Morris, Xiang Ren, Swabha Swayamdipta
+            Murtaza Nazir, Matthew Finlayson, John X. Morris, Xiang Ren, and Swabha Swayamdipta
             </p>
             <ul>
-              <cite>ArXiv <time>2025</time></cite> 
+              <cite><abbr>NeurIPS</abbr> <time>2025</time></cite> 
               <li>
                 <a href="https://arxiv.org/abs/2506.17090">Paper</a>
                 <a href="pils.html">Blog post</a>
