@@ -37,4 +37,4 @@ pils.html: content/pils.md style/blog.css gradio.html
 	pandoc --mathjax --standalone $< > $@ --css style/blog.css --include-in-header gradio.html --citeproc 
 
 neurips2025.html: content/neurips2025.md
-	pandoc --standalone $< > $@ --css style/blog.css
+	pandoc --standalone --metadata lang=en $< > $@ --css style/blog.css
