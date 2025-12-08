@@ -170,6 +170,7 @@ table:first-of-type th, table:first-of-type td {
 
 h1, h2 {
   font-weight: normal;
+  hyphens: none;
 }
 
 
