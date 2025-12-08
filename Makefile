@@ -1,4 +1,4 @@
-all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html pils.html
+all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html pils.html neurips2025.html
 
 gallery.html: content/gallery.md
 	pandoc -f markdown+implicit_figures --mathjax --standalone $< > $@
@@ -35,3 +35,6 @@ colm2024.html: content/colm2024.md
 
 pils.html: content/pils.md style/blog.css gradio.html
 	pandoc --mathjax --standalone $< > $@ --css style/blog.css --include-in-header gradio.html --citeproc 
+
+neurips2025.html: content/neurips2025.md
+	pandoc --standalone $< > $@ --css style/blog.css

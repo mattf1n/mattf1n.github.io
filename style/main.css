@@ -122,6 +122,34 @@ figure svg {
   }
 }
 
+/* Switch to margin headings as soon as they fit */
+@media (min-width: 110ch) {
+  /* Margin headings on wide-enough screens (homepage sections) */
+  main h2#News,
+  main h2#posts,
+  main h2#Software,
+  main h2#Publications {
+    float: left;
+    /* Place in left margin with a small gutter */
+    margin-left: -22ch;
+    width: 18ch;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: right;
+    /* Align heading baseline with body baseline */
+    line-height: 1.35;
+    clear: both;
+  }
+
+  /* Remove top margin on element following the heading for alignment */
+  main h2#News + *,
+  main h2#posts + *,
+  main h2#Software + *,
+  main h2#Publications + * {
+    margin-top: 0;
+  }
+}
+
 td {
   vertical-align: top;
   /* padding: 0.5em 1em; */
@@ -211,6 +239,11 @@ h3 {
   /* margin-top: 0.25em; */
   /* margin: 0.25em 0; */
   margin-bottom: 0.5em; 
+  hyphens: none;
+}
+
+/* Do not hyphenate any headings */
+h1, h2, h3, h4, h5, h6 {
   hyphens: none;
 }
 
