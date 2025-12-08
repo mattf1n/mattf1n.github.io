@@ -54,6 +54,7 @@ ul:first-of-type {
 p, header, section, #refs, h2, pre.sourceCode {
   margin: auto;
   max-width: var(--textwidth);
+  margin-bottom: 4rem;
 }
 
 pre.sourceCode {

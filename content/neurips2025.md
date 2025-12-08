@@ -1,5 +1,5 @@
 ---
-title: Papers that caught my attention at NeurIPS 2025
+title: Some papers that caught my attention at NeurIPS 2025
 author: '[Matthew Finlayson](index.html)'
 ---
 
