@@ -151,7 +151,7 @@ def render_page(posts: List[Dict]) -> str:
 </head>
 <body>
 <header>
-  <h1><a href="../index.html">Matthew Finlayson's</a> posts</h1>
+  <h1><a href="../index.html">Matthew Finlayson's</a> posts [<a href="../feed.xml"><abbr>RSS</abbr></a>]</h1>
   <p>Recent writing, newest first.</p>
 </header>
 <main>
