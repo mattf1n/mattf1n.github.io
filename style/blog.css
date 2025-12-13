@@ -1,41 +1,12 @@
-:root{
-  --bg1-l: #FFF;
-  --bg1-l: FloralWhite;
-  --bg2-l: #e5e5e5;
-  --fg1-l: #444;
-  --fg2-l: #666;
-  --link-color-l: #0062cc; 
-  --bg1-d: #000;
-  --bg1-d: #002b36;
-  --bg2-d: #222;
-  --fg1-d: #bbb;
-  --fg2-d: #b5b5b5;
-  --link-color-d: #528dcc;
-  --bg1: var(--bg1-l);
-  --bg2: var(--bg2-l);
-  --fg1: var(--fg1-l);
-  --fg2: var(--fg2-l);
-  --link-color: var(--link-color-l);
+@import url('main.css');
+
+:root {
   --textwidth: 650px;
 }
 
 body {
-  counter-reset: bib;
-  background-color: var(--bg1); 
-  color: var(--fg1);
-  padding: 1rem;
-  text-rendering: optimizeLegibility;
-  hyphens: auto;
-  line-height: 1.35;
-  margin-top: 5%;
-  /* text-align: justify; */
-  /* font-family: sans-serif; */
-	margin: auto;
-  font-family: "Stix Two";
-  font-feature-settings: "onum", "pnum", "kern";
-  text-wrap: pretty;
   font-size: 14pt;
-} 
+}
 
 ul:first-of-type li {
   display: inline;
@@ -54,7 +25,7 @@ ul:first-of-type {
 p, header, section, #refs, h2, pre.sourceCode {
   margin: auto;
   max-width: var(--textwidth);
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 pre.sourceCode {
@@ -115,10 +86,6 @@ abbr {
 summary {
   font-size: 11pt;
   font-style: italic;
-}
-
-nav {
-  margin-top: 1rem;
 }
 
 header img {
@@ -257,16 +224,7 @@ figcaption {
   font-style: italic;
 }
 
-
-/* @media (prefers-color-scheme: dark) { */
-/*   :root{ */
-/*     --bg1: var(--bg1-d); */
-/*     --fg1: var(--fg1-d); */
-/*     --bg2: var(--bg2-d); */
-/*     --fg2: var(--fg2-d); */
-/*     --link-color: var(--link-color-d); */
-/* } */
-
+/* Additional font weights for blog content */
 @font-face{
   font-family: 'Stix Two';
   src: url('stixtwo/STIXTwoText-Regular.woff2') format('woff2');
@@ -279,7 +237,6 @@ figcaption {
   font-weight: bold;
 }
 
-
 @font-face{
   font-family: 'Stix Two';
   src: url('stixtwo/STIXTwoText-BoldItalic.woff2') format('woff2');
@@ -287,14 +244,12 @@ figcaption {
   font-style: italic;
 }
 
-
 @font-face{
   font-family: 'Stix Two';
   src: url('stixtwo/STIXTwoText-Italic.woff2') format('woff2');
   font-weight: normal;
   font-style: italic;
 }
-
 
 @font-face{
   font-family: 'Stix Two';

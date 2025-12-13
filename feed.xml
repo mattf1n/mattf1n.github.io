@@ -1,32 +1,215 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
-
 <channel>
   <title>Matt Fin's Web Log</title>
   <link>https://mattf1n.github.io</link>
+  <lastBuildDate>Sat, 13 Dec 2025 00:00:00 +0000</lastBuildDate>
   <item>
-    <title>Recurrent latent reasoning</title>
-    <link>https://mattf1n.github.io/log/2025-04-04.html</link>
+    <title>Some papers that caught my attention at NeurIPS 2025</title>
+    <link>https://mattf1n.github.io/posts/2025-12-08-papers-that-caught-my-attention-neurips-2025.html</link>
+    <guid>https://mattf1n.github.io/posts/2025-12-08-papers-that-caught-my-attention-neurips-2025.html</guid>
+    <pubDate>Mon, 08 Dec 2025 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p><a href="https://arxiv.org/abs/2506.19004">Broken Tokens? Your
+Language Model can Secretly Handle Non-Canonical Tokenizations</a> shows
+that language models are fine with however you tokenize your doc. Can we
+hide information in the tokenization…</p>]]></description>
   </item>
   <item>
-    <title>Next research project</title>
-    <link>https://mattf1n.github.io/log/2025-04-03.html</link>
+    <title>Do language models lexicalize phrases?</title>
+    <link>https://mattf1n.github.io/posts/2025-04-24-lexicalization-questions.html</link>
+    <guid>https://mattf1n.github.io/posts/2025-04-24-lexicalization-questions.html</guid>
+    <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>Do langauge models “lexicalize” certain multi-token words or phrases
+(i.e., treat them as atomic units)? How would we measure lexicalization
+in LMs?</p>]]></description>
   </item>
   <item>
-    <title>Links #2</title>
-    <link>https://mattf1n.github.io/log/2024-12-17.html</link>
+    <title>LoRA weight decay thoughts</title>
+    <link>https://mattf1n.github.io/posts/2025-04-22-lora-weight-decay-thoughts.html</link>
+    <guid>https://mattf1n.github.io/posts/2025-04-22-lora-weight-decay-thoughts.html</guid>
+    <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p><a href="https://irhum.github.io/blog/lorawd/">Irhum makes an
+observation</a> that I have thought about from time to time:
+LoRA-adapted model weights decay to the original model during training
+(not 0). How much of LoRA’s success could be attributed…</p>]]></description>
   </item>
-  <link>https://mattf1n.github.io</link>
   <item>
-    <title>The "Right Way" to Ensemble Language Models</title>
-    <link>https://mattf1n.github.io/ensemble.html</link>
+    <title>Some reading on recursive reasoning transformers</title>
+    <link>https://mattf1n.github.io/posts/2025-04-04-recursive-reasoning-transformers.html</link>
+    <guid>https://mattf1n.github.io/posts/2025-04-04-recursive-reasoning-transformers.html</guid>
+    <pubDate>Fri, 04 Apr 2025 00:00:00 +0000</pubDate>
+    <description><![CDATA[<figure>
+<img src="../files/recurrent-reasoning.svg"
+alt="My proposed latent reasoning architecture" />
+<figcaption aria-hidden="true">My proposed latent reasoning
+architecture</figcaption>
+</figure>]]></description>
   </item>
   <item>
-    <title>A differentiable function from binary to one-hot representations.</title>
-    <link>https://mattf1n.github.io/differentiable-binary-to-onehot.html</link>
-    <title>Deep BA sampling (extending BAT).</title>
-    <link>https://mattf1n.github.io/deep-ba-sampling.html</link>
+    <title>LLM have built-in MACs</title>
+    <link>https://mattf1n.github.io/posts/2025-04-03-llm-have-built-in-macs.html</link>
+    <guid>https://mattf1n.github.io/posts/2025-04-03-llm-have-built-in-macs.html</guid>
+    <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p><a href="pico.sh">pico.sh</a> seems like a cool, minimal effort tool
+for blogging, but it doesn’t support math, so I’m going to roll my
+own.</p>]]></description>
+  </item>
+  <item>
+    <title>Bug in my torch code, random links.</title>
+    <link>https://mattf1n.github.io/posts/2024-12-17-bug-in-torch-code.html</link>
+    <guid>https://mattf1n.github.io/posts/2024-12-17-bug-in-torch-code.html</guid>
+    <pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>Torch code bug that took me an hour to fix: I wrapped a function in
+<code>@torch.inference_mode</code> which called another function which
+called another function that was trying to call
+<code>torch.backward</code>.</p>]]></description>
+  </item>
+  <item>
+    <title>Hello world, MathML in NetNewsWire</title>
+    <link>https://mattf1n.github.io/posts/2024-12-05-hello-world-mathml-netnewswire.html</link>
+    <guid>https://mattf1n.github.io/posts/2024-12-05-hello-world-mathml-netnewswire.html</guid>
+    <pubDate>Thu, 05 Dec 2024 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>I created an RSS feed for my website. I did it by hand, <a
+href="https://www.w3schools.com/xml/xml_rss.asp">this template</a>. I
+don’t use any frameworks for maintaining my website, I just write
+everything by hand. I don’t change my website often…</p>]]></description>
+  </item>
+  <item>
+    <title>The &quot;Right Way&quot; to Ensemble Language Models</title>
+    <link>https://mattf1n.github.io/posts/2024-10-21-right-way-to-ensemble-language-models.html</link>
+    <guid>https://mattf1n.github.io/posts/2024-10-21-right-way-to-ensemble-language-models.html</guid>
+    <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>Suppose you have <span class="math inline"><em>n</em></span> langauge
+models with embedding size <span class="math inline"><em>d</em></span>,
+vocabulary size <span class="math inline"><em>v</em></span>, and softmax
+matrices <span
+class="math inline"><strong>W</strong><sub>1</sub>, <strong>W</strong><sub>2</sub>, …, <strong>W</strong><sub><em>n</em></sub> ∈ ℝ<sup><em>v</em> × <em>d</em></sup></span>
+and you want to sample from them as an ensemble. One…</p>]]></description>
+  </item>
+  <item>
+    <title>Research Interest Demo</title>
+    <link>https://mattf1n.github.io/posts/2024-10-21-research-interest-demo.html</link>
+    <guid>https://mattf1n.github.io/posts/2024-10-21-research-interest-demo.html</guid>
+    <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>I have created a discord server for people interested in
+collaborating with the lab. Email me for an invite!</p>]]></description>
+  </item>
+  <item>
+    <title>Obtaining logprobs from an LLM API</title>
+    <link>https://mattf1n.github.io/posts/2024-10-21-obtaining-logprobs-from-llm-api.html</link>
+    <guid>https://mattf1n.github.io/posts/2024-10-21-obtaining-logprobs-from-llm-api.html</guid>
+    <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>Many LLM APIs give top-<span class="math inline"><em>k</em></span>
+logprobs in their outputs. What if we want to obtain <em>all</em> the
+logprobs? Here I present two algorithms for obtaining logprobs from an
+LLM API. Both of these depend on the API allowing us to add a logit bias
+to…</p>]]></description>
+  </item>
+  <item>
+    <title>A differentiable function from binary integer to one-hot representations</title>
+    <link>https://mattf1n.github.io/posts/2024-10-21-differentiable-binary-to-onehot.html</link>
+    <guid>https://mattf1n.github.io/posts/2024-10-21-differentiable-binary-to-onehot.html</guid>
+    <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>I would like to define a differentiable function <span
+class="math inline"><em>f</em> : {0, 1}<sup>log <em>v</em></sup> → {0, 1}<sup><em>v</em></sup></span>
+that converts binary number representations of <span
+class="math inline">log <em>v</em></span> bits into one-hot vectors.
+This can be accomplished by using fuzzy logic operators to convert…</p>]]></description>
+  </item>
+  <item>
+    <title>Deep BA Sampling</title>
+    <link>https://mattf1n.github.io/posts/2024-10-21-deep-ba-sampling-extending-bat.html</link>
+    <guid>https://mattf1n.github.io/posts/2024-10-21-deep-ba-sampling-extending-bat.html</guid>
+    <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>TL;DR: we can use <em>any</em> intermediate LM representation to
+prove that a subset of next-token candidates have non-zero
+probability.</p>]]></description>
+  </item>
+  <item>
+    <title>Heavy tails and diversity in model distributions</title>
+    <link>https://mattf1n.github.io/posts/2025-12-12-heavy-tails-and-diversity-in-model-distributions.html</link>
+    <guid>https://mattf1n.github.io/posts/2025-12-12-heavy-tails-and-diversity-in-model-distributions.html</guid>
+    <pubDate>Tue, 12 Dec 2023 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>Direct sampling from model output distributions often gives
+incoherent outputs. Some have attributed this to a heavy tail, i.e., the
+model assigns too much probability to low-probability tokens. My goal is
+to test this hypothesis.</p>]]></description>
+  </item>
+  <item>
+    <title>Visualizations</title>
+    <link>https://mattf1n.github.io/posts/2023-10-21-visualizations-gallery.html</link>
+    <guid>https://mattf1n.github.io/posts/2023-10-21-visualizations-gallery.html</guid>
+    <pubDate>Sat, 21 Oct 2023 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>These are some visualizations I have made over the years, both for
+academia and for fun!</p>]]></description>
+  </item>
+  <item>
+    <title>The Softmax Function is Linear</title>
+    <link>https://mattf1n.github.io/posts/2023-10-21-softmax-function-is-linear.html</link>
+    <guid>https://mattf1n.github.io/posts/2023-10-21-softmax-function-is-linear.html</guid>
+    <pubDate>Sat, 21 Oct 2023 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p><a href="https://x.com/mattf1n/status/1709997521580195963?s=20">I
+asked my Twitter followers</a> if they knew that the softmax function is
+linear. The result was disbelief.</p>]]></description>
+  </item>
+  <item>
+    <title>ss.py — a CLI wrapper for the Semantic Scholar API</title>
+    <link>https://mattf1n.github.io/posts/2023-03-21-ss-py-semantic-scholar-cli.html</link>
+    <guid>https://mattf1n.github.io/posts/2023-03-21-ss-py-semantic-scholar-cli.html</guid>
+    <pubDate>Tue, 21 Mar 2023 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p><code>ss.py</code> is my personal command line tool for searching and
+citing academic papers via the Semantic Scholar API. <a
+href="/ss.html">About page</a>. <a
+href="https://github.com/mattf1n/ss">GitHub</a>.</p>]]></description>
+  </item>
+  <item>
+    <title>Putting word count in Vim statusline for LaTeX files</title>
+    <link>https://mattf1n.github.io/posts/2022-11-28-word-count-in-vim-statusline.html</link>
+    <guid>https://mattf1n.github.io/posts/2022-11-28-word-count-in-vim-statusline.html</guid>
+    <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>This ftplugin updates the word count in the statusline on every save.
+More frequent updates slow Vim down and cause random rendering
+problems.</p>]]></description>
+  </item>
+  <item>
+    <title>Configuring Zathura</title>
+    <link>https://mattf1n.github.io/posts/2022-10-11-configuring-zathura.html</link>
+    <guid>https://mattf1n.github.io/posts/2022-10-11-configuring-zathura.html</guid>
+    <pubDate>Tue, 11 Oct 2022 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>I finally got Zathura (the pdf viewer) configured the way I want it
+on MacOS. I installed using homebrew following these <a
+href="https://github.com/zegervdv/homebrew-zathura">instructions</a>. I
+set up an automator script to launch Zathura for me…</p>]]></description>
+  </item>
+  <item>
+    <title>Washington State</title>
+    <link>https://mattf1n.github.io/posts/2021-01-20-washington-state-relief-map.html</link>
+    <guid>https://mattf1n.github.io/posts/2021-01-20-washington-state-relief-map.html</guid>
+    <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>I learned some Blender and used some open source elevation data to
+make a nice looking relief map of Washington State. Check out how I made
+it <a href="https://github.com/mattf1n/Relief-Map">here</a>.
+:round_pushpin:</p>]]></description>
+  </item>
+  <item>
+    <title>Camping in Cottonwood Wash</title>
+    <link>https://mattf1n.github.io/posts/2020-05-14-camping-in-cottonwood-wash.html</link>
+    <guid>https://mattf1n.github.io/posts/2020-05-14-camping-in-cottonwood-wash.html</guid>
+    <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>This last weekend, <a href="http://caitlyndang.com">Caitlyn</a> and I
+backpacked up Cottonwood Wash in Utah’s San Rafael Swell, a beautiful
+canyon all to ourselves. We even spotted some petroglyphs.
+:mountain:</p>]]></description>
+  </item>
+  <item>
+    <title>Course notes from CS183</title>
+    <link>https://mattf1n.github.io/posts/2020-04-20-course-notes-from-cs183.html</link>
+    <guid>https://mattf1n.github.io/posts/2020-04-20-course-notes-from-cs183.html</guid>
+    <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p><a href="/files/lecture.pdf">These are my notes</a> from the course
+CS183: Foundations of Machine Learning. They are imperfect and
+incomplete but I really enjoyed making them. If you would like to make
+edits [email…</p>]]></description>
   </item>
 </channel>
-
 </rss>

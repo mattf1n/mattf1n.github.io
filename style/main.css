@@ -27,27 +27,14 @@ body {
   text-rendering: optimizeLegibility;
   hyphens: auto;
   line-height: 1.35;
-  margin-top: 5%;
-  /* text-align: justify; */
-  /* font-family: sans-serif; */
   max-width: var(--textwidth);
-	margin: auto;
+  margin: 5% auto 0 auto;
   font-family: "Stix Two";
   font-feature-settings: "onum", "pnum", "kern";
   text-wrap: pretty;
 } 
 
 main {
-}
-
-section:first-of-type p:first-of-type::first-letter {
-  -webkit-initial-letter: 2;
-  initial-letter: 2;
-  font-size: 36pt;
-  /* float: left; */
-  line-height: 0.5;
-  margin-right: 3px;
-  /* height: 0.5rem; */
 }
 
 .smallcaps {
@@ -119,34 +106,6 @@ figure svg {
     margin-top: 0;
     width: 38ch;
     clear: both;
-  }
-}
-
-/* Switch to margin headings as soon as they fit */
-@media (min-width: 110ch) {
-  /* Margin headings on wide-enough screens (homepage sections) */
-  main h2#News,
-  main h2#posts,
-  main h2#Software,
-  main h2#Publications {
-    float: left;
-    /* Place in left margin with a small gutter */
-    margin-left: -22ch;
-    width: 18ch;
-    margin-top: 0;
-    margin-bottom: 0;
-    text-align: right;
-    /* Align heading baseline with body baseline */
-    line-height: 1.35;
-    clear: both;
-  }
-
-  /* Remove top margin on element following the heading for alignment */
-  main h2#News + *,
-  main h2#posts + *,
-  main h2#Software + *,
-  main h2#Publications + * {
-    margin-top: 0;
   }
 }
 
