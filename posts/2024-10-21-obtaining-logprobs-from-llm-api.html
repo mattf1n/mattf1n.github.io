@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Matthew Finlayson" />
+  <meta name="dcterms.date" content="2024-10-21" />
+  <title>Obtaining logprobs from an LLM API</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/fin-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/fin-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/fin-16.png">
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Obtaining logprobs from an LLM API</h1>
+<p class="author">Matthew Finlayson</p>
+<p class="date">2024-10-21</p>
+</header>
+<h1 id="introduction">Introduction</h1>
+<p>Many LLM APIs give top-<span class="math inline">\(k\)</span>
+logprobs in their outputs. What if we want to obtain <em>all</em> the
+logprobs? Here I present two algorithms for obtaining logprobs from an
+LLM API. Both of these depend on the API allowing us to add a logit bias
+to any token. The second is a generalization of the first.</p>
+<h1 id="full-logprobs-in-v-api-calls">Full logprobs in <span
+class="math inline">\(v\)</span> API calls</h1>
+<p>Suppose for every call to the API we add a bias term <span
+class="math inline">\(b\in\mathbb{R}\)</span> to a token <span
+class="math inline">\(i\in\mathbb{N}\)</span>. This means that the
+model’s logits <span class="math inline">\(\boldsymbol\ell\)</span> are
+modified to <span class="math display">\[
+\boldsymbol\ell&#39;=(\ell_1,\ell_2,\ldots,\ell_i+b,\ldots,\ell_v).
+\]</span> If we collect the biased output <span
+class="math inline">\(\log
+p_i&#39;=\log\mathrm{softmax}(\boldsymbol\ell&#39;)_i\)</span> for each
+token <span class="math inline">\(i\)</span>, we now have <span
+class="math display">\[
+\begin{aligned}
+\log p_i&#39;
+&amp;=\log\frac{\exp(\ell_i+b)}{\exp(\ell_i+b)+\sum_{j\neq i}\exp
+\ell_j} \\
+&amp;= \log\frac{\exp\ell_i}{\exp\ell_i+\exp(-b)\sum_{j\neq i}\exp
+\ell_j},
+\end{aligned}
+\]</span> which we can exponentiate and rearrange to get <span
+class="math display">\[
+\begin{aligned}
+\frac{\exp(-b) p&#39;_i}{1-p&#39;_i} &amp;=
+\frac{\exp\ell_i}{\sum_{j\neq i}\exp\ell_j}.
+\end{aligned}
+\]</span> Note that the righthand side is the <em>odds</em> of the
+token, therefore we can solve for the unbiased probability <span
+class="math inline">\(p_i\)</span> of the token <span
+class="math display">\[
+\begin{aligned}
+\frac{p_i}{1-p_i} &amp;=
+\frac{\exp(-b) p&#39;_i}{1-p&#39;_i} \\
+p_i &amp;= \frac{\exp(-b) p&#39;_i}{1-p&#39;_i+\exp(-b) p&#39;_i} \\
+\log p_i &amp;= \log p&#39;_i + \log \frac{\exp(-b)}{1-p&#39;_i+\exp(-b)
+p&#39;_i} \\
+\log p_i &amp;= \log p&#39;_i - \log\left(\exp b -\exp(b + \log
+p&#39;_i)+p&#39;_i\right) \label{eq:prob}
+\end{aligned}
+\]</span> Thus, it is possible to obtain unbiased logprobs for any token
+with exactly 1 API call.</p>
+<h1 id="full-logprobs-in-vk-api-calls">Full logprobs in <span
+class="math inline">\(v/k\)</span> API calls</h1>
+<p>We can adapt this algorithm to solve for <span
+class="math inline">\(k\)</span> logprobs at a time simultaneously.
+Without loss of generality, let us solve for tokens 1-<span
+class="math inline">\(k\)</span> and assume that <span
+class="math inline">\(\exp\ell_1=1\)</span> (since logprobs are
+invariant to uniform logit translation). Setting <span
+class="math inline">\(\lambda=\exp(-b)\)</span> for convenience, we can
+solve for each <span class="math inline">\(\exp\ell_i\)</span> <span
+class="math display">\[
+\begin{aligned}
+p_i&#39;
+&amp;=\frac{\exp\ell_i}{\sum_{j\in[k]}\exp\ell_j+\lambda\sum_{j\not\in[k]}\exp\ell_j}
+\\
+\frac{\exp\ell_i}{p&#39;_i} &amp;= \sum_{j\in[k]}\exp\ell_j +
+\lambda\sum_{j\not\in[k]}\exp\ell_j \\
+\exp\ell_i &amp;= \frac{p&#39;_i}{p&#39;_1}
+\end{aligned}
+\]</span> which in turn allows us to solve for <span
+class="math inline">\(p_i\)</span> <span class="math display">\[
+\begin{aligned}
+\frac{\exp\ell_i}{p_i&#39;}
+&amp;= \sum_{j\in[k]}\exp\ell_j + \lambda\sum_{j\not\in[k]}\exp\ell_j \\
+\frac{\exp\ell_i}{\lambda p_i&#39;} -
+\frac1\lambda\sum_{j\in[k]}\exp\ell_j &amp;=
+\sum_{j\not\in[k]}\exp\ell_j \\
+\frac{\exp\ell_i}{\lambda p_i&#39;} -
+\frac1\lambda\sum_{j\in[k]}\exp\ell_j &amp;= \frac{\exp\ell_i}{p_i} -
+\sum_{j\in[k]}\exp\ell_j \\
+p_i &amp;= \frac{\lambda p&#39;_i\exp\ell_i}{\exp\ell_i +
+p&#39;_i(\lambda -1)
+\sum_{j\in[k]}\exp\ell_j} \\
+p_i &amp;= \frac{\lambda p&#39;_i}{1 - \sum_{j\in[k]}p&#39;_j +
+\lambda\sum_{j\in[k]}p&#39;_j}
+\end{aligned}
+\]</span> which we can take the log of and obtain <span
+class="math display">\[
+\begin{aligned}
+\log p_i &amp;= \log p&#39;_i - \log\left(\left(1 -
+\sum_{j\in[k]}p&#39;_j\right)\exp b + \sum_{j\in[k]}p&#39;_j\right).
+\label{eq:parallel}
+\end{aligned}
+\]</span></p>
+<h1 id="top-n-logprobs">Top-<span class="math inline">\(n\)</span>
+logprobs</h1>
+<p>Since most of the probability is often concentrated in the top-<span
+class="math inline">\(n\)</span> tokens, one may wish to gather logprobs
+for only these top tokens and skip lower-probability tokens. This can be
+done by adding a penalty bias <span class="math inline">\(-b\)</span> to
+tokens that have known logprob to surface the next-highest-probability
+batch of <span class="math inline">\(k\)</span> tokens. We can then
+solve for the unbiased probability of new batch as follows. First, solve
+the biased softmax for <span class="math inline">\(\exp\ell_i\)</span>
+<span class="math display">\[
+\begin{aligned}
+p&#39;_i &amp;=
+\frac{\exp\ell_i}{\sum_{j=i}^v\exp\ell_j +
+\exp(-b)\sum_{j=1}^{i-1}\exp\ell_j} &amp; \text{Biased softmax} \\
+\exp\ell_i &amp;= p&#39;_i\left(\sum_{j=i}^v\exp\ell_j +
+\exp(-b)\sum_{j=1}^{i-1}\exp\ell_j\right) \label{eq:bs}
+\end{aligned}
+\]</span> as well as the unbiased softmax <span class="math display">\[
+\begin{aligned}
+p_i &amp;=
+\frac{\exp\ell_i}{\sum_{j=1}^v\exp\ell_j} &amp; \text{Unbiased softmax}
+\\
+\exp\ell_i &amp;= p_i\left(\sum_{j=1}^v\exp\ell_j\right) \label{eq:ubs}
+\end{aligned}
+\]</span> which we can combine and simplify using the arbitrary
+assumption that <span class="math display">\[
+\sum_{j=1}^{i-1}\exp\ell_j=1
+\]</span> <span class="math display">\[
+\begin{aligned}
+p_i\left(\sum_{j=1}^v\exp\ell_j\right) &amp;=
+p&#39;_i\left(\sum_{j=i}^v\exp\ell_j +
+\exp(-b)\sum_{j=1}^{i-1}\exp\ell_j\right) \\
+p_i\left(1 + \sum_{j=i}^v\exp\ell_j\right) &amp;=
+p&#39;_i\left(\sum_{j=i}^v\exp\ell_j + \exp(-b)\right) &amp;
+\text{Assume $\sum_{j=1}^{i-1}\exp\ell_j=1$}
+\label{eq:pi}.
+\end{aligned}
+\]</span> We can now use the fact that we know the sum of the first
+<span class="math inline">\(i-1\)</span> probabilities to solve for
+<span class="math display">\[
+\sum_{j=i}^v\exp\ell_j
+\]</span> <span class="math display">\[
+\begin{aligned}
+\sum_{j=1}^{i-1}p_j&amp;=\frac{\sum_{j=1}^{i-1}\exp\ell_j}{\sum_{j=1}^v\exp\ell_j}
+&amp; \text{Softmax defn.} \\
+&amp;= \frac1{1+\sum_{j=i}^v\exp\ell_j} &amp; \text{Recall
+$\sum_{j=1}^{i-1}\exp\ell_j=1$} \\
+\sum_{j=i}^v\exp\ell_j &amp;= \frac1{\sum_{j=1}^{i-1}p_j} - 1
+\label{eq:sump}
+\end{aligned}
+\]</span> and substitute this into our result from earlier to solve for
+<span class="math inline">\(p_i\)</span> <span class="math display">\[
+\begin{aligned}
+\frac{p_i}{\sum_{j=1}^{i-1}p_j} &amp;=
+p&#39;_i\left(\frac1{\sum_{j=1}^{i-1}p_j} - 1 + \exp(-b)\right) \\
+p_i &amp;= p&#39;_i\left(1 + (\exp(-b)-1) \sum_{j=1}^{i-1}p_j\right).
+\end{aligned}
+\]</span></p>
+</body>
+</html>

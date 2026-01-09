@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2025-04-04" />
+  <title>Some reading on recursive reasoning transformers</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../style/main.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/fin-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/fin-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/fin-16.png">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Some reading on recursive reasoning transformers</h1>
+<p class="date">2025-04-04</p>
+</header>
+<h2 id="recurrent-transformers-for-reasoning">Recurrent transformers for
+reasoning</h2>
+<figure>
+<img src="../files/recurrent-reasoning.svg"
+alt="My proposed latent reasoning architecture" />
+<figcaption aria-hidden="true">My proposed latent reasoning
+architecture</figcaption>
+</figure>
+<p>I have a hunch that “reasoning” LLMs don’t actually need natural
+language intermediate reasoning steps. I’m imagining a recurrent latent
+reasoning chain where the output at each step is the input to the next.
+This would not be efficient for parallel training, but my understanding
+is that these models are trained via RL anyways, which, as I understand
+it, must be autoregressive.</p>
+<p>I’ve heard of techniques that allow LMs to use a “think” token or a
+“backspace” token. I’m also aware of a paper that used “…” instead of
+chain of thought. Here is a (lightly) annotated list of related
+papers.</p>
+<h3 id="looped-transformers">Looped Transformers</h3>
+<p><a href="https://openreview.net/forum?id=2edigk8yoU">Looped
+Transformers for Length Generalization</a> is a theoretical paper that
+constructs length generalizing transformers using the “looped
+transformer” architecture. <a
+href="https://openreview.net/forum?id=fiHVIUkulb">Looped
+Transformers</a> proposed the original architecture. This is a
+theoretical paper that compares looped architecture aspects of Turing
+machines.</p>
+<h3 id="universal-transformers">Universal transformers</h3>
+<p>The “original” recurrent transformer paper. Repeated application of
+the same transformer block until “stopping condition” is met.</p>
+<h3 id="deep-equilibrium-models"><a
+href="https://arxiv.org/abs/1909.01377">Deep equilibrium models</a></h3>
+<p>I really like this model idea. This is something I have thought about
+in the past: repeated applying a transformation until it reaches a
+stable state as a stopping condition. The implicit differentiation is a
+cool trick that makes this possible. I wonder how this could work in a
+transformer architecture where the hidden state output from the previous
+step is used as the input to the next.</p>
+<h2 id="converting-a-trained-transformer-to-an-rnn">Converting a trained
+transformer to an RNN</h2>
+<p>I did a class project on this, using polynomial fitting to try to get
+a better initializaton for a linear RNN to replace the softmax attention
+layer in a pretrained transformer. It didn’t work well, but I have some
+ideas for what might work next.</p>
+<ul>
+<li>Replace the softmax layer with multiple, stacked linear RNN
+layers.</li>
+<li>Train an RNN to mimic the IO behavior of the KV cache.</li>
+</ul>
+</body>
+</html>

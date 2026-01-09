@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Matthew Finlayson" />
+  <meta name="dcterms.date" content="2023-10-21" />
+  <title>The Softmax Function is Linear</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/fin-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/fin-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/fin-16.png">
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">The Softmax Function is Linear</h1>
+<p class="author"><a href="/index.html">Matthew Finlayson</a></p>
+<p class="date">2023-10-21</p>
+</header>
+<p><a href="https://x.com/mattf1n/status/1709997521580195963?s=20">I
+asked my Twitter followers</a> if they knew that the softmax function is
+linear. The result was disbelief.</p>
+<!-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Did you know that the softmax function is linear?</p>&mdash; Matthew Finlayson (@mattf1n) <a href="https://twitter.com/mattf1n/status/1709997521580195963?ref_src=twsrc%5Etfw">October 5, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+<figure>
+<img src="../img/poll.png"
+alt="My Twitter poll. The majority of respondents did not believe that the softmax function is linear." />
+<figcaption aria-hidden="true">My Twitter poll. The majority of
+respondents did not believe that the softmax function is
+linear.</figcaption>
+</figure>
+<p>In this post, I’ll give a short proof that the softmax function is a
+linear map from real vectors of <span class="math inline">\(d\)</span>
+dimensions (<span class="math inline">\(\mathbb{R}^d\)</span>) to
+probability distributions over <span class="math inline">\(d\)</span>
+variables (<span class="math inline">\(\Delta_d)\)</span>. I will assume
+some basic understanding of linear algebra. We will begin by defining
+both the softmax function and linear maps.</p>
+<p><span
+class="math display">\[\mathrm{softmax}(\vec{x})=\frac{\exp\vec{x}}{\sum_i\exp
+x_i}\]</span></p>
+<dl>
+<dt>Linear map</dt>
+<dd>
+For two real vector spaces <span class="math inline">\(V\)</span> and
+<span class="math inline">\(W\)</span> with vector addition operators
+<span class="math inline">\(\oplus_V\)</span> and <span
+class="math inline">\(\oplus_W\)</span> and scalar multiplication
+operators <span class="math inline">\(\otimes_V\)</span> and <span
+class="math inline">\(\otimes_W\)</span>, a map <span
+class="math inline">\(f:V\to W\)</span> is linear if for all vectors
+<span class="math inline">\(\vec u,\vec v\in V\)</span> we have <span
+class="math inline">\(f(\vec u\oplus_V\vec v)=f(\vec u)\oplus_Wf(\vec
+v)\)</span> (a property called <em>additivity</em>), and for any scalar
+<span class="math inline">\(\lambda\in\mathbb{R}\)</span> we have <span
+class="math inline">\(\lambda\otimes_Wf(\vec u) = f(\lambda\otimes_V\vec
+u)\)</span> (a property called <em>homogeneity</em>).
+</dd>
+</dl>
+<p>To prove that the softmax funtion is a linear map, we will therefore
+need to show</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbb{R}^d\)</span> and <span
+class="math inline">\(\Delta_d\)</span> are real vector spaces.</li>
+<li>The softmax function satisfies additivity.</li>
+<li>The softmax function satisfies homogeneity.</li>
+</ol>
+<h2 id="mathbbrd-and-delta_d-are-real-vector-spaces"><span
+class="math inline">\(\mathbb{R}^d\)</span> and <span
+class="math inline">\(\Delta_d\)</span> are real vector spaces</h2>
+<p><a
+href="https://en.wikipedia.org/wiki/Vector_space#Coordinate_space"><span
+class="math inline">\(\mathbb{R}^d\)</span> is a canonical vector
+space</a>, where vector addition is defined as <span
+class="math display">\[(u_1,u_2,\ldots,u_d)\oplus_{\mathbb{R}^d}(v_1,v_2,\ldots,v_d)=(u_1+v_1,
+u_2+v_2, \ldots, u_d+v_d)\]</span> and scalar multiplication as <span
+class="math display">\[\lambda\otimes_{\mathbb{R}^d}(u_1,u_2,\ldots,u_d)=(\lambda
+u_1,\lambda u_2, \ldots,\lambda u_d).\]</span> For convenience, we will
+denote <span
+class="math inline">\(\vec{u}\oplus_{\mathbb{R}^d}\vec{v}\)</span> as
+<span class="math inline">\(\vec{u}+\vec{v}\)</span>, and <span
+class="math inline">\(\lambda\otimes_{\mathbb{R}^d}\vec{u}\)</span> as
+<span class="math inline">\(\lambda\vec{u}\)</span>, as this is common
+notation for vector arithmetic in <span
+class="math inline">\(\mathbb{R}^d\)</span>.</p>
+<p><a
+href="https://golem.ph.utexas.edu/category/2016/06/how_the_simplex_is_a_vector_sp.html">It
+is an underappreciated fact that <span
+class="math inline">\(\Delta_d\)</span> is also a real vector space</a>.
+In particular, the elements of <span
+class="math inline">\(\Delta_d\)</span> are <span
+class="math inline">\(d\)</span>-dimensional tuples of positive reals
+whose entries sum to 1 <span
+class="math display">\[\Delta_d=\left\{\vec{u}\in(0,\infty)^d \mid
+\sum_{i=1}^du_i=1\right\}.\]</span></p>
+<figure>
+<img src="../tikz/img/simplex.png"
+alt="\Delta_d is also known as the d-simplex. Here we visualize the 3-simplex. Vectors like the one shown above (\hat{p}) that lie on the 3-simplex are valid probability distributions over 3 items." />
+<figcaption aria-hidden="true"><span
+class="math inline">\(\Delta_d\)</span> is also known as the <span
+class="math inline">\(d\)</span>-simplex. Here we visualize the
+3-simplex. Vectors like the one shown above (<span
+class="math inline">\(\hat{p}\)</span>) that lie on the 3-simplex are
+valid probability distributions over 3 items.</figcaption>
+</figure>
+<p>To add two vectors <span
+class="math inline">\(u,v\in\Delta_d\)</span>, we multiply them
+element-wise and divide by their sum <span
+class="math display">\[\vec{u}\oplus_{\Delta_d}\vec{v}=\frac{\vec{u}\odot\vec{v}}{\sum_{i=1}^du_iv_i}.\]</span>
+To multiply a vector <span
+class="math inline">\(\vec{u}\in\Delta_d\)</span> by a scalar <span
+class="math inline">\(\lambda\in\mathbb{R}\)</span>, we exponentiate
+elements by <span class="math inline">\(\lambda\)</span> and renormalize
+<span class="math display">\[
+\lambda\otimes_{\Delta_d}(u_1,u_2,\ldots,u_d)
+=\frac{(u_1^\lambda,u_2^\lambda,\ldots,u_d^\lambda)}{\sum_{i=1}^du_i^\lambda}.
+\]</span> For convenience, we will denote these operations as <span
+class="math inline">\(\oplus\)</span> and <span
+class="math inline">\(\otimes\)</span>, dropping the subscript.</p>
+<h2 id="additivity">Additivity</h2>
+<p>Our goal is to show that for all vectors <span
+class="math inline">\(\vec u,\vec v\in \mathbb{R}^d\)</span> <span
+class="math display">\[\mathrm{softmax}(\vec u+\vec
+v)=\mathrm{softmax}(\vec u)\oplus\mathrm{softmax}(\vec v).\]</span>
+Jumping right in, <span class="math display">\[\begin{aligned}
+\mathrm{softmax}(\vec u + \vec v) &amp;= \frac{\exp(\vec u+\vec
+v)}{\sum_{i=1}^d\exp(u_i+v_i)} &amp; \text{softmax defn}\\
+&amp;=
+\frac{\exp(\vec{u})\odot\exp(\vec{v})}{\sum_{i=1}^d\exp(u_i)\exp(v_i)}
+&amp; \text{exp identity} \\
+&amp;=
+\frac{\exp(\vec{u})}{\sum_{i=1}^d\exp(u_i)}\oplus\frac{\exp(\vec{v})}{\sum_{i=1}^d\exp(v_i)}
+&amp; \oplus\text{ defn} \\
+&amp;= \mathrm{softmax}(\vec{u})\oplus\mathrm{softmax}(\vec{v}) &amp;
+\text{softmax defn.}
+\end{aligned}\]</span></p>
+<h2 id="homogeneity">Homogeneity</h2>
+<p>Our goal is to show that for all vectors <span
+class="math inline">\(\vec u\in \mathbb{R}^d\)</span> and <span
+class="math inline">\(\lambda\in\mathbb{R}\)</span>, <span
+class="math display">\[\lambda\otimes\mathrm{softmax}(\vec
+u)=\mathrm{softmax}(\lambda\vec u).\]</span> By a similar derivation,
+<span class="math display">\[\begin{aligned}
+\lambda\otimes\mathrm{softmax}(\vec u)
+&amp;= \lambda\otimes\frac{\exp(\vec{u})}{\sum_{i=1}^d\exp(u_i)}  &amp;
+\text{softmax defn}\\
+&amp;=
+\frac{\exp(\vec{u})^\lambda}{\sum_{i=1}^d\exp(u_i)^\lambda}  &amp;
+\text{$\otimes$ defn}\\
+&amp;= \frac{\exp(\lambda\vec{u})}{\sum_{i=1}^d\exp(\lambda\vec{u})_i}
+&amp; \text{exp identity}\\
+&amp;=\mathrm{softmax}(\lambda\vec u) &amp; \text{softmax defn.}
+\end{aligned}\]</span></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Having shown additivity and homogeneity we have proven that the
+softmax function is a linear map! Why is this important? For one, this
+knowledge can give us intuition for how <a
+href="https://arxiv.org/abs/1711.03953">the softmax bottleneck</a>
+limits the possible outputs of language models.</p>
+<figure>
+<img src="../tikz/img/model.png"
+alt="A linear map W composed with the softmax function projects language model hidden states to probability distributions." />
+<figcaption aria-hidden="true">A linear map <span
+class="math inline">\(W\)</span> composed with the softmax function
+projects language model hidden states to probability
+distributions.</figcaption>
+</figure>
+<figure>
+<img src="../tikz/img/toy.png"
+alt="Because the low-rank projection W and the softmax function are linear, their composed image is a strict linear subspace of \Delta_v the vector space of distributions over a vocabulary of size v." />
+<figcaption aria-hidden="true">Because the low-rank projection <span
+class="math inline">\(W\)</span> and the softmax function are linear,
+their composed image is a strict linear subspace of <span
+class="math inline">\(\Delta_v\)</span> the vector space of
+distributions over a vocabulary of size <span
+class="math inline">\(v\)</span>.</figcaption>
+</figure>
+<p>In <a href="https://arxiv.org/abs/2310.01693">my recent paper</a>, we
+use this knowledge to develop a better generation algorithm for language
+models that directly addresses this source of model errors.</p>
+<hr />
+<p>Thank you for reading! For questions and comments, you are welcome to
+email me at <a
+href="mailto:mattbnfin@gmail.com">mattbnfin@gmail.com</a>.</p>
+</body>
+</html>

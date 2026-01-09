@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Matthew Finlayson" />
+  <title>Some papers that caught my attention at NeurIPS 2025</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style/blog.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Some papers that caught my attention at NeurIPS
+2025</h1>
+<p class="author"><a href="index.html">Matthew Finlayson</a></p>
+</header>
+<p><a href="https://arxiv.org/abs/2506.19004">Broken Tokens? Your
+Language Model can Secretly Handle Non-Canonical Tokenizations</a> shows
+that language models are fine with however you tokenize your doc. Can we
+hide information in the tokenization scheme (Alisa’s idea at poster)
+that might allow jailbreaking at test time/fingerprinting? How do LMs
+learn not to attend to “New” in “New York”? (York token encodes all
+info). Does the model “know” when it is getting non-canonical
+tokenizations? What does the model do with the extra compute from
+inefficient tokenizations?</p>
+<p><a href="https://arxiv.org/abs/2504.03790">Sample, Don’t Search:
+Rethinking Test-Time Alignment for Language Models</a> gives an
+algorithm that, in the limit, samples from an RL-tuned model without
+actually doing the RL. All it needs is a reward model and base language
+model. Works best with continuous rewards and when the RL training would
+narrow the distribution from the base model. From one of Andre Martin’s
+former students now doing a PhD with Noah Smith.</p>
+<p><a href="https://horwitz.ai/model-atlas">We Should Chart an Atlas of
+All the World’s Models</a> gives a pretty visualization of model family
+trees. May be useful for model forensics work.</p>
+<p><a href="https://arxiv.org/abs/2503.01822">Projecting Assumptions:
+The Duality Between Sparse Autoencoders and Concept Geometry</a>
+expounds on how the nonlinearity in an SAE (top-K, threshold, etc.)
+makes an implicit assumption about how models represent concepts (linear
+separability, angular separability, etc.). They suggest a new one. I
+think the takeaway should have been that SAEs need to use multiple
+nonlinearities to capture different methods for storing info in
+LLMs.</p>
+<p><a href="https://arxiv.org/abs/2505.21785">Born a Transformer –
+Always a Transformer? On the Effect of Pretraining on Architectural
+Abilities</a> is Michael Hahn’s student’s work on theoretical
+expressivity of transformers impact in practice.</p>
+</body>
+</html>

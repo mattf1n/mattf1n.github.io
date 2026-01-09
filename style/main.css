@@ -27,27 +27,14 @@ body {
   text-rendering: optimizeLegibility;
   hyphens: auto;
   line-height: 1.35;
-  margin-top: 5%;
-  /* text-align: justify; */
-  /* font-family: sans-serif; */
   max-width: var(--textwidth);
-	margin: auto;
+  margin: 5% auto 0 auto;
   font-family: "Stix Two";
   font-feature-settings: "onum", "pnum", "kern";
   text-wrap: pretty;
 } 
 
 main {
-}
-
-section:first-of-type p:first-of-type::first-letter {
-  -webkit-initial-letter: 2;
-  initial-letter: 2;
-  font-size: 36pt;
-  /* float: left; */
-  line-height: 0.5;
-  margin-right: 3px;
-  /* height: 0.5rem; */
 }
 
 .smallcaps {
@@ -139,7 +126,7 @@ ol, ul {
 
 ol {
   /* list-style: none; */
-  padding-left: 0;
+  /* padding-left: 0; */
 }
 
 ol li {
@@ -211,6 +198,11 @@ h3 {
   /* margin-top: 0.25em; */
   /* margin: 0.25em 0; */
   margin-bottom: 0.5em; 
+  hyphens: none;
+}
+
+/* Do not hyphenate any headings */
+h1, h2, h3, h4, h5, h6 {
   hyphens: none;
 }
 

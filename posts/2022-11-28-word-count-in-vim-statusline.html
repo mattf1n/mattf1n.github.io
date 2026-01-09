@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2022-11-28" />
+  <title>Putting word count in Vim statusline for LaTeX files</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../style/main.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/fin-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/fin-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/fin-16.png">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Putting word count in Vim statusline for LaTeX
+files</h1>
+<p class="date">2022-11-28</p>
+</header>
+<p>This ftplugin updates the word count in the statusline on every save.
+More frequent updates slow Vim down and cause random rendering
+problems.</p>
+<pre><code>&quot; .vim/after/ftplugin/tex.vim
+
+function CountWords()
+  silent return systemlist(&#39;texcount &#39; .. expand(&#39;%:p&#39;))[2]
+endfunction
+
+let b:wordcount = CountWords()
+
+augroup tex
+  autocmd! * &lt;buffer&gt;
+  autocmd BufWritePost &lt;buffer&gt; :let b:wordcount = CountWords()
+augroup END
+
+setlocal statusline=%{b:wordcount}</code></pre>
+<h3 id="update-2023-03-27">Update (2023-03-27)</h3>
+<p>Using vim’s <code>job_start</code> function, I can asynchronously
+update the word count, preventing the short hang on save.</p>
+<pre><code>&quot; .vim/after/ftplugin/tex.vim
+
+function UpdateWordcount(_, msg)
+  if match(a:msg, &#39;Words in text:&#39;) &gt;= 0
+    let b:wordcount = a:msg
+    let &amp;l:statusline = &amp;l:statusline &quot; Refresh statusline
+  endif
+endfunction
+
+augroup my_tex
+  autocmd! * &lt;buffer&gt;
+  autocmd BufEnter,BufWritePost &lt;buffer&gt; call job_start(
+        \  [ &#39;texcount&#39;, expand(&#39;%:p&#39;) ], 
+        \  {&#39;out_cb&#39;: &#39;UpdateWordcount&#39;}
+        \) 
+augroup END
+
+let b:wordcount = &#39;Words in text: ...&#39;
+setlocal statusline=%{b:wordcount}</code></pre>
+</body>
+</html>

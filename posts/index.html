@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Posts by Matthew Finlayson.">
+  <title>Posts · Matt Fin</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/fin-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/fin-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/fin-16.png">
+  <link rel="manifest" href="../favicon/site.webmanifest">
+  <link rel="stylesheet" href="../style/main.css">
+  <link rel="stylesheet" href="../style/postindex.css">
+</head>
+<body>
+<header>
+  <h1><a href="../index.html">Matthew Finlayson's</a> posts [<a href="../feed.xml"><abbr>RSS</abbr></a>]</h1>
+  <p>Recent writing, newest first.</p>
+</header>
+<main>
+  <section id="posts-index">
+    <article class="post-card">
+      <header>
+        <h2><a href="2025-12-08-papers-that-caught-my-attention-neurips-2025.html">Some papers that caught my attention at NeurIPS 2025</a></h2>
+        <time datetime="2025-12-08">Dec 08, 2025</time>
+      </header>
+      <div class="preview">
+        <p><a href="https://arxiv.org/abs/2506.19004">Broken Tokens? Your
+Language Model can Secretly Handle Non-Canonical Tokenizations</a> shows
+that language models are fine with however you tokenize your doc. Can we
+hide information in the tokenization…</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2025-04-24-lexicalization-questions.html">Do language models lexicalize phrases?</a></h2>
+        <time datetime="2025-04-24">Apr 24, 2025</time>
+      </header>
+      <div class="preview">
+        <p>Do langauge models “lexicalize” certain multi-token words or phrases
+(i.e., treat them as atomic units)? How would we measure lexicalization
+in LMs?</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2025-04-22-lora-weight-decay-thoughts.html">LoRA weight decay thoughts</a></h2>
+        <time datetime="2025-04-22">Apr 22, 2025</time>
+      </header>
+      <div class="preview">
+        <p><a href="https://irhum.github.io/blog/lorawd/">Irhum makes an
+observation</a> that I have thought about from time to time:
+LoRA-adapted model weights decay to the original model during training
+(not 0). How much of LoRA’s success could be attributed…</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2025-04-04-recursive-reasoning-transformers.html">Some reading on recursive reasoning transformers</a></h2>
+        <time datetime="2025-04-04">Apr 04, 2025</time>
+      </header>
+      <div class="preview">
+        <figure>
+<img src="../files/recurrent-reasoning.svg"
+alt="My proposed latent reasoning architecture" />
+<figcaption aria-hidden="true">My proposed latent reasoning
+architecture</figcaption>
+</figure>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2025-04-03-llm-have-built-in-macs.html">LLM have built-in MACs</a></h2>
+        <time datetime="2025-04-03">Apr 03, 2025</time>
+      </header>
+      <div class="preview">
+        <p><a href="pico.sh">pico.sh</a> seems like a cool, minimal effort tool
+for blogging, but it doesn’t support math, so I’m going to roll my
+own.</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2024-12-17-bug-in-torch-code.html">Bug in my torch code, random links.</a></h2>
+        <time datetime="2024-12-17">Dec 17, 2024</time>
+      </header>
+      <div class="preview">
+        <p>Torch code bug that took me an hour to fix: I wrapped a function in
+<code>@torch.inference_mode</code> which called another function which
+called another function that was trying to call
+<code>torch.backward</code>.</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2024-12-05-hello-world-mathml-netnewswire.html">Hello world, MathML in NetNewsWire</a></h2>
+        <time datetime="2024-12-05">Dec 05, 2024</time>
+      </header>
+      <div class="preview">
+        <p>I created an RSS feed for my website. I did it by hand, <a
+href="https://www.w3schools.com/xml/xml_rss.asp">this template</a>. I
+don’t use any frameworks for maintaining my website, I just write
+everything by hand. I don’t change my website often…</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2024-10-21-right-way-to-ensemble-language-models.html">The &quot;Right Way&quot; to Ensemble Language Models</a></h2>
+        <time datetime="2024-10-21">Oct 21, 2024</time>
+      </header>
+      <div class="preview">
+        <p>Suppose you have <span class="math inline"><em>n</em></span> langauge
+models with embedding size <span class="math inline"><em>d</em></span>,
+vocabulary size <span class="math inline"><em>v</em></span>, and softmax
+matrices <span
+class="math inline"><strong>W</strong><sub>1</sub>, <strong>W</strong><sub>2</sub>, …, <strong>W</strong><sub><em>n</em></sub> ∈ ℝ<sup><em>v</em> × <em>d</em></sup></span>
+and you want to sample from them as an ensemble. One…</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2024-10-21-research-interest-demo.html">Research Interest Demo</a></h2>
+        <time datetime="2024-10-21">Oct 21, 2024</time>
+      </header>
+      <div class="preview">
+        <p>I have created a discord server for people interested in
+collaborating with the lab. Email me for an invite!</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2024-10-21-obtaining-logprobs-from-llm-api.html">Obtaining logprobs from an LLM API</a></h2>
+        <time datetime="2024-10-21">Oct 21, 2024</time>
+      </header>
+      <div class="preview">
+        <p>Many LLM APIs give top-<span class="math inline"><em>k</em></span>
+logprobs in their outputs. What if we want to obtain <em>all</em> the
+logprobs? Here I present two algorithms for obtaining logprobs from an
+LLM API. Both of these depend on the API allowing us to add a logit bias
+to…</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2024-10-21-differentiable-binary-to-onehot.html">A differentiable function from binary integer to one-hot representations</a></h2>
+        <time datetime="2024-10-21">Oct 21, 2024</time>
+      </header>
+      <div class="preview">
+        <p>I would like to define a differentiable function <span
+class="math inline"><em>f</em> : {0, 1}<sup>log <em>v</em></sup> → {0, 1}<sup><em>v</em></sup></span>
+that converts binary number representations of <span
+class="math inline">log <em>v</em></span> bits into one-hot vectors.
+This can be accomplished by using fuzzy logic operators to…</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2024-10-21-deep-ba-sampling-extending-bat.html">Deep BA Sampling</a></h2>
+        <time datetime="2024-10-21">Oct 21, 2024</time>
+      </header>
+      <div class="preview">
+        <p>TL;DR: we can use <em>any</em> intermediate LM representation to
+prove that a subset of next-token candidates have non-zero
+probability.</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2025-12-12-heavy-tails-and-diversity-in-model-distributions.html">Heavy tails and diversity in model distributions</a></h2>
+        <time datetime="2023-12-12">Dec 12, 2023</time>
+      </header>
+      <div class="preview">
+        <p>Direct sampling from model output distributions often gives
+incoherent outputs. Some have attributed this to a heavy tail, i.e., the
+model assigns too much probability to low-probability tokens. My goal is
+to test this hypothesis.</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2023-10-21-visualizations-gallery.html">Visualizations</a></h2>
+        <time datetime="2023-10-21">Oct 21, 2023</time>
+      </header>
+      <div class="preview">
+        <p>These are some visualizations I have made over the years, both for
+academia and for fun!</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2023-10-21-softmax-function-is-linear.html">The Softmax Function is Linear</a></h2>
+        <time datetime="2023-10-21">Oct 21, 2023</time>
+      </header>
+      <div class="preview">
+        <p><a href="https://x.com/mattf1n/status/1709997521580195963?s=20">I
+asked my Twitter followers</a> if they knew that the softmax function is
+linear. The result was disbelief.</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2023-03-21-ss-py-semantic-scholar-cli.html">ss.py — a CLI wrapper for the Semantic Scholar API</a></h2>
+        <time datetime="2023-03-21">Mar 21, 2023</time>
+      </header>
+      <div class="preview">
+        <p><code>ss.py</code> is my personal command line tool for searching and
+citing academic papers via the Semantic Scholar API. <a
+href="/ss.html">About page</a>. <a
+href="https://github.com/mattf1n/ss">GitHub</a>.</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2022-11-28-word-count-in-vim-statusline.html">Putting word count in Vim statusline for LaTeX files</a></h2>
+        <time datetime="2022-11-28">Nov 28, 2022</time>
+      </header>
+      <div class="preview">
+        <p>This ftplugin updates the word count in the statusline on every save.
+More frequent updates slow Vim down and cause random rendering
+problems.</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2022-10-11-configuring-zathura.html">Configuring Zathura</a></h2>
+        <time datetime="2022-10-11">Oct 11, 2022</time>
+      </header>
+      <div class="preview">
+        <p>I finally got Zathura (the pdf viewer) configured the way I want it
+on MacOS. I installed using homebrew following these <a
+href="https://github.com/zegervdv/homebrew-zathura">instructions</a>. I
+set up an automator script to launch Zathura for me…</p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2021-01-20-washington-state-relief-map.html">Washington State</a></h2>
+        <time datetime="2021-01-20">Jan 20, 2021</time>
+      </header>
+      <div class="preview">
+        <p>I learned some Blender and used some open source elevation data to
+make a nice looking relief map of Washington State. Check out how I made
+it <a href="https://github.com/mattf1n/Relief-Map">here</a>. <span
+class="emoji" data-emoji="round_pushpin">📍</span></p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2020-05-14-camping-in-cottonwood-wash.html">Camping in Cottonwood Wash</a></h2>
+        <time datetime="2020-05-14">May 14, 2020</time>
+      </header>
+      <div class="preview">
+        <p>This last weekend, <a href="http://caitlyndang.com">Caitlyn</a> and I
+backpacked up Cottonwood Wash in Utah’s San Rafael Swell, a beautiful
+canyon all to ourselves. We even spotted some petroglyphs. <span
+class="emoji" data-emoji="mountain">⛰️</span></p>
+      </div>
+    </article>
+    <article class="post-card">
+      <header>
+        <h2><a href="2020-04-20-course-notes-from-cs183.html">Course notes from CS183</a></h2>
+        <time datetime="2020-04-20">Apr 20, 2020</time>
+      </header>
+      <div class="preview">
+        <p><a href="/files/lecture.pdf">These are my notes</a> from the course
+CS183: Foundations of Machine Learning. They are imperfect and
+incomplete but I really enjoyed making them. If you would like to make
+edits…</p>
+      </div>
+    </article>
+  </section>
+</main>
+</body>
+</html>

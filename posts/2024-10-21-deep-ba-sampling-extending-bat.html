@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Matthew Finlayson" />
+  <meta name="dcterms.date" content="2024-10-21" />
+  <title>Deep BA Sampling</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/fin-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/fin-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/fin-16.png">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Deep BA Sampling</h1>
+<p class="author"><a href="/index.html">Matthew Finlayson</a></p>
+<p class="date">2024-10-21</p>
+</header>
+<p>TL;DR: we can use <em>any</em> intermediate LM representation to
+prove that a subset of next-token candidates have non-zero
+probability.</p>
+<p>In my paper <a
+href="https://openreview.net/forum?id=dONpC9GL1o">“Closing the Curious
+Case of Neural Text Degeneration”</a>, we show that when a LM outputs
+the embedding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>,
+and we assume that the model outputs the distribution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>p</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math>
+that minimizes cross entropy with the true distribution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>*</mo></mrow><annotation encoding="application/x-tex">p\ast</annotation></semantics></math>,
+we get the resulting relationship
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mtext mathvariant="monospace">𝚌𝚛𝚘𝚜𝚜𝚎𝚗𝚝𝚛𝚘𝚙𝚢</mtext><mo stretchy="false" form="prefix">(</mo><mi>h</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><msup><mi>W</mi><mi>⊤</mi></msup><mi>p</mi><mi>*</mi><mo>=</mo><msup><mi>W</mi><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla\texttt{crossentropy}(h)=0 \quad \Rightarrow \quad W^\top p\ast=W^\top\hat{p}.</annotation></semantics></math>
+This is useful because we can use it as a linear constraint in order to
+tell whether a particualar token has nonzero true probability, i.e., if
+there is no solution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+such that
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>W</mi><mi>⊤</mi></msup><mi>p</mi><mo>=</mo><msup><mi>W</mi><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>p</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><mn>0</mn><mo>≤</mo><mi>p</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">W^\top p = W^\top\hat{p},\quad p_i=0,\quad 0\leq p\leq 1</annotation></semantics></math>
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p_i&gt;0</annotation></semantics></math>.</p>
+<p>We were able to get this linear set of constraints by considering the
+gradient with respect to the final embedding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>,
+but what about earlier representations in the model? For instance, what
+if we consider the representation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mo>′</mo></msup><annotation encoding="application/x-tex">h&#39;</annotation></semantics></math>
+from before the final layer norm? As part of the derivation in the
+paper, we obtain the equality
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mo stretchy="false" form="prefix">(</mo><mi>h</mi><mo>↦</mo><mi>W</mi><mi>h</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>⊤</mi></msup><mi>p</mi><mi>*</mi><mo>=</mo><mi>∇</mi><mo stretchy="false" form="prefix">(</mo><mi>h</mi><mo>↦</mo><mi>W</mi><mi>h</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>,</mo></mrow><annotation encoding="application/x-tex">\nabla(h\mapsto Wh)^\top p\ast=\nabla(h\mapsto Wh)^\top\hat{p},</annotation></semantics></math>
+which is simply the first chain rule expansion of the model gradient
+with respect to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>.
+Importantly,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mo stretchy="false" form="prefix">(</mo><mi>h</mi><mo>↦</mo><mi>W</mi><mi>h</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\nabla(h\mapsto Wh)</annotation></semantics></math>
+is the Jacobian of the vector function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>↦</mo><mi>W</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">h\mapsto Wh</annotation></semantics></math>.
+If we swap out the final embedding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+for the pre-layernorm representation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mo>′</mo></msup><annotation encoding="application/x-tex">h&#39;</annotation></semantics></math>,
+we can obtain the relation
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>h</mi><mo>′</mo></msup><mo>↦</mo><mi>W</mi><mtext mathvariant="monospace">𝚕𝚊𝚢𝚎𝚛𝚗𝚘𝚛𝚖</mtext><mo stretchy="false" form="prefix">(</mo><msup><mi>h</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="postfix">)</mo><mi>⊤</mi></msup><mi>p</mi><mi>*</mi><mo>=</mo><mi>∇</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>h</mi><mo>′</mo></msup><mo>↦</mo><mi>W</mi><mtext mathvariant="monospace">𝚕𝚊𝚢𝚎𝚛𝚗𝚘𝚛𝚖</mtext><mo stretchy="false" form="prefix">(</mo><msup><mi>h</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="postfix">)</mo><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla(h&#39;\mapsto W\texttt{layernorm}(h&#39;))^\top p\ast=\nabla(h&#39;\mapsto W\texttt{layernorm}(h&#39;))^\top\hat{p}.</annotation></semantics></math>
+More generally, with a slight abuse of notation, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">𝚕𝚘𝚐𝚒𝚝𝚜</mtext><mo>:</mo><msup><mi>ℝ</mi><mi>?</mi></msup><mo>→</mo><msup><mi>ℝ</mi><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">\texttt{logits}:\mathbb{R}^?\to\mathbb{R}^v</annotation></semantics></math>
+be the mapping from any intermediate model representation to the model
+logits. For every intermediate representation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+we will have
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mtext mathvariant="monospace">𝚕𝚘𝚐𝚒𝚝𝚜</mtext><mo stretchy="false" form="prefix">(</mo><mi>h</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>⊤</mi></msup><mi>p</mi><mi>*</mi><mo>=</mo><mi>∇</mi><mtext mathvariant="monospace">𝚕𝚘𝚐𝚒𝚝𝚜</mtext><mo stretchy="false" form="prefix">(</mo><mi>h</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla\texttt{logits}(h)^\top p\ast=\nabla\texttt{logits}(h)^\top\hat{p}.</annotation></semantics></math></p>
+<p>What does this mean? It means we have LOTS of linear constraints that
+we can add to our program. I am curious which ones will be useful, and
+whether we could use this to make our program more efficient. If we used
+ALL of the constraints, we would have an over-constained program,
+potentially meaning fewer or no token rejections. If there is some
+specific structure to the constraints we could perhaps find efficient
+approximations. Instead of approximating the Jacobian with SVD, could we
+take the Jacobian w.r.t. a subset of the representations?</p>
+</body>
+</html>
