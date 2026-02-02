@@ -68,7 +68,7 @@ cite, nav li, td li, ol ul {
 
 summary {
   font-size: 11pt;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 nav, footer, figure {
