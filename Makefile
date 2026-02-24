@@ -3,9 +3,9 @@ POST_HTML := $(patsubst content/posts/%.md,posts/%.html,$(POST_MD))
 POST_INDEX := posts/index.html
 FEED := feed.xml
 
-all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html pils.html neurips2025.html $(POST_HTML) $(POST_INDEX) $(FEED)
+all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html neurips2025.html $(POST_HTML) $(POST_INDEX) $(FEED)
 
-PANDOC_DEFAULT_FLAGS := --standalone -f markdown+implicit_figures+emoji --include-in-header favicon_head.html
+PANDOC_DEFAULT_FLAGS := --standalone -f markdown+implicit_figures+emoji --include-in-header favicon_head.html --mathml
 PANDOC_MATHJAX_FLAGS := --standalone -f markdown+implicit_figures+emoji --include-in-header favicon_head.html --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 posts/%.html: content/posts/%.md
@@ -62,9 +62,6 @@ seq_level_temp.html: content/seq_level_temp.md
 
 colm2024.html: content/colm2024.md
 	pandoc --mathjax --standalone $< > $@ --css style/main.css
-
-pils.html: content/pils.md style/blog.css gradio.html
-	pandoc --mathjax --standalone $< > $@ --css style/blog.css --include-in-header gradio.html --citeproc 
 
 neurips2025.html: content/neurips2025.md
 	pandoc --standalone --metadata lang=en $< > $@ --css style/blog.css

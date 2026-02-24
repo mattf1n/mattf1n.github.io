@@ -3,7 +3,17 @@
 <channel>
   <title>Matt Fin's Web Log</title>
   <link>https://mattf1n.github.io</link>
-  <lastBuildDate>Sat, 13 Dec 2025 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 24 Feb 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Better math fonts for AI venue submissions</title>
+    <link>https://mattf1n.github.io/posts/2026-02-24-better-math-fonts-for-ai-venue-submissions.html</link>
+    <guid>https://mattf1n.github.io/posts/2026-02-24-better-math-fonts-for-ai-venue-submissions.html</guid>
+    <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>Most AI conference venues have Times (or Times New Roman) as their
+font for submissions. Unfortunately the math in the templates is set in
+computer modern (or latin modern, not sure). Improve your paper’s
+aesthetics by using Times for the…</p>]]></description>
+  </item>
   <item>
     <title>Some papers that caught my attention at NeurIPS 2025</title>
     <link>https://mattf1n.github.io/posts/2025-12-08-papers-that-caught-my-attention-neurips-2025.html</link>
