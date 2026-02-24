@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2023-12-12" />
+  <title>Heavy tails and diversity in model distributions</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../style/main.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/site.webmanifest">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Heavy tails and diversity in model distributions</h1>
+<p class="date">2023-12-12</p>
+</header>
+<h2 id="motivation">Motivation</h2>
+<p>Direct sampling from model output distributions often gives
+incoherent outputs. Some have attributed this to a heavy tail, i.e., the
+model assigns too much probability to low-probability tokens. My goal is
+to test this hypothesis.</p>
+<h2 id="measuring-heavy-tails">Measuring heavy tails</h2>
+<p>To test the hypothesis we need to define what it means for a
+distribution to be heavy-tailed.</p>
+<p><strong>Definition (Crossover).</strong> A distribution <span
+class="math inline">\(\hat p\)</span> is heavy-tailed with respect to a
+distribution <span class="math inline">\(p\)</span> if <span
+class="math inline">\(\hat p\)</span> preserves the probability ordering
+of <span class="math inline">\(p\)</span> and there exists some element
+<span class="math inline">\(i\)</span> such that for all <span
+class="math inline">\(j\)</span>, <span class="math inline">\(\hat p_j
+&gt; p(j)\)</span> iff <span class="math inline">\(p(j) &lt;
+p(i)\)</span>. We say that <span class="math inline">\(\hat p\)</span>
+<em>crosses over</em> <span class="math inline">\(p\)</span>.</p>
+<p>In other words, there is a crossover point in the ordering of <span
+class="math inline">\(p\)</span> and <span class="math inline">\(\hat
+p\)</span> (which is identical) where all probabilities in the
+heavy-tailed distribution go from being less than original, to being
+greater than. The assumption of probability ordering is consistent with
+assumptions in previous work, where the output distribution is assumed
+to be the true distribution plus some smoothing.</p>
+<p>We can use Hill numbers, a measure of diversity (see Section <a
+href="#hill-numbers">Hill numbers</a>), to test whether one distribution
+crosses over another.</p>
+<p><strong>Proposition (Crossover distributions have lower Hill
+numbers).</strong><br />
+If <span class="math inline">\(\hat p\)</span> crosses over <span
+class="math inline">\(p\)</span>, then <span class="math display">\[
+{}^{q}D(\hat p) &lt; {}^{q}D(p).
+\]</span></p>
+<p><em>Proof sketch.</em> <span class="math inline">\(\left(\sum_i\hat
+p_i^q\right)^\frac{1}{1-q} \leq
+\left(\sum_ip_i^q\right)^\frac{1}{1-q}\)</span> because the sum is
+dominated by its largest components. ◻</p>
+<p>More generally, we can define heavy-tailedness in terms of diversity.
+Intuitively, a more heavy-tailed distribution will give more diversity
+when sampled from. We can choose any Hill number as our metric. This
+relaxes the assumptions about crossover.</p>
+<p>Another measure I am interested in is <em>kurtosis</em>. Kurtosis is
+interpreted as “the propensity of a distribution to produce outliers”.
+Is kurtosis defined for a categorical distribution?</p>
+<p>Lastly, we might also try measuring distance from the uniform or the
+one-hot distribution.</p>
+<h2 id="hill-numbers">Hill numbers</h2>
+<p>Both entropy and Simpson’s index are Hill numbers, which are measures
+of diversity. The Hill number <span
+class="math inline">\({}^{q}D\)</span> is given by <span
+class="math display">\[
+{}^{q}D=\left(\sum_ip_i^q\right)^\frac{1}{1-q}.
+\]</span> Entropy is the Hill number <span
+class="math inline">\({}^{1}D\)</span>, Simpson’s index is <span
+class="math inline">\({}^{2}D\)</span>. As <span
+class="math inline">\(q\)</span> increases, <span
+class="math inline">\({}^{q}D\)</span> gives increasing weight to the
+most likely tokens. The diversity is related to heavy-tailedness because
+heavier tails means more diversity.</p>
+<h2 id="approximating-hill-numbers">Approximating Hill numbers</h2>
+<p>Since we do not have direct access to the true distribution, only
+<span class="math inline">\(\hat p\)</span>, we need some way to
+approximate <span class="math inline">\({}^{q}D(p)\)</span>.</p>
+<h3 id="dataset-sampling">Dataset sampling</h3>
+<p><strong>Conjecture (Hill number approximation).</strong><br />
+Under certain assumptions and with some value <span
+class="math inline">\(q\)</span>, we can approximate the Hill number
+<span class="math inline">\({}^{q}D\)</span> with <span
+class="math display">\[
+\mathop{\mathrm{\mathbb E}}_{p\sim P}
+    \left[{}^{q}D(p)-{}^{q}D(\hat p)\right]
+    \geq \left(
+    \mathop{\mathrm{\mathbb E}}_{i\sim P}\left[\hat p_i^{q-1}
+    - {}^{q}D(\hat p)\right]
+    \right)^\frac{1}{1-q}.
+\]</span></p>
+<p>Now, to test whether the model distribution is heavy-tailed compared
+to the true distribution, we can run inference on the corpus and compare
+expected probabilities to the true probabilities. Formally, the LM
+distribution is heavy-tailed with respect to the true distribution if
+<span class="math display">\[
+  \mathop{\mathrm{\mathbb E}}_{\hat p,\mathrm{gold}\sim P}\left[\hat
+p_\mathrm{gold}-\mathop{\mathrm{\mathbb E}}_{i\sim\hat p}[\hat
+p_i]\right] &gt; 0,
+\]</span> where <span class="math inline">\(D\)</span> is a corpus from
+which we sample gold tokens and model next-token distributions.</p>
+<h3 id="results">Results</h3>
+<p>We sample the first <span class="math inline">\(366{,}456\)</span>
+tokens of the Pile test set and feed them to GPT-Neo-125M. The result of
+our metric is <span class="math inline">\(-0.00320\)</span> with a
+standard error of <span class="math inline">\(0.000274\)</span>. This
+suggests that the model’s next-token distribution is <em>not</em> heavy
+tailed. Using entropy instead of Simpson’s index we have a mean
+difference of <span class="math inline">\(-0.0124\)</span> and a
+standard error of <span class="math inline">\(0.00347\)</span>, which
+seems to give the opposite conclusion: that the tail is <em>not</em>
+heavy.</p>
+<p>One possible issue with this metric is that it may require assuming
+that all <span class="math inline">\(\hat p\)</span> distributions are
+similar. This may be problematic since <span class="math inline">\(\hat
+p_\mathrm{gold}-\mathop{\mathrm{\mathbb E}}_{i\sim\hat p}[\hat
+p_i]\)</span> is bounded above by <span
+class="math inline">\(\sqrt{\mathop{\mathrm{\mathbb E}}_{i\sim\hat
+p}[\hat p_i]}-\mathop{\mathrm{\mathbb E}}_{i\sim\hat p}[\hat
+p_i]\)</span> and below by <span
+class="math inline">\(-\mathop{\mathrm{\mathbb E}}_{i\sim\hat p}[\hat
+p_i]\)</span> as the vocabulary size grows. To remedy this, we can
+control for expected probability, to separate different
+distributions.</p>
+<h2 id="oracle-model">Oracle model</h2>
+<p>Suppose we have 2 models, a small model parameterized by <span
+class="math inline">\(\vartheta\)</span> and a large model parameterized
+by <span class="math inline">\(\theta\)</span>, such that the large
+model achieves lower perplexity on the test set, i.e., the large model
+is a better approximation of the true distribution. We can then compare
+the diversity of <span class="math inline">\(p_\vartheta\)</span> to
+<span class="math inline">\(p_\theta\)</span> over the test set.
+GPT-Neo-1.3B shows lower entropy on average than GPT-Neo-125M,
+suggesting the larger model has a less diverse tail.</p>
+<p>We now have some conflicting results. Larger models have lower
+entropy on average, but our dataset sampling method suggests that the
+models are <em>not</em> hedging as much as they should. Perhaps the
+models are overconfident in the <em>wrong</em> tokens.</p>
+<p><strong>Hypothesis (Non-fat tails).</strong><br />
+Truncation works not because distribution tails are too fat, but because
+there are more mistakes outside the head. For a better model, the “safe
+zone” will expand.</p>
+<h2
+id="disambiguating-fat-tails-and-disordered-predictions">Disambiguating
+fat tails and disordered predictions</h2>
+<p>Two hypotheses: truncation sampling works because</p>
+<ul>
+<li>the model smooths the true distribution. Truncation sampling
+desmooths.</li>
+<li>the model gives a distribution where only most probable tokens
+follow the true distribution.</li>
+</ul>
+<p>One way they could be different: tokens sampled from a smoothed
+distribution will have a lower mean probability than directly sampled
+tokens. This is because lower-probability tokens are more likely to be
+sampled by a smoothed probability distribution. If the sampled tokens
+have an equal or higher mean probability, it must be that the
+distribution is not a smoothed one.</p>
+<p>Is it possible for the distribution to be less peaked but have a
+higher dot product? No. But it is possible for the distribution to be
+more peaked but have a lower dot product. In this case the original
+distribution is <em>not recoverable</em> from the estimation, except by
+extreme truncation sampling.</p>
+<p>Every transformation of the probability distribution is a scale and
+rotation about the uniform distribution in <span
+class="math inline">\(|V|-1\)</span> dimensions. There are limits to the
+extent that the support of the original distribution can be recovered
+via truncation.</p>
+<h2 id="measuring-the-scaling-factor-between-two-models">Measuring the
+scaling factor between two models</h2>
+<p>Given model distribution <span class="math inline">\(p\)</span> and
+oracle distribution <span class="math inline">\(p^*\)</span>, we want to
+find the amount of uniform smoothing applied to <span
+class="math inline">\(p^*\)</span> to obtain <span
+class="math inline">\(p\)</span>. To do this, we can take <span
+class="math inline">\(p\)</span> and <span
+class="math inline">\(p^*\)</span> with respect to the uniform
+distribution by observing <span
+class="math inline">\(p-u=p&#39;\)</span> and <span
+class="math inline">\(p^*-u={p^*}&#39;\)</span>. We can then have <span
+class="math inline">\(p&#39;={p^*}&#39;A\)</span> (<span
+class="math inline">\(p&#39;\)</span> is a linear transformation of
+<span class="math inline">\({p^*}&#39;\)</span>).</p>
+<h2
+id="upper-bounding-the-scaling-required-to-recover-the-support">Upper
+bounding the scaling required to recover the support</h2>
+<p>A model outputs some distribution <span
+class="math inline">\(p\)</span> which is the true distribution <span
+class="math inline">\(p^*\)</span> with some scaling <span
+class="math inline">\(\lambda\)</span> and rotation <span
+class="math inline">\(R\)</span> applied such that <span
+class="math inline">\(p=\lambda R p\)</span>. We want to find some new
+scaling factor <span class="math inline">\(\lambda&#39;\)</span> and
+rotation <span class="math inline">\(R&#39;\)</span> such that the if
+<span class="math inline">\(p^*_i=0\)</span> then <span
+class="math inline">\(\lambda&#39;R&#39;p_i&lt;=0\)</span>. The
+intuition here is that the true distribution lies on a boundary of the
+simplex. Some scaling and rotation is applied which brings the
+probability to the inside of the hull. We want to rescale and rerotate
+the probability again to bring it outside the hull in a way that avoids
+exiting the hull along boundaries that the original distribution was not
+touching.</p>
+<h2 id="are-model-distributions-smoothed">Are model distributions
+smoothed?</h2>
+<p>Two working questions:</p>
+<ul>
+<li>Are distributions smoothed via uniform mixing?</li>
+<li>Do smoothing assumptions in prior work hold, or is there a weaker
+form we can lean on?</li>
+</ul>
+</body>
+</html>
