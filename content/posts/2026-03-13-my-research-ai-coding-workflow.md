@@ -10,6 +10,7 @@ My eyes generally glaze over reading "how I use AI" posts, but enough of my coll
 My overall strategy for coding these days is to have OpenAI's Codex agent write and run my code for me on the cluster.
 
 Main considerations: 
+
 - I don't use python notebooks.
 - I don't have root/sudo access on the research cluster.
 
