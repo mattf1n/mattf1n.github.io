@@ -167,9 +167,6 @@
       vertical-align: middle;
     }
   </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
@@ -190,7 +187,7 @@ and we assume that the model outputs the distribution
 that minimizes cross entropy with the true distribution
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>*</mo></mrow><annotation encoding="application/x-tex">p\ast</annotation></semantics></math>,
 we get the resulting relationship
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mtext mathvariant="monospace">𝚌𝚛𝚘𝚜𝚜𝚎𝚗𝚝𝚛𝚘𝚙𝚢</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><msup><mi>W</mi><mi>⊤</mi></msup><mi>p</mi><mo>*</mo><mo>=</mo><msup><mi>W</mi><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla\texttt{crossentropy}(h)=0 \quad \Rightarrow \quad W^\top p\ast=W^\top\hat{p}.</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mtext mathvariant="monospace">𝚌𝚛𝚘𝚜𝚜𝚎𝚗𝚝𝚛𝚘𝚙𝚢</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><msup><mi>W</mi><mi>⊤</mi></msup><mi>p</mi><mi>*</mi><mo>=</mo><msup><mi>W</mi><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla\texttt{crossentropy}(h)=0 \quad \Rightarrow \quad W^\top p\ast=W^\top\hat{p}.</annotation></semantics></math>
 This is useful because we can use it as a linear constraint in order to
 tell whether a particualar token has nonzero true probability, i.e., if
 there is no solution
@@ -207,7 +204,7 @@ if we consider the representation
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">h&#39;</annotation></semantics></math>
 from before the final layer norm? As part of the derivation in the
 paper, we obtain the equality
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo>↦</mo><mi>W</mi><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>p</mi><mo>*</mo><mo>=</mo><mi>∇</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo>↦</mo><mi>W</mi><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>,</mo></mrow><annotation encoding="application/x-tex">\nabla(h\mapsto Wh)^\top p\ast=\nabla(h\mapsto Wh)^\top\hat{p},</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo>↦</mo><mi>W</mi><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>p</mi><mi>*</mi><mo>=</mo><mi>∇</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo>↦</mo><mi>W</mi><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>,</mo></mrow><annotation encoding="application/x-tex">\nabla(h\mapsto Wh)^\top p\ast=\nabla(h\mapsto Wh)^\top\hat{p},</annotation></semantics></math>
 which is simply the first chain rule expansion of the model gradient
 with respect to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>.
@@ -220,14 +217,14 @@ If we swap out the final embedding
 for the pre-layernorm representation
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">h&#39;</annotation></semantics></math>,
 we can obtain the relation
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mi>′</mi><mo>↦</mo><mi>W</mi><mtext mathvariant="monospace">𝚕𝚊𝚢𝚎𝚛𝚗𝚘𝚛𝚖</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>p</mi><mo>*</mo><mo>=</mo><mi>∇</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mi>′</mi><mo>↦</mo><mi>W</mi><mtext mathvariant="monospace">𝚕𝚊𝚢𝚎𝚛𝚗𝚘𝚛𝚖</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla(h&#39;\mapsto W\texttt{layernorm}(h&#39;))^\top p\ast=\nabla(h&#39;\mapsto W\texttt{layernorm}(h&#39;))^\top\hat{p}.</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mi>′</mi><mo>↦</mo><mi>W</mi><mtext mathvariant="monospace">𝚕𝚊𝚢𝚎𝚛𝚗𝚘𝚛𝚖</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>p</mi><mi>*</mi><mo>=</mo><mi>∇</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mi>′</mi><mo>↦</mo><mi>W</mi><mtext mathvariant="monospace">𝚕𝚊𝚢𝚎𝚛𝚗𝚘𝚛𝚖</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla(h&#39;\mapsto W\texttt{layernorm}(h&#39;))^\top p\ast=\nabla(h&#39;\mapsto W\texttt{layernorm}(h&#39;))^\top\hat{p}.</annotation></semantics></math>
 More generally, with a slight abuse of notation, let
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">𝚕𝚘𝚐𝚒𝚝𝚜</mtext><mo>:</mo><msup><mi>ℝ</mi><mi>?</mi></msup><mo>→</mo><msup><mi>ℝ</mi><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">\texttt{logits}:\mathbb{R}^?\to\mathbb{R}^v</annotation></semantics></math>
 be the mapping from any intermediate model representation to the model
 logits. For every intermediate representation
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
 we will have
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mtext mathvariant="monospace">𝚕𝚘𝚐𝚒𝚝𝚜</mtext><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>p</mi><mo>*</mo><mo>=</mo><mi>∇</mi><mtext mathvariant="monospace">𝚕𝚘𝚐𝚒𝚝𝚜</mtext><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla\texttt{logits}(h)^\top p\ast=\nabla\texttt{logits}(h)^\top\hat{p}.</annotation></semantics></math></p>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mtext mathvariant="monospace">𝚕𝚘𝚐𝚒𝚝𝚜</mtext><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>p</mi><mi>*</mi><mo>=</mo><mi>∇</mi><mtext mathvariant="monospace">𝚕𝚘𝚐𝚒𝚝𝚜</mtext><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla\texttt{logits}(h)^\top p\ast=\nabla\texttt{logits}(h)^\top\hat{p}.</annotation></semantics></math></p>
 <p>What does this mean? It means we have LOTS of linear constraints that
 we can add to our program. I am curious which ones will be useful, and
 whether we could use this to make our program more efficient. If we used

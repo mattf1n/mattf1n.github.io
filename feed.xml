@@ -3,7 +3,17 @@
 <channel>
   <title>Matt Fin's Web Log</title>
   <link>https://mattf1n.github.io</link>
-  <lastBuildDate>Tue, 24 Feb 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>My research AI coding workflow</title>
+    <link>https://mattf1n.github.io/posts/2026-03-13-my-research-ai-coding-workflow.html</link>
+    <guid>https://mattf1n.github.io/posts/2026-03-13-my-research-ai-coding-workflow.html</guid>
+    <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>My eyes generally glaze over reading “how I use AI” posts, but enough
+of my colleagues have expressed interest that I think this would be
+worth sharing. My overall strategy for coding these days is to have
+OpenAI’s Codex agent write and…</p>]]></description>
+  </item>
   <item>
     <title>Better math fonts for AI venue submissions</title>
     <link>https://mattf1n.github.io/posts/2026-02-24-better-math-fonts-for-ai-venue-submissions.html</link>
