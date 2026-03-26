@@ -3,7 +3,17 @@
 <channel>
   <title>Matt Fin's Web Log</title>
   <link>https://mattf1n.github.io</link>
-  <lastBuildDate>Tue, 24 Feb 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Blocking the Cisco Secure Client Socket Filter on macOS</title>
+    <link>https://mattf1n.github.io/posts/2026-03-26-blocking-cisco-socket-filter-on-macos.html</link>
+    <guid>https://mattf1n.github.io/posts/2026-03-26-blocking-cisco-socket-filter-on-macos.html</guid>
+    <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+    <description><![CDATA[<p>The Cisco Secure Client Socket Filter installed by the Cisco VPN
+client on my laptop (VPN is necessary to connect to USC compute cluster)
+was causing problems: sometimes when I started up my laptop I couldn’t
+access the internet even when…</p>]]></description>
+  </item>
   <item>
     <title>Better math fonts for AI venue submissions</title>
     <link>https://mattf1n.github.io/posts/2026-02-24-better-math-fonts-for-ai-venue-submissions.html</link>
