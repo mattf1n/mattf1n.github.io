@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-03-13" />
+  <title>My research AI coding workflow</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../style/main.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/fin-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/fin-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/fin-16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../img/fin-192.png">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">My research AI coding workflow</h1>
+<p class="date">2026-03-13</p>
+</header>
+<p>My eyes generally glaze over reading “how I use AI” posts, but enough
+of my colleagues have expressed interest that I think this would be
+worth sharing. My overall strategy for coding these days is to have
+OpenAI’s Codex agent write and run my code for me on the cluster.</p>
+<p>Main considerations:</p>
+<ul>
+<li>I don’t use python notebooks.</li>
+<li>I don’t have root/sudo access on the research cluster.</li>
+</ul>
+<p>My current workflow for running experiments on the USC cluster:</p>
+<ul>
+<li>Install node+npm (I recommend using nvm, since I saw a colleague
+succeed with this recently). You will have to figure out how to do this
+without root access. It’s possible.</li>
+<li>Create your project directory (or <code>cd</code> into it if it
+already exists).</li>
+<li>Load tmux (<code>module load tmux</code>) and start a session with
+<code>tmux</code> so that you have a persistent session that you can
+reattach to if you get disconnected (<code>tmux attach</code>).</li>
+<li>Install OpenAI’s Codex with npm:
+<code>npm install -g @openai/codex</code>. Then run <code>codex</code>
+to start your coding agent session. You can resume with
+<code>codex resume</code> if you get disconnected.</li>
+<li>Tell Codex to use <code>uv</code> to work with python. Tell it to
+run experiments using SLURM. It knows how to do these things.</li>
+<li>Start telling codex what to do. It’s really good at things.</li>
+</ul>
+</body>
+</html>
