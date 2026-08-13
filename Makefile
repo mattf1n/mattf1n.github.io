@@ -2,8 +2,9 @@ POST_MD := $(wildcard content/posts/*.md)
 POST_HTML := $(patsubst content/posts/%.md,posts/%.html,$(POST_MD))
 POST_INDEX := posts/index.html
 FEED := feed.xml
+MARINE_FEED := marine-weather.xml
 
-all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html neurips2025.html $(POST_HTML) $(POST_INDEX) $(FEED)
+all: gallery.html smislinear.html deep-ba-sampling.html differentiable-binary-to-onehot.html ensemble.html entropy.html interest-demo.html apologies.html colm2024.html sidescroll.html pils.html neurips2025.html $(POST_HTML) $(POST_INDEX) $(FEED) $(MARINE_FEED)
 
 PANDOC_DEFAULT_FLAGS := --standalone -f markdown+implicit_figures+emoji --include-in-header favicon_head.html --mathml
 PANDOC_MATHJAX_FLAGS := --standalone -f markdown+implicit_figures+emoji --include-in-header favicon_head.html --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
@@ -17,6 +18,9 @@ posts/index.html: $(POST_MD) scripts/build_posts_index.py
 
 feed.xml: $(POST_MD) scripts/build_feed.py
 	python scripts/build_feed.py
+
+marine-weather.xml: scripts/build_marine_feed.py
+	python scripts/build_marine_feed.py $@
 
 # Post-specific flags
 posts/2024-10-21-deep-ba-sampling-extending-bat.html: PANDOC_FLAGS := --standalone -f markdown+implicit_figures+emoji --include-in-header favicon_head.html --mathml
