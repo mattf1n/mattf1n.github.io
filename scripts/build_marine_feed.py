@@ -21,13 +21,14 @@ SOURCE_URL = (
     "https://marine.weather.gov/MapClick.php?FcstType=text&TextType=1"
     "&lat=43.707&lon=-69.448"
 )
-FEED_URL = "https://mattf1n.github.io/marine-weather.xml"
+FEED_URL = "https://mattf.nl/marine-weather.xml"
 
 
 class TextParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.parts: list[str] = []
+        self.html_parts: list[str] = []
         self.in_forecast = False
         self.depth = 0
 
@@ -36,8 +37,10 @@ class TextParser(HTMLParser):
         if tag == "div" and "margin:25px" in attributes.get("style", ""):
             self.in_forecast = True
             self.depth = 1
-        elif self.in_forecast and tag == "div":
-            self.depth += 1
+        elif self.in_forecast:
+            if tag == "div":
+                self.depth += 1
+            self.html_parts.append(self.get_starttag_text() or f"<{tag}>")
         if self.in_forecast and tag == "br":
             self.parts.append("\n")
 
@@ -46,19 +49,24 @@ class TextParser(HTMLParser):
             self.depth -= 1
             if self.depth == 0:
                 self.in_forecast = False
+                return
+        if self.in_forecast:
+            self.html_parts.append(f"</{tag}>")
 
     def handle_data(self, data: str) -> None:
         if self.in_forecast:
             self.parts.append(data)
+            self.html_parts.append(data)
 
 
-def clean_forecast(source: str) -> str:
+def parse_forecast(source: str) -> tuple[str, str]:
     parser = TextParser()
     parser.feed(source)
     text = html.unescape("".join(parser.parts))
     # Keep paragraph breaks, but avoid retaining the navigation and markup.
     lines = [re.sub(r"[ \t]+", " ", line).strip() for line in text.splitlines()]
-    return "\n".join(line for line in lines if line).strip()
+    text = "\n".join(line for line in lines if line).strip()
+    return text, "".join(parser.html_parts).strip()
 
 
 def update_time(forecast: str) -> datetime:
@@ -102,8 +110,8 @@ def build(output: Path) -> None:
     with urlopen(request, timeout=30) as response:
         source = response.read().decode("utf-8", errors="replace")
 
-    forecast = clean_forecast(source)
-    if not forecast:
+    forecast, forecast_html = parse_forecast(source)
+    if not forecast or not forecast_html:
         raise RuntimeError("The NWS page did not contain a forecast")
     issued = update_time(forecast)
     fingerprint = hashlib.sha256(forecast.encode()).hexdigest()[:16]
@@ -128,7 +136,7 @@ def build(output: Path) -> None:
         tag("link", SOURCE_URL),
         f'<guid isPermaLink="false">{escape(FEED_URL)}#{fingerprint}</guid>',
         tag("pubDate", published),
-        f'<description>{cdata("<pre>" + html.escape(forecast) + "</pre>")}</description>',
+        f'<description>{cdata(forecast_html)}</description>',
         '</item>',
         '</channel>',
         '</rss>',

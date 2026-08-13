@@ -8,24 +8,28 @@
 <item>
 <title>Marine forecast — 21NM SSE Wiscasset ME</title>
 <link>https://marine.weather.gov/MapClick.php?FcstType=text&amp;TextType=1&amp;lat=43.707&amp;lon=-69.448</link>
-<guid isPermaLink="false">https://mattf1n.github.io/marine-weather.xml#e7b2fc79a2fe5e0d</guid>
+<guid isPermaLink="false">https://mattf.nl/marine-weather.xml#e7b2fc79a2fe5e0d</guid>
 <pubDate>Wed, 12 Aug 2026 23:16:00 GMT</pubDate>
-<description><![CDATA[<pre>NWS Forecast for: 21NM SSE Wiscasset ME
-Atlantic Ocean
-Issued by: National Weather Service Gray/Portland, ME
-Last Update: 7:16 pm EDT Aug 12, 2026
-Overnight: W wind 5 to 10 kt. A slight chance of showers after 2am. Seas around 2 ft.
-Thursday: WSW wind 5 to 10 kt becoming S in the afternoon. A chance of showers and thunderstorms before noon, then a slight chance of showers between noon and 2pm, then a slight chance of showers and thunderstorms after 2pm. Seas 1 to 2 ft.
-Thursday Night: WSW wind 5 to 10 kt becoming WNW after midnight. A chance of showers and thunderstorms before 9pm, then a slight chance of showers between 9pm and 10pm. Seas around 2 ft.
-Friday: NW wind around 10 kt becoming W in the afternoon. Sunny. Seas around 2 ft.
-Friday Night: NW wind around 10 kt. Mostly clear. Seas around 2 ft.
-Saturday: NNW wind 5 to 10 kt becoming SW in the afternoon. Sunny. Seas around 2 ft.
-Saturday Night: WSW wind 5 to 10 kt becoming NW after midnight. Partly cloudy. Seas around 2 ft.
-Sunday: W wind 5 to 8 kt becoming SSW 7 to 10 kt in the afternoon. Mostly sunny. Seas around 1 ft.
-Sunday Night: SSW wind around 10 kt. A chance of showers. Seas 2 to 3 ft.
-Marine Point Forecast: 43.7°N 69.44°W
-Associated Zone Forecast which includes this point
-Visit your local NWS office at: https://www.weather.gov/gyx/</pre>]]></description>
+<description><![CDATA[<table width="800" border="0" align="center" cellpadding="0" cellspacing="0"><tr valign ="top"><td width="80%" valign="top" align="left"><font size="3"><b>NWS Forecast for: 21NM SSE Wiscasset ME<br>Atlantic Ocean</b></font><br>Issued by: National Weather Service Gray/Portland, ME<br><a href="https://www.weather.gov/glossary/index.php?word=Last+update"><b>Last Update: </b></a>7:16 pm EDT Aug 12, 2026</td></tr><tr><td colspan="2" valign="top" align="center"><hr><br></td></tr>
+</table><table width="800" border="0" align="center" cellpadding="0" cellspacing="0"><tr valign ="top"><td colspan="2" valign="top" align="left"><b>Overnight: </b>W wind 5 to 10 kt. A slight chance of showers after 2am.   Seas around 2 ft.<br>
+<br>
+<b>Thursday: </b>WSW wind 5 to 10 kt becoming S in the afternoon. A chance of showers and thunderstorms before noon, then a slight chance of showers between noon and 2pm, then a slight chance of showers and thunderstorms after 2pm.   Seas 1 to 2 ft.<br>
+<br>
+<b>Thursday Night: </b>WSW wind 5 to 10 kt becoming WNW after midnight. A chance of showers and thunderstorms before 9pm, then a slight chance of showers between 9pm and 10pm.   Seas around 2 ft.<br>
+<br>
+<b>Friday: </b>NW wind around 10 kt becoming W in the afternoon. Sunny. Seas around 2 ft.<br>
+<br>
+<b>Friday Night: </b>NW wind around 10 kt. Mostly clear. Seas around 2 ft.<br>
+<br>
+<b>Saturday: </b>NNW wind 5 to 10 kt becoming SW in the afternoon. Sunny. Seas around 2 ft.<br>
+<br>
+<b>Saturday Night: </b>WSW wind 5 to 10 kt becoming NW after midnight. Partly cloudy. Seas around 2 ft.<br>
+<br>
+<b>Sunday: </b>W wind 5 to 8 kt becoming SSW 7 to 10 kt in the afternoon. Mostly sunny. Seas around 1 ft.<br>
+<br>
+<b>Sunday Night: </b>SSW wind around 10 kt. A chance of showers.   Seas 2 to 3 ft.<br>
+<br>
+<hr><br></td></tr><tr><td colspan="2" align="left"><b>Marine Point Forecast:</b> 43.7°N 69.44°W<br>Associated <a href="MapClick.php?zoneid=ANZ152">Zone Forecast</a> which includes this point<br></td></tr><tr><td colspan="2" align="left"><br>Visit your local NWS office at: <a href="https://www.weather.gov/gyx/">https://www.weather.gov/gyx/</a></td></tr></table>]]></description>
 </item>
 </channel>
 </rss>
