@@ -69,6 +69,27 @@ def parse_forecast(source: str) -> tuple[str, str]:
     return text, "".join(parser.html_parts).strip()
 
 
+def responsive_html(source_html: str) -> str:
+    """Make the NWS's fixed-width table markup fit narrow feed readers."""
+    def table_start(match: re.Match[str]) -> str:
+        opening = match.group(0)
+        opening = re.sub(r"\s+width\s*=\s*(['\"])800\1", "", opening, flags=re.I)
+        if re.search(r"\sstyle\s*=", opening, flags=re.I):
+            opening = re.sub(
+                r"\sstyle\s*=\s*(['\"])",
+                r" style=\1width:100%;max-width:100%;box-sizing:border-box;",
+                opening,
+                count=1,
+                flags=re.I,
+            )
+        else:
+            opening = opening[:-1] + ' style="width:100%;max-width:100%;box-sizing:border-box;">'
+        return opening
+
+    tables = re.sub(r"<table\b[^>]*>", table_start, source_html, flags=re.I)
+    return '<div style="max-width:100%;overflow-x:auto;">' + tables + "</div>"
+
+
 def update_time(forecast: str) -> datetime:
     match = re.search(r"Last Update:\s*([^\n]+)", forecast, re.I)
     if match:
@@ -111,6 +132,7 @@ def build(output: Path) -> None:
         source = response.read().decode("utf-8", errors="replace")
 
     forecast, forecast_html = parse_forecast(source)
+    forecast_html = responsive_html(forecast_html)
     if not forecast or not forecast_html:
         raise RuntimeError("The NWS page did not contain a forecast")
     issued = update_time(forecast)
