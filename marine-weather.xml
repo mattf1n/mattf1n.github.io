@@ -8,16 +8,14 @@
 <item>
 <title>Marine forecast — 21NM SSE Wiscasset ME</title>
 <link>https://marine.weather.gov/MapClick.php?FcstType=text&amp;TextType=1&amp;lat=43.707&amp;lon=-69.448</link>
-<guid isPermaLink="false">https://mattf.nl/marine-weather.xml#26918d56f36e8fe8</guid>
+<guid isPermaLink="false">https://mattf.nl/marine-weather.xml#b2a98de56de63d8d</guid>
 <pubDate>Wed, 26 Aug 2026 18:22:00 GMT</pubDate>
 <description><![CDATA[<div style="max-width:100%;overflow-x:auto;"><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td width="80%" valign="top" align="left"><font size="3"><b>NWS Forecast for: 21NM SSE Wiscasset ME<br>Atlantic Ocean</b></font><br>Issued by: National Weather Service Gray/Portland, ME<br><a href="https://www.weather.gov/glossary/index.php?word=Last+update"><b>Last Update: </b></a>2:22 pm EDT Aug 26, 2026</td></tr><tr><td colspan="2" valign="top" align="center"><hr><br></td></tr>
-</table><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td colspan="2" valign="top" align="left"><b>This Afternoon: </b>SSW wind around 10 kt. Sunny. Seas around 2 ft.<br>
-<br>
-<b>Tonight: </b>Variable winds 5 kt or less. Increasing clouds. Seas around 3 ft.<br>
+</table><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td colspan="2" valign="top" align="left"><b>Tonight: </b>SSW wind 5 to 10 kt. Increasing clouds. Seas around 3 ft.<br>
 <br>
 <b>Thursday: </b>S wind around 10 kt. Partly sunny. Seas around 3 ft.<br>
 <br>
-<b>Thursday Night: </b>S wind around 15 kt. A chance of showers between 2am and 5am.   Seas 4 to 5 ft.<br>
+<b>Thursday Night: </b>S wind around 15 kt. A slight chance of showers, then a chance of showers and thunderstorms after 2am.   Seas 4 to 5 ft.<br>
 <br>
 <b>Friday: </b>S wind around 10 kt. A chance of showers before 3pm.   Seas 3 to 4 ft.<br>
 <br>
@@ -28,6 +26,8 @@
 <b>Saturday Night: </b>SW wind 5 to 10 kt. Mostly clear. Seas 2 to 3 ft.<br>
 <br>
 <b>Sunday: </b>SSW wind 5 to 10 kt increasing to 10 to 15 kt in the afternoon. Mostly sunny. Seas around 2 ft.<br>
+<br>
+<b>Sunday Night: </b>SW wind around 10 kt becoming W after midnight. Mostly cloudy. Seas around 2 ft.<br>
 <br>
 <hr><br></td></tr><tr><td colspan="2" align="left"><b>Marine Point Forecast:</b> 43.7°N 69.44°W<br>Associated <a href="MapClick.php?zoneid=ANZ152">Zone Forecast</a> which includes this point<br></td></tr><tr><td colspan="2" align="left"><br>Visit your local NWS office at: <a href="https://www.weather.gov/gyx/">https://www.weather.gov/gyx/</a></td></tr></table></div>]]></description>
 </item>
