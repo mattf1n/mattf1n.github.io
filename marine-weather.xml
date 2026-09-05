@@ -8,12 +8,10 @@
 <item>
 <title>Marine forecast — 21NM SSE Wiscasset ME</title>
 <link>https://marine.weather.gov/MapClick.php?FcstType=text&amp;TextType=1&amp;lat=43.707&amp;lon=-69.448</link>
-<guid isPermaLink="false">https://mattf.nl/marine-weather.xml#afd4188c30d064dd</guid>
+<guid isPermaLink="false">https://mattf.nl/marine-weather.xml#bc3bb73f07c75315</guid>
 <pubDate>Fri, 04 Sep 2026 22:01:00 GMT</pubDate>
 <description><![CDATA[<div style="max-width:100%;overflow-x:auto;"><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td width="80%" valign="top" align="left"><font size="3"><b>NWS Forecast for: 21NM SSE Wiscasset ME<br>Atlantic Ocean</b></font><br>Issued by: National Weather Service Gray/Portland, ME<br><a href="https://www.weather.gov/glossary/index.php?word=Last+update"><b>Last Update: </b></a>6:01 pm EDT Sep 4, 2026</td></tr><tr><td colspan="2" valign="top" align="center"><hr><br></td></tr>
-</table><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td colspan="2" valign="top" align="left"><b>Overnight: </b>NNW wind around 10 kt. Mostly clear. Seas around 3 ft.<br>
-<br>
-<b>Saturday: </b>NNE wind around 10 kt. Partly sunny. Seas 2 to 3 ft.<br>
+</table><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td colspan="2" valign="top" align="left"><b>Saturday: </b>N wind around 10 kt becoming NNE in the morning. Partly sunny. Seas 2 to 3 ft.<br>
 <br>
 <b>Saturday Night: </b>N wind 10 to 15 kt. Partly cloudy. Seas around 2 ft.<br>
 <br>
@@ -28,6 +26,8 @@
 <b>Tuesday: </b>NW wind 5 to 10 kt. Mostly sunny. Seas around 1 ft.<br>
 <br>
 <b>Tuesday Night: </b>Variable winds 5 kt or less. Partly cloudy. Seas around 1 ft.<br>
+<br>
+<b>Wednesday: </b>SE wind 5 to 10 kt becoming S in the afternoon. A chance of showers.   Seas around 1 ft.<br>
 <br>
 <hr><br></td></tr><tr><td colspan="2" align="left"><b>Marine Point Forecast:</b> 43.7°N 69.44°W<br>Associated <a href="MapClick.php?zoneid=ANZ152">Zone Forecast</a> which includes this point<br></td></tr><tr><td colspan="2" align="left"><br>Visit your local NWS office at: <a href="https://www.weather.gov/gyx/">https://www.weather.gov/gyx/</a></td></tr></table></div>]]></description>
 </item>
