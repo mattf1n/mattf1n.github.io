@@ -8,12 +8,10 @@
 <item>
 <title>Marine forecast — 21NM SSE Wiscasset ME</title>
 <link>https://marine.weather.gov/MapClick.php?FcstType=text&amp;TextType=1&amp;lat=43.707&amp;lon=-69.448</link>
-<guid isPermaLink="false">https://mattf.nl/marine-weather.xml#34f2b6482368190a</guid>
+<guid isPermaLink="false">https://mattf.nl/marine-weather.xml#a765cdf2a61780bb</guid>
 <pubDate>Wed, 09 Sep 2026 23:16:00 GMT</pubDate>
 <description><![CDATA[<div style="max-width:100%;overflow-x:auto;"><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td width="80%" valign="top" align="left"><font size="3"><b>NWS Forecast for: 21NM SSE Wiscasset ME<br>Atlantic Ocean</b></font><br>Issued by: National Weather Service Gray/Portland, ME<br><a href="https://www.weather.gov/glossary/index.php?word=Last+update"><b>Last Update: </b></a>7:16 pm EDT Sep 9, 2026</td></tr><tr><td colspan="2" valign="top" align="center"><hr><br></td></tr>
-</table><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td colspan="2" valign="top" align="left"><br><div align="left"><a href="showsigwx.php?warnzone=ANZ152&warncounty=marine&firewxzone=&local_place1=21NM+SSE+Wiscasset+ME&product1=Small+Craft+Advisory"><span class="warn">Small Craft Advisory</span></a><br></div><br><b>Overnight: </b>SSW wind 20 to 25 kt, with gusts as high as 30 kt. Rain and possibly a thunderstorm.  Areas of fog.  Seas 5 to 6 ft.<br>
-<br>
-<b>Thursday: </b>WSW wind 15 to 20 kt, with gusts as high as 25 kt. Showers likely, mainly before 7am.   Seas 5 to 6 ft.<br>
+</table><table border="0" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;box-sizing:border-box;"><tr valign ="top"><td colspan="2" valign="top" align="left"><br><div align="left"><a href="showsigwx.php?warnzone=ANZ152&warncounty=marine&firewxzone=&local_place1=21NM+SSE+Wiscasset+ME&product1=Small+Craft+Advisory"><span class="warn">Small Craft Advisory</span></a><br></div><br><b>Thursday: </b>WSW wind 20 to 25 kt decreasing to 15 to 20 kt in the afternoon. Showers likely, mainly before 7am.  Areas of fog before 7am.  Seas 5 to 6 ft.<br>
 <br>
 <b>Thursday Night: </b>WNW wind around 10 kt. Mostly cloudy. Seas 3 to 4 ft.<br>
 <br>
@@ -25,9 +23,11 @@
 <br>
 <b>Saturday Night: </b>SSW wind around 10 kt. Partly cloudy. Seas around 2 ft.<br>
 <br>
-<b>Sunday: </b>SSW wind 10 to 15 kt. A chance of showers.   Seas around 3 ft.<br>
+<b>Sunday: </b>SSW wind 10 to 15 kt. A chance of showers after 10am.   Seas around 3 ft.<br>
 <br>
 <b>Sunday Night: </b>SSW wind 12 to 15 kt becoming WSW 10 to 13 kt after midnight. Mostly cloudy. Seas around 3 ft.<br>
+<br>
+<b>Monday: </b>WNW wind around 10 kt becoming W in the afternoon. Mostly sunny. Seas 2 to 3 ft.<br>
 <br>
 <hr><br></td></tr><tr><td colspan="2" align="left"><b>Marine Point Forecast:</b> 43.7°N 69.44°W<br>Associated <a href="MapClick.php?zoneid=ANZ152">Zone Forecast</a> which includes this point<br></td></tr><tr><td colspan="2" align="left"><br>Visit your local NWS office at: <a href="https://www.weather.gov/gyx/">https://www.weather.gov/gyx/</a></td></tr></table></div>]]></description>
 </item>
