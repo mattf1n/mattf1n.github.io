@@ -50,12 +50,20 @@
         <h2 id=News>News</h2>
         <table>
           <tr>
+            <td><time>May&nbsp;2026</time></td>
+            <td>Fellowed at <a href="https://goodfire.ai">Goodfire <abbr>AI</abbr></a>.</td>
+          </tr>
+          <tr>
+            <td><time>Apr.&nbsp;2026</time></td>
+            <td><a href="https://iclr.cc/virtual/2026/poster/10006817">Presented orally</a> at ICLR.</td>
+          </tr>
+          <tr>
             <td><time>Sep.&nbsp;2025</time></td>
             <td>Passed my quals. I am now a <abbr>PhD</abbr> <em>candidate</em>.</td>
           </tr>
           <tr>
             <td><time>Apr.&nbsp;2025</time></td>
-            <td>Awarded an <abbr>NSF</abbr> graduate research fellowship.</td>
+            <td>Recieved an <abbr>NSF</abbr> graduate research fellowship.</td>
           </tr>
           <tr>
             <td><time>Jan.&nbsp;2025</time></td>
@@ -160,11 +168,12 @@
               <h3>Every Language Model Has a Forgery-Resistant Signature</h3>
             </a>
             <p>
-Matthew Finlayson, Xiang Ren, and Swabha Swayamdipta
+            Matthew Finlayson, Xiang Ren, and Swabha Swayamdipta
             </p>
             <ul>
               <cite>ICLR <time>2026</time></cite> 
-              &#9733; Oral &#8192
+              <span class="award" title="Oral presentation award"><span class="fleuron fleuron-left" aria-hidden="true">❧</span> Oral <span class="fleuron" aria-hidden="true">❧</span></span>
+              &#8192;
               <li>
                 <a href="https://arxiv.org/abs/2510.14086">Paper</a>
               </li>
@@ -192,7 +201,7 @@ Matthew Finlayson, Xiang Ren, and Swabha Swayamdipta
             <details>
               <summary>Abstract</summary>
               <p>
-Language model inversion seeks to recover hidden prompts using only language model outputs. This capability has implications for security and accountability in language model deployments, such as leaking private information from an API-protected language model's system message. We propose a new method&mdash;prompt inversion from logprob sequences (PILS)&mdash;that recovers hidden prompts by gleaning clues from the model's next-token probabilities over the course of multiple generation steps. Our method is enabled by a key insight: The vector-valued outputs of a language model occupy a low-dimensional subspace. This enables us to losslessly compress the full next-token probability distribution over multiple generation steps using a linear map, allowing more output information to be used for inversion. Our approach yields massive gains over previous state-of-the-art methods for recovering hidden prompts, achieving 2&ndash;3.5 times higher exact recovery rates across test sets, in one case increasing the recovery rate from 17% to 60%. Our method also exhibits surprisingly good generalization behavior; for instance, an inverter trained on 16 generations steps gets 5&ndash;27 points higher prompt recovery when we increase the number of steps to 32 at test time. Furthermore, we demonstrate strong performance of our method on the more challenging task of recovering hidden system messages. We also analyze the role of verbatim repetition in prompt recovery and propose a new method for cross-family model transfer for logit-based inverters. Our findings show that next-token probabilities are a considerably more vulnerable attack surface for inversion attacks than previously known.
+              Language model inversion seeks to recover hidden prompts using only language model outputs. This capability has implications for security and accountability in language model deployments, such as leaking private information from an API-protected language model's system message. We propose a new method&mdash;prompt inversion from logprob sequences (PILS)&mdash;that recovers hidden prompts by gleaning clues from the model's next-token probabilities over the course of multiple generation steps. Our method is enabled by a key insight: The vector-valued outputs of a language model occupy a low-dimensional subspace. This enables us to losslessly compress the full next-token probability distribution over multiple generation steps using a linear map, allowing more output information to be used for inversion. Our approach yields massive gains over previous state-of-the-art methods for recovering hidden prompts, achieving 2&ndash;3.5 times higher exact recovery rates across test sets, in one case increasing the recovery rate from 17% to 60%. Our method also exhibits surprisingly good generalization behavior; for instance, an inverter trained on 16 generations steps gets 5&ndash;27 points higher prompt recovery when we increase the number of steps to 32 at test time. Furthermore, we demonstrate strong performance of our method on the more challenging task of recovering hidden system messages. We also analyze the role of verbatim repetition in prompt recovery and propose a new method for cross-family model transfer for logit-based inverters. Our findings show that next-token probabilities are a considerably more vulnerable attack surface for inversion attacks than previously known.
               </p>
             </details>
           </li>
